@@ -1,5 +1,8 @@
 #pragma once
 
+/**Représente un vecteur a 3 dimensions
+ *
+ */
 class Vector3D {
 private:
 	double z;

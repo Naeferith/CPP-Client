@@ -2,14 +2,14 @@
 
 #include "Vector3D.h"
 
-using namespace std;
-
-class Color {
+class Color : public Vector3D {
 private:
-	static const Vector3D BLACK;
-	static const Vector3D BLUE;
-	static const Vector3D CYAN;
-	static const Vector3D GREEN;
-	static const Vector3D RED;
-	static const Vector3D YELLOW;
+	static const Color BLACK;
+	static const Color BLUE;
+	static const Color CYAN;
+	static const Color GREEN;
+	static const Color RED;
+	static const Color YELLOW;
+
+	Color(const double r, const double g, const double b) : Vector3D(r,g,b) {}
 };
