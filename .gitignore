@@ -30,6 +30,8 @@
 *.exe
 *.out
 *.app
+
+# Other
 *.db
 .vs/Client/v15/.suo
 *.ipch
