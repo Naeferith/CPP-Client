@@ -1,11 +1,12 @@
 #include "stdafx.h"
 #include "Shape.h"
 
-Shape::Shape()
-{
+Shape::Shape() : Drawable() {
+	vertices = {};
 }
 
-Shape::Shape(vector<Vector2D> v, Color* c) : Drawable(c) {
+Shape::Shape(vector<Vector2D, allocator<Vector2D>>& v, const Vector3D* c) : Drawable(c) {
+	vertices = v;
 }
 
 Shape::~Shape() {

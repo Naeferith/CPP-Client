@@ -10,15 +10,19 @@ using namespace std;
  */
 class Drawable {
 protected:
-	Color* color;
+	const Vector3D* color;
 
 public:
 	Drawable();
-	Drawable(Color*);
+	Drawable(const Vector3D*);
 	Drawable(const Drawable&);
 	~Drawable();
 
-	const Color getColor() const;
+	const Vector3D getColor() const;
+
+	void setColor(const Vector3D*);
+
+	const Drawable& operator=(const Drawable&);
 };
 
 

@@ -11,7 +11,10 @@ Vector3D::Vector3D(const double X, const double Y, const double Z) {
 	z = Z;
 }
 
-Vector3D::Vector3D(const Vector3D &) {
+Vector3D::Vector3D(const Vector3D& v) {
+	x = v.getX();
+	y = v.getY();
+	z = v.getZ();
 }
 
 Vector3D::~Vector3D() {
@@ -28,3 +31,17 @@ void Vector3D::setX(const double X) { x = X; }
 void Vector3D::setY(const double Y) { y = Y; }
 
 void Vector3D::setZ(const double Z) { z = Z; }
+
+const Vector3D Vector3D::operator=(const Vector3D& v) {
+	if (this == &v) return *this;
+
+	x = v.getX();
+	y = v.getY();
+	z = v.getZ();
+
+	return *this;
+}
+
+std::ostream & operator<<(std::ostream& strm, const Vector3D v) {
+	return strm << "[R: " << v.getX() << ", G: " << v.getY() << ", B: " << v.getZ() << "]";
+}
