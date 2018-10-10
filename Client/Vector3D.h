@@ -29,5 +29,5 @@ public:
 
 	const Vector3D operator=(const Vector3D&);
 
-	friend std::ostream& operator<<(std::ostream&, const Vector3D);
+	friend std::ostream& operator<<(std::ostream&, const Vector3D&);
 };

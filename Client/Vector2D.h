@@ -11,4 +11,6 @@ public:
 	Vector2D(const double, const double);
 	Vector2D(const Vector2D&);
 	~Vector2D();
+
+	friend std::ostream& operator<<(std::ostream&, const Vector2D&);
 };

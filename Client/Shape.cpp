@@ -12,6 +12,10 @@ Shape::Shape(vector<Vector2D, allocator<Vector2D>>& v, const Vector3D* c) : Draw
 Shape::~Shape() {
 }
 
+const vector<Vector2D> Shape::getVertices() const { return vertices; }
+
+void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
+
 void Shape::Translate(const Vector2D V) {
 	for (auto &vertice : vertices) {
 		vertice.setX(vertice.getX() + V.getX());

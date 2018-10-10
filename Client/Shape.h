@@ -14,6 +14,10 @@ public:
 	Shape(vector<Vector2D, allocator<Vector2D>>&, const Vector3D*);
 	~Shape();
 
+	const vector<Vector2D> getVertices() const;
+
+	void setVertices(const vector<Vector2D>&);
+
 	//Transformations géométriques
 	void Translate(const Vector2D);
 	void Scale(const Vector2D, const double);

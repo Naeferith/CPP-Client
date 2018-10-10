@@ -42,6 +42,6 @@ const Vector3D Vector3D::operator=(const Vector3D& v) {
 	return *this;
 }
 
-std::ostream & operator<<(std::ostream& strm, const Vector3D v) {
+std::ostream & operator<<(std::ostream& strm, const Vector3D& v) {
 	return strm << "[R: " << v.getX() << ", G: " << v.getY() << ", B: " << v.getZ() << "]";
 }
