@@ -10,17 +10,17 @@ using namespace std;
  */
 class Drawable {
 protected:
-	const Vector3D* color;
+	const Color* color;
 
 public:
 	Drawable();
-	Drawable(const Vector3D*);
+	Drawable(const Color*);
 	Drawable(const Drawable&);
 	~Drawable();
 
-	const Vector3D getColor() const;
+	const Color getColor() const;
 
-	void setColor(const Vector3D*);
+	void setColor(const Color*);
 
 	const Drawable& operator=(const Drawable&);
 };

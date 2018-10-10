@@ -3,17 +3,17 @@
 
 Drawable::Drawable() : color(&Color::BLACK) {}
 
-Drawable::Drawable(const Vector3D* C) : color(C) {}
+Drawable::Drawable(const Color* C) : color(C) {}
 
 Drawable::Drawable(const Drawable& d) : color(&d.getColor()) {}
 
 Drawable::~Drawable() {
-	//free((Color*) color); fait planter
+	//free((Vector3D*) color); fait planter
 }
 
-const Vector3D Drawable::getColor() const { return *color; }
+const Color Drawable::getColor() const { return *color; }
 
-void Drawable::setColor(const Vector3D* c) { color = c; }
+void Drawable::setColor(const Color* c) { color = c; }
 
 const Drawable& Drawable::operator=(const Drawable &d)
 {

@@ -11,7 +11,7 @@ private:
 
 public:
 	Shape();
-	Shape(vector<Vector2D, allocator<Vector2D>>&, const Vector3D*);
+	Shape(vector<Vector2D, allocator<Vector2D>>&, const Color*);
 	~Shape();
 
 	const vector<Vector2D> getVertices() const;

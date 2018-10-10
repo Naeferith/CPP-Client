@@ -5,7 +5,7 @@ Shape::Shape() : Drawable() {
 	vertices = {};
 }
 
-Shape::Shape(vector<Vector2D, allocator<Vector2D>>& v, const Vector3D* c) : Drawable(c) {
+Shape::Shape(vector<Vector2D, allocator<Vector2D>>& v, const Color* c) : Drawable(c) {
 	vertices = v;
 }
 
