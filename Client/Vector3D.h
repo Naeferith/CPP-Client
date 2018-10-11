@@ -2,9 +2,9 @@
 
 #include <iostream>
 
-/**Représente un vecteur a 3 dimensions
- *
- */
+/*
+Représente un vecteur a 3 dimensions
+*/
 class Vector3D {
 private:
 	double z;
@@ -27,6 +27,7 @@ public:
 	void setY(const double);
 	void setZ(const double);
 
+	bool operator==(const Vector3D&) const;
 	const Vector3D operator=(const Vector3D&);
 
 	friend std::ostream& operator<<(std::ostream&, const Vector3D&);

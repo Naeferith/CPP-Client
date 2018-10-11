@@ -16,6 +16,10 @@ const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
+bool Shape::operator==(const Shape& s) const {
+	return Drawable::operator==(s) && (vertices == s.vertices);
+}
+
 void Shape::Translate(const Vector2D V) {
 	for (auto &vertice : vertices) {
 		vertice.setX(std::round( vertice.getX() + V.getX() ));

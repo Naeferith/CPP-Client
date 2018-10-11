@@ -18,6 +18,8 @@ public:
 
 	void setVertices(const vector<Vector2D>&);
 
+	bool operator==(const Shape&) const;
+
 	//Transformations géométriques
 	void Translate(const Vector2D);
 	void Scale(const Vector2D, const double);

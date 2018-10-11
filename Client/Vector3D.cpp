@@ -32,6 +32,10 @@ void Vector3D::setY(const double Y) { y = Y; }
 
 void Vector3D::setZ(const double Z) { z = Z; }
 
+bool Vector3D::operator==(const Vector3D& v) const {
+	return (x == v.getX() && y == v.getY() && z == v.getZ());
+}
+
 const Vector3D Vector3D::operator=(const Vector3D& v) {
 	if (this == &v) return *this;
 

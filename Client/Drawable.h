@@ -22,6 +22,7 @@ public:
 
 	void setColor(const Color*);
 
+	bool operator==(const Drawable&) const;
 	const Drawable& operator=(const Drawable&);
 };
 

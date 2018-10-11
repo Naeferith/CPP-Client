@@ -12,5 +12,6 @@ public:
 	Vector2D(const Vector2D&);
 	~Vector2D();
 
+	bool operator==(const Vector2D&) const;
 	friend std::ostream& operator<<(std::ostream&, const Vector2D&);
 };
