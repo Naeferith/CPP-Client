@@ -34,7 +34,6 @@ public:
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Shape& shape) const;
 
-	//Transformations géométriques
 	/**
 		@brief Applique une translation.
 		@param vecteur Le vecteur de translation.
@@ -54,4 +53,7 @@ public:
 		@param angle L'angle de rotation en radians.
 	*/
 	void Rotate(const Vector2D point, const double angle);
+
+	/** @brief Envoie une requete au serveur de dessin. */
+	virtual void Draw();
 };

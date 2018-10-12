@@ -42,3 +42,6 @@ void Shape::Rotate(const Vector2D point, const double rad) {
 		vertice.setY(newY);
 	}
 }
+
+void Shape::Draw() {
+}

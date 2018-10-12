@@ -34,4 +34,7 @@ public:
 
 	/** @brief Mutateur de radius. */
 	void setRadius(const int rayon);
+
+	/** @brief Envoie une requete au serveur de dessin. */
+	void Draw();
 };

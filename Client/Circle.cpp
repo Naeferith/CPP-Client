@@ -23,3 +23,6 @@ Circle::~Circle() {
 const int Circle::getRadius() const { return radius; }
 
 void Circle::setRadius(const int i) { radius = i; }
+
+void Circle::Draw() {
+}
