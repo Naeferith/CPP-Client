@@ -8,8 +8,9 @@
 
 #include "Circle.h"
 #include "ShapeGroup.h"
+#include "SingletonSocket.h"
 
-#define _DEBUG_GRAPHIC_
+#define _DEBUG_NETWORK_
 
 using namespace std;
 
@@ -35,55 +36,38 @@ int main()
 #endif
 
 #ifdef _DEBUG_NETWORK_
-	///Initialisation de la librairie Winsock2
-	int r;
-	WSADATA wsaData;
-	r = WSAStartup(MAKEWORD(2, 0), &wsaData);
-	if (r) throw -1;
-
-	///Création de socket
-	SOCKET sock;  // informations concernant le socket à créer : 
-				  // famille d'adresses acceptées, mode connecté ou 
-				  // non, protocole
-
-	int familleAdresses = AF_INET;	// IPv4
-	int typeSocket = SOCK_STREAM;	// mode connecté TCP
-	int protocole = IPPROTO_TCP;	// protocole. On peut aussi mettre 0 et la fct choisit le protocole en fct des 2 1ers paramètres
-
-	sock = socket(familleAdresses, typeSocket, protocole);
-
-	if (sock == INVALID_SOCKET)
-	{
-		ostringstream oss;
-		oss << "la création du socket a échoué : code d'erreur = " << WSAGetLastError() << endl;
-
-		// pour les valeurs renvoyées par WSAGetLastError() : 
-		// cf. doc réf winsock
-
-		throw -2;
-	}
+	///Création du socket
+	 SingletonSocket sock = SingletonSocket::getInstance();
+	
 
 	///Création d'un représentant local du serveur distant
-	//const char * adresseServeur = "127.0.0.1";
-	short portServeur = 9111;
+	const char* adr = "127.0.0.1";
+	short port = 9003;
 
 	SOCKADDR_IN sockaddr; 		// informations concernant le serveur avec lequel on va communiquer
-
 	sockaddr.sin_family = AF_INET;
 
-	//sockaddr.sin_addr.s_addr
-	InetPton(sockaddr.sin_family, _T("127.0.0.1"), &sockaddr.sin_addr.s_addr);
+	//Conversion de adr en wchar_t *
+	size_t size = strlen(adr) + 1;
+	wchar_t *wadr = new wchar_t[size];
+	size_t outsize;
+	mbstowcs_s(&outsize, wadr, size, adr, size-1);
+
+	InetPton(sockaddr.sin_family, wadr, &sockaddr.sin_addr.s_addr);
+
+	//on free la mémoire
+	delete[]wadr;
 
 	// inet_addr() convertit de l'ASCII en entier
 
-	sockaddr.sin_port = htons(portServeur);
+	sockaddr.sin_port = htons(port);
 
 	// htons() assure que le port est bien inscrit dans le format du 
 	// réseau (little-endian ou big-endian)
 
 
 	///Connexion au serveur
-	r = connect(sock, (SOCKADDR *)&sockaddr, sizeof(sockaddr));
+	int r = connect(sock.getSocket(), (SOCKADDR *)&sockaddr, sizeof(sockaddr));
 
 	// renvoie une valeur non nulle en cas d'échec.
 
@@ -103,7 +87,7 @@ int main()
 
 	int l = strlen(requete);
 
-	r = send(sock, requete, l, 0);
+	r = send(sock.getSocket(), requete, l, 0);
 	// envoi de la requête au serveur.
 	// le caractère '\0' de fin de string n'est pas transmis 
 	// envoie au plus l octets
