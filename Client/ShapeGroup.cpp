@@ -17,7 +17,7 @@ const vector<Drawable> ShapeGroup::getShapes() const { return shapes; }
 void ShapeGroup::setShapes(const vector<Drawable>& v) {	shapes = v; }
 
 ShapeGroup ShapeGroup::operator+(Drawable& d) {
-	//Si d est deja présent dans shapes, ne fait rien, sinon l'ajoute
+	//Si d est deja prÃ©sent dans shapes, ne fait rien, sinon l'ajoute
 	if (!(std::find(shapes.begin(), shapes.end(), d) != shapes.end())) shapes.push_back(d); //manque de surchage operateur probablement
 	return *this;
 }
