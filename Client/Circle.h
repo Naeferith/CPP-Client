@@ -36,5 +36,8 @@ public:
 	void setRadius(const int rayon);
 
 	/** @brief Envoie une requete au serveur de dessin. */
-	void Draw();
+	string Draw();
+
+	/** @brief Implémentation de la methode accept du DP Visitor. */
+	virtual void accept(Visitor* v);
 };

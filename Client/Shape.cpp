@@ -43,5 +43,9 @@ void Shape::Rotate(const Vector2D point, const double rad) {
 	}
 }
 
-void Shape::Draw() {
+string Shape::Draw() {
+	std::stringstream result;
+	return result.str();
 }
+
+void Shape::accept(Visitor * v) { v->visit(this); }

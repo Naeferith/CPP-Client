@@ -55,5 +55,8 @@ public:
 	void Rotate(const Vector2D point, const double angle);
 
 	/** @brief Envoie une requete au serveur de dessin. */
-	virtual void Draw();
+	virtual string Draw();
+
+	/** @brief Implémentation de la methode accept du DP Visitor. */
+	virtual void accept(Visitor* v);
 };

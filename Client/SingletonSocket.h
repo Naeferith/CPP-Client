@@ -29,6 +29,17 @@ private:
 	/** @brief Le protocole réseau utilisé. */
 	int protocole = IPPROTO_TCP;
 
+	/** @brief L'adresse du serveur distant. */
+	const char* adr = "127.0.0.1";
+
+	/** @brief Le port du serveur distant. */
+	short port = 9003;
+
+	/** @brief Informations concernant le serveur avec lequel on va communiquer. */
+	SOCKADDR_IN sockaddr;
+	
+
+
 	/** @brief Le constructeur par défaut. */
 	SingletonSocket();
 

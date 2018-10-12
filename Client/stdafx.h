@@ -10,9 +10,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <tchar.h>
+#include <sstream>
 
 #include "Vector2D.h"
 #include "Drawable.h"
+#include "Visitor.h"
 
 
 // TODO: faites référence ici aux en-têtes supplémentaires nécessaires au programme
