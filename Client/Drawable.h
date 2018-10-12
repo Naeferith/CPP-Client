@@ -4,26 +4,40 @@
 
 using namespace std;
 
-/*Repr�sente une forme dessinable.
- *
- *
- */
+/**
+	@brief Représente un element graphique.
+
+	Un Drawable représente tout objet dessinable sur l'écran de dessin. Il est défini par une couleur.
+*/
 class Drawable {
 protected:
+	/** @brief La couleur. */
 	const Color* color;
 
 public:
+	/** @brief Le constructeur par défaut. */
 	Drawable();
-	Drawable(const Color*);
-	Drawable(const Drawable&);
+
+	/** @brief Le constructeur par valeurs. */
+	Drawable(const Color* couleur);
+
+	/** @brief Le constructeur par référence. */
+	Drawable(const Drawable& drawable);
+
+	/** @brief Le destructeur. */
 	~Drawable();
 
+	/** @brief Accesseur sur color. */
 	const Color getColor() const;
 
-	void setColor(const Color*);
+	/** @brief Muttateur sur color. */
+	void setColor(const Color* couleur);
 
-	bool operator==(const Drawable&) const;
-	const Drawable& operator=(const Drawable&);
+	/** @brief Surcharge de l'opérateur ==. */
+	bool operator==(const Drawable& drawable) const;
+
+	/** @brief Surcharge de l'opérateur =. */
+	const Drawable& operator=(const Drawable& drawable);
 };
 
 
