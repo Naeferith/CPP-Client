@@ -151,6 +151,7 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="Erreur.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeGroup.h" />
     <ClInclude Include="SingletonSocket.h" />
@@ -166,6 +167,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Drawable.cpp" />
+    <ClCompile Include="Erreur.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeGroup.cpp" />
     <ClCompile Include="SingletonSocket.cpp" />

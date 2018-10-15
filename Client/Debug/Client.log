@@ -1,13 +1,4 @@
-﻿  stdafx.cpp
-  Circle.cpp
-  Client.cpp
-  Color.cpp
-  Drawable.cpp
-  Shape.cpp
-  ShapeGroup.cpp
-  SingletonSocket.cpp
-  Vector2D.cpp
-  Vector3D.cpp
+﻿  Client.cpp
   Visitor_Send.cpp
   Génération de code en cours...
   Client.vcxproj -> D:\WORK\C++\Client\Debug\Client.exe
