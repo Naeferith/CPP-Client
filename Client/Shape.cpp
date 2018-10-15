@@ -20,21 +20,21 @@ bool Shape::operator==(const Shape& s) const {
 	return Drawable::operator==(s) && (vertices == s.vertices);
 }
 
-void Shape::Translate(const Vector2D V) {
+void Shape::Translate(const Vector2D& V) {
 	for (auto &vertice : vertices) {
 		vertice.setX(std::round( vertice.getX() + V.getX() ));
 		vertice.setY(std::round( vertice.getY() + V.getY() ));
 	}
 }
 
-void Shape::Scale(const Vector2D point, const double ratio) {
+void Shape::Scale(const Vector2D& point, const double ratio) {
 	for (auto &vertice : vertices) {
 		vertice.setX(std::round( (vertice.getX() - point.getX()) * ratio ));
 		vertice.setY(std::round( (vertice.getY() - point.getY()) * ratio ));
 	}
 }
 
-void Shape::Rotate(const Vector2D point, const double rad) {
+void Shape::Rotate(const Vector2D& point, const double rad) {
 	for (auto &vertice : vertices) {
 		double newX = std::round((vertice.getX() - point.getX()) * cos(rad) - (vertice.getY() - point.getY()) * sin(rad));
 		double newY = std::round((vertice.getX() - point.getX()) * sin(rad) + (vertice.getY() - point.getY()) * cos(rad));

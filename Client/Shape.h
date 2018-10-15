@@ -38,21 +38,21 @@ public:
 		@brief Applique une translation.
 		@param vecteur Le vecteur de translation.
 	*/
-	void Translate(const Vector2D vecteur);
+	void Translate(const Vector2D& vecteur);
 
 	/**
 		@brief Applique une mise à l'échelle.
 		@param point Le point invariant.
 		@param ratio Le ratio d'échelle.
 	*/
-	void Scale(const Vector2D point, const double ratio);
+	void Scale(const Vector2D& point, const double ratio);
 
 	/**
 		@brief Applique une rotation.
 		@param point Le point invariant.
 		@param angle L'angle de rotation en radians.
 	*/
-	void Rotate(const Vector2D point, const double angle);
+	void Rotate(const Vector2D& point, const double angle);
 
 	/** @brief Envoie une requete au serveur de dessin. */
 	virtual string Draw();
