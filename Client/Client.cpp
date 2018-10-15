@@ -22,7 +22,24 @@ int main()
 #ifdef _DEBUG_GRAPHIC_
 	Circle *cercle = new Circle(Vector2D(1,1), 2, &Color::BLUE);
 
-	cercle->accept(new Visitor_Send);
+	try {
+		cercle->accept(new Visitor_Send);
+	}
+	catch (const Erreur& e) {
+		cout << "ERREUR : " << e.what() << endl;
+	}
+	
+
+	vector<Vector2D> sommets = {
+		Vector2D(-1, 1),
+		Vector2D(1, 1),
+		Vector2D(1, -1),
+		Vector2D(-1, -1),
+	};
+
+	Shape *carre = new Shape(sommets, &Color::CYAN);
+
+	//carre->accept(new Visitor_Send);
 
 #endif
 

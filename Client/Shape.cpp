@@ -45,6 +45,36 @@ void Shape::Rotate(const Vector2D point, const double rad) {
 
 string Shape::Draw() {
 	std::stringstream result;
+	result <<
+		"<shape>" <<
+			"<color>" <<
+				"<r>" <<
+					this->color->getX() <<
+				"</r>" <<
+				"<g>" <<
+					this->color->getX() <<
+				"</g>" <<
+				"<b>" <<
+					this->color->getX() <<
+				"</b>" <<
+			"</color>" <<
+			"<vertices>"
+	;
+
+	for (auto &vertice : vertices) {
+		result <<
+			"<vertice>" <<
+				"<x>" <<
+					vertice.getX() <<
+				"</x>" <<
+				"<y>" <<
+					vertice.getX() <<
+				"</y>" <<
+			"</vertice>"
+		;
+	}
+
+	result << "</vertices></shape>";
 	return result.str();
 }
 

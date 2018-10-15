@@ -15,6 +15,7 @@
 #include "Vector2D.h"
 #include "Drawable.h"
 #include "Visitor.h"
+#include "Erreur.h"
 
 
 // TODO: faites référence ici aux en-têtes supplémentaires nécessaires au programme

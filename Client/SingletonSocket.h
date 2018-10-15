@@ -17,6 +17,12 @@ private:
 	/** @brief Booléen sur la création de instance. */
 	static bool isCreated;
 
+	/** @brief Booléen sur l'initialisation de la librairie Winsock2. */
+	static bool isInitialized;
+
+	/** @brief Booléen sur la connexion au serveur. */
+	static bool isConnected;
+
 	/** @brief Le socket. */
 	SOCKET sock;
 
@@ -38,10 +44,14 @@ private:
 	/** @brief Informations concernant le serveur avec lequel on va communiquer. */
 	SOCKADDR_IN sockaddr;
 	
-
-
 	/** @brief Le constructeur par défaut. */
 	SingletonSocket();
+
+	/** @brief Connexion au serveur. */
+	static void Connect();
+
+	/** @brief Initialisation de la libririe Winsock2. */
+	static void InitWS2();
 
 public:
 	/** @brief Le destructeur. */
@@ -49,6 +59,11 @@ public:
 
 	/** @brief Accesseur de l'instance. */
 	static SingletonSocket& getInstance();
+
+	/** @brief Accesseur de l'état de connexion. */
+	static bool IsConnected();
+
+	static void Send(const char* msg, const int length);
 
 	/** @brief Accesseur de sock. */
 	const SOCKET getSocket() const;
