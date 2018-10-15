@@ -88,9 +88,9 @@ void SingletonSocket::Connect(){
 	}
 }
 
-void SingletonSocket::Send(const char * msg, const int length){
+void SingletonSocket::Send(const char * msg){
 	if (!isConnected) Connect();
-	int r = send(instance.sock, msg, length, 0);
+	int r = send(instance.sock, msg, strlen(msg), 0);
 	if (r == SOCKET_ERROR) throw Erreur(-1, "Erreur lors de l'envoi de message");
 }
 

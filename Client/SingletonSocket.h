@@ -63,7 +63,8 @@ public:
 	/** @brief Accesseur de l'état de connexion. */
 	static bool IsConnected();
 
-	static void Send(const char* msg, const int length);
+	/** @brief Envoi d'un message au serveur. */
+	static void Send(const char* msg);
 
 	/** @brief Accesseur de sock. */
 	const SOCKET getSocket() const;
