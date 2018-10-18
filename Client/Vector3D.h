@@ -8,7 +8,7 @@
 	C'est une structure composés de 3 double dont la 3ème composante z est privée.
 	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
 */
-class Vector3D {
+struct Vector3D {
 private:
 	/** @brief La composante Z. */
 	double z;

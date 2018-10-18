@@ -1,24 +1,13 @@
 #include "stdafx.h"
 #include "Vector3D.h"
 
-Vector3D::Vector3D() {
-	x = y = z = 0;
-}
+Vector3D::Vector3D() : x(0), y(0), z(0) {}
 
-Vector3D::Vector3D(const double X, const double Y, const double Z) {
-	x = X;
-	y = Y;
-	z = Z;
-}
+Vector3D::Vector3D(const double X, const double Y, const double Z) : x(X), y(Y), z(Z) {}
 
-Vector3D::Vector3D(const Vector3D& v) {
-	x = v.getX();
-	y = v.getY();
-	z = v.getZ();
-}
+Vector3D::Vector3D(const Vector3D& v) : x(v.getX()), y(v.getY()), z(v.getZ()) {}
 
-Vector3D::~Vector3D() {
-}
+Vector3D::~Vector3D() {}
 
 const double Vector3D::getX() const{ return x; }
 
