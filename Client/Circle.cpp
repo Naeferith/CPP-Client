@@ -30,10 +30,10 @@ string Circle::Draw() {
 		"<circle>" <<
 			"<center>" <<
 				"<x>" <<
-					this->vertices.front().getX() <<
+					this->vertices.front().x <<
 				"</x>" <<
 				"<y>" <<
-					this->vertices.front().getY() <<
+					this->vertices.front().y <<
 				"</y>" <<
 			"</center>" <<
 			"<radius>" <<
@@ -41,13 +41,13 @@ string Circle::Draw() {
 			"</radius>" <<
 			"<color>" <<
 				"<r>" <<
-					this->color->getX() <<
+					this->color->x <<
 				"</r>" <<
 				"<g>" <<
-					this->color->getY() <<
+					this->color->y <<
 				"</g>" <<
 				"<b>" <<
-					this->color->getZ() <<
+					this->color->z <<
 				"</b>" <<
 			"</color>" <<
 		"</circle>"

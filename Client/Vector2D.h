@@ -9,10 +9,6 @@
 	Un Vector2D est un Vector3D dont la composante Z est nulle.
 */
 struct Vector2D : public Vector3D {
-private:
-	/** @brief Encapsulation de la composante Y. */
-	Vector3D::y;
-
 public:
 	/** @brief Le constructeur par défaut. */
 	Vector2D();

@@ -24,22 +24,22 @@ bool Shape::operator==(const Shape& s) const {
 
 void Shape::Translate(const Vector2D& V) {
 	for (auto &vertice : vertices) {
-		vertice.setX(std::round( vertice.getX() + V.getX() ));
-		vertice.setY(std::round( vertice.getY() + V.getY() ));
+		vertice.setX(std::round( vertice.x + V.x ));
+		vertice.setY(std::round( vertice.y + V.y ));
 	}
 }
 
 void Shape::Scale(const Vector2D& point, const double ratio) {
 	for (auto &vertice : vertices) {
-		vertice.setX(std::round( (vertice.getX() - point.getX()) * ratio ));
-		vertice.setY(std::round( (vertice.getY() - point.getY()) * ratio ));
+		vertice.setX(std::round( (vertice.x - point.x) * ratio ));
+		vertice.setY(std::round( (vertice.y - point.y) * ratio ));
 	}
 }
 
 void Shape::Rotate(const Vector2D& point, const double rad) {
 	for (auto &vertice : vertices) {
-		double newX = std::round((vertice.getX() - point.getX()) * cos(rad) - (vertice.getY() - point.getY()) * sin(rad));
-		double newY = std::round((vertice.getX() - point.getX()) * sin(rad) + (vertice.getY() - point.getY()) * cos(rad));
+		double newX = std::round((vertice.x - point.x) * cos(rad) - (vertice.y - point.y) * sin(rad));
+		double newY = std::round((vertice.x - point.x) * sin(rad) + (vertice.y - point.y) * cos(rad));
 		vertice.setX(newX);
 		vertice.setY(newY);
 	}
@@ -51,13 +51,13 @@ string Shape::Draw() {
 		"<shape>" <<
 			"<color>" <<
 				"<r>" <<
-					this->color->getX() <<
+					this->color->x <<
 				"</r>" <<
 				"<g>" <<
-					this->color->getX() <<
+					this->color->x <<
 				"</g>" <<
 				"<b>" <<
-					this->color->getX() <<
+					this->color->x <<
 				"</b>" <<
 			"</color>" <<
 			"<vertices>"
@@ -67,10 +67,10 @@ string Shape::Draw() {
 		result <<
 			"<vertice>" <<
 				"<x>" <<
-					vertice.getX() <<
+					vertice.x <<
 				"</x>" <<
 				"<y>" <<
-					vertice.getX() <<
+					vertice.x <<
 				"</y>" <<
 			"</vertice>"
 		;
@@ -81,3 +81,13 @@ string Shape::Draw() {
 }
 
 void Shape::accept(Visitor * v) { v->visit(this); }
+
+Shape Shape::operator+(const Vector2D & vecteur) {
+	vertices.emplace_back(vecteur.x, vecteur.y);
+	return *this;
+}
+
+Shape Shape::operator--() {
+	vertices.pop_back();
+	return *this;
+}

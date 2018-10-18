@@ -9,18 +9,17 @@
 	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
 */
 struct Vector3D {
-private:
-	/** @brief La composante Z. */
-	double z;
+public:
 
-protected:
 	/** @brief La composante X. */
 	double x;
 
 	/** @brief La composante Y. */
 	double y;
 
-public:
+	/** @brief La composante Z. */
+	double z;
+
 	/** @brief Le constructeur par défaut. */
 	Vector3D();
 
@@ -32,15 +31,6 @@ public:
 
 	/** @brief Le destructeur. */
 	~Vector3D();
-
-	/** @brief Accesseur sur la composante X. */
-	const double getX() const;
-
-	/** @brief Accesseur sur la composante Y. */
-	const double getY() const;
-
-	/** @brief Accesseur sur la composante Z. */
-	const double getZ() const;
 
 	/** @brief Mutateur de la composante X. */
 	void setX(const double X);

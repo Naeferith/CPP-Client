@@ -50,4 +50,13 @@ public:
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual void accept(Visitor* v);
+
+	/** @brief Surcharge de l'opérateur +. */
+	Shape operator+(const Vector2D& vecteur);
+
+	/** @brief Surcharge de l'opérateur --. 
+	
+		Enlève le dernier Vector2D ajouté.
+	*/
+	Shape operator--();
 };

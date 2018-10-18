@@ -10,5 +10,5 @@ const Color Color::YELLOW(255, 255, 0);
 
 std::ostream & operator<<(std::ostream& strm, const Color& c)
 {
-	return strm << "[R: " << c.getX() << ", G: " << c.getY() << ", B: " << c.getZ() << "]";
+	return strm << "[R: " << c.x << ", G: " << c.y << ", B: " << c.z << "]";
 }
