@@ -70,6 +70,15 @@ void SingletonSocket::InitWS2() {
 }
 
 SingletonSocket::~SingletonSocket() {
+	if (isConnected) {
+		int r = shutdown(sock, SD_SEND);
+		if (r == SOCKET_ERROR) {
+			//debug
+		}
+		closesocket(sock);
+		//WSACleanup(); //De-init winsock DLL
+		isConnected = false;
+	}
 	isCreated = false;
 }
 
