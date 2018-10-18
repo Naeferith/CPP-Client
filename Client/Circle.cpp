@@ -5,7 +5,7 @@ Circle::Circle() : Shape() {
 	radius = 0;
 }
 
-Circle::Circle(const Vector2D& v, const unsigned int r, const Color* c) : Shape() {
+Circle::Circle(const Vector2D& v, const unsigned int r, const std::shared_ptr<const Color>& c) : Shape() {
 	vertices.push_back(v);
 	color = c;
 	radius = r;
@@ -13,7 +13,7 @@ Circle::Circle(const Vector2D& v, const unsigned int r, const Color* c) : Shape(
 
 Circle::Circle(const Circle& c) {
 	vertices = c.getVertices();
-	color = &c.getColor();
+	color = c.color;
 	radius = c.getRadius();
 }
 

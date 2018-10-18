@@ -5,7 +5,7 @@
 ShapeGroup::ShapeGroup() : Drawable(), shapes() {
 }
 
-ShapeGroup::ShapeGroup(const vector<shared_ptr<Drawable>>& v, const Color* c) : Drawable(c) {
+ShapeGroup::ShapeGroup(const vector<shared_ptr<Drawable>>& v, std::shared_ptr<const Color>& c) : Drawable(c) {
 	shapes = v;
 }
 
@@ -14,7 +14,7 @@ ShapeGroup::~ShapeGroup() {
 
 const vector<shared_ptr<Drawable>> ShapeGroup::getShapes() const { return shapes; }
 
-void ShapeGroup::setColor(const Color * couleur) {
+void ShapeGroup::setColor(const std::shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
 }
 
@@ -35,7 +35,7 @@ void ShapeGroup::Rotate(const Vector2D & point, const double angle) {
 ShapeGroup ShapeGroup::operator+(Drawable& d) {
 	//Si d est deja présent dans shapes, ne fait rien, sinon l'ajoute
 	shared_ptr<Drawable> ptr(&d);
-	//if (!(std::find(shapes.begin(), shapes.end(), d) != shapes.end())) shapes.push_back(move(ptr)); //manque de surchage operateur probablement
+	//if (!(std::find(shapes.begin(), shapes.end(), d) != shapes.end())) shapes.push_back(ptr); //manque de surchage operateur probablement
 	return *this;
 }
 

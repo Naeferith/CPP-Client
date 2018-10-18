@@ -1,9 +1,8 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include "Drawable.h"
-
-using namespace std;
 
 /**
 	@brief Représente une forme dessinable.
@@ -13,26 +12,26 @@ using namespace std;
 class Shape : public Drawable {
 protected:
 	/** @brief La liste des sommets. */
-	vector<Vector2D> vertices;
+	std::vector<Vector2D> vertices;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	Shape();
 
 	/** @brief Le constructeur par valeurs. */
-	Shape(vector<Vector2D, allocator<Vector2D>>& sommets, const Color* couleur);
+	Shape(const std::vector<Vector2D, std::allocator<Vector2D>>& sommets, const std::shared_ptr<const Color>& couleur);
 	
 	/** @brief Le destructeur. */
 	~Shape();
 
 	/** @brief Accesseur pour vertices. */
-	const vector<Vector2D> getVertices() const;
+	const std::vector<Vector2D> getVertices() const;
 
 	/**	@see Drawable.setColor() */
-	void setColor(const Color * c);
+	void setColor(const std::shared_ptr<const Color>& couleur);
 
 	/** @brief Mutateur pour vertices. */
-	void setVertices(const vector<Vector2D>& sommets);
+	void setVertices(const std::vector<Vector2D>& sommets);
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Shape& shape) const;
@@ -47,7 +46,7 @@ public:
 	void Rotate(const Vector2D& point, const double angle);
 
 	/** @brief Envoie une requete au serveur de dessin. */
-	virtual string Draw();
+	virtual std::string Draw();
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual void accept(Visitor* v);

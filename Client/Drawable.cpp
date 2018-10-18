@@ -1,14 +1,19 @@
 #include "stdafx.h"
 #include "Drawable.h"
 
-Drawable::Drawable() : color(&Color::BLACK) {}
+Drawable::Drawable() {
+	color = std::make_shared<const Color>(Color::BLACK);
+}
 
-Drawable::Drawable(const Color* C) : color(C) {}
+Drawable::Drawable(const std::shared_ptr<const Color>& c) {
+	color = c;
+}
 
-Drawable::Drawable(const Drawable& d) : color(&d.getColor()) {}
+Drawable::Drawable(const Drawable& d) {
+	color = d.color;
+}
 
 Drawable::~Drawable() {
-	//free((Vector3D*) color); fait planter
 }
 
 const Color Drawable::getColor() const { return *color; }
@@ -21,7 +26,7 @@ const Drawable& Drawable::operator=(const Drawable &d)
 {
 	if (this == &d) return *this;
 
-	color = &d.getColor();
+	color = d.color;
 
 	return *this;
 }

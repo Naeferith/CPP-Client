@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include "Shape.h"
 #include "Vector2D.h"
 
@@ -21,7 +22,7 @@ public:
 	Circle();
 
 	/** @brief Le constructeur par valeurs. */
-	Circle(const Vector2D& centre, const unsigned int rayon, const Color* couleur);
+	Circle(const Vector2D& centre, const unsigned int rayon, const std::shared_ptr<const Color>& couleur);
 	
 	/** @brief Le constructeur par référence. */
 	Circle(const Circle& cercle);
@@ -36,7 +37,7 @@ public:
 	void setRadius(const int rayon);
 
 	/** @brief Envoie une requete au serveur de dessin. */
-	string Draw();
+	std::string Draw();
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual void accept(Visitor* v);

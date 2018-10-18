@@ -5,7 +5,7 @@ Shape::Shape() : Drawable() {
 	vertices = {};
 }
 
-Shape::Shape(vector<Vector2D, allocator<Vector2D>>& v, const Color* c) : Drawable(c) {
+Shape::Shape(const vector<Vector2D, allocator<Vector2D>>& v, const std::shared_ptr<const Color>& c) : Drawable(c) {
 	vertices = v;
 }
 
@@ -14,7 +14,7 @@ Shape::~Shape() {
 
 const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
-void Shape::setColor(const Color* c) { color = c; }
+void Shape::setColor(const std::shared_ptr<const Color>& c) { color = c; }
 
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 

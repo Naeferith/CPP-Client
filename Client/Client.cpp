@@ -20,7 +20,10 @@ int main()
 {
 
 #ifdef _DEBUG_GRAPHIC_
-	Circle *cercle = new Circle(Vector2D(1,1), 2, &Color::BLUE);
+	std::shared_ptr<const Color> color = std::make_shared<const Color>(Color::RED);
+	std::shared_ptr<const Color> color2 = std::make_shared<const Color>(Color::CYAN);
+	
+	Circle *cercle = new Circle(Vector2D(1,1), 2, color);
 
 	try {
 		cercle->accept(new Visitor_Send);
@@ -37,7 +40,9 @@ int main()
 		Vector2D(-1, -1),
 	};
 
-	Shape *carre = new Shape(sommets, &Color::CYAN);
+	
+	cout << cercle->getColor() << endl;
+	Shape *carre = new Shape(sommets, color2);
 
 	//carre->accept(new Visitor_Send);
 

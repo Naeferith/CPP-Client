@@ -1,5 +1,6 @@
 #pragma once
 
+#include <memory>
 #include "Color.h"
 
 class Visitor;
@@ -12,14 +13,14 @@ class Visitor;
 class Drawable {
 protected:
 	/** @brief La couleur. */
-	const Color* color;
+	std::shared_ptr<const Color> color;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	Drawable();
 
 	/** @brief Le constructeur par valeurs. */
-	Drawable(const Color* couleur);
+	Drawable(const std::shared_ptr<const Color>& couleur);
 
 	/** @brief Le constructeur par référence. */
 	Drawable(const Drawable& drawable);
@@ -31,7 +32,7 @@ public:
 	const Color getColor() const;
 
 	/** @brief Muttateur sur color. */
-	virtual void setColor(const Color* couleur) = 0;
+	virtual void setColor(const std::shared_ptr<const Color>& couleur) = 0;
 
 	/**
 		@brief Applique une translation.
