@@ -5,25 +5,42 @@
 ShapeGroup::ShapeGroup() : Drawable(), shapes() {
 }
 
-ShapeGroup::ShapeGroup(const vector<Drawable>& v, const Color* c) : Drawable(c) {
+ShapeGroup::ShapeGroup(const vector<shared_ptr<Drawable>>& v, const Color* c) : Drawable(c) {
 	shapes = v;
 }
 
 ShapeGroup::~ShapeGroup() {
 }
 
-const vector<Drawable> ShapeGroup::getShapes() const { return shapes; }
+const vector<shared_ptr<Drawable>> ShapeGroup::getShapes() const { return shapes; }
 
-void ShapeGroup::setShapes(const vector<Drawable>& v) {	shapes = v; }
+void ShapeGroup::setColor(const Color * couleur) {
+	for (auto &shape : shapes) { shape->setColor(couleur); }
+}
+
+void ShapeGroup::setShapes(const vector<shared_ptr<Drawable>>& v) { shapes = v; }
+
+void ShapeGroup::Translate(const Vector2D& vecteur) {
+	for (auto &shape : shapes) { shape->Translate(vecteur); }
+}
+
+void ShapeGroup::Scale(const Vector2D & point, const double ratio) {
+	for (auto &shape : shapes) { shape->Scale(point, ratio); }
+}
+
+void ShapeGroup::Rotate(const Vector2D & point, const double angle) {
+	for (auto &shape : shapes) { shape->Rotate(point, angle); }
+}
 
 ShapeGroup ShapeGroup::operator+(Drawable& d) {
 	//Si d est deja présent dans shapes, ne fait rien, sinon l'ajoute
-	if (!(std::find(shapes.begin(), shapes.end(), d) != shapes.end())) shapes.push_back(d); //manque de surchage operateur probablement
+	shared_ptr<Drawable> ptr(&d);
+	//if (!(std::find(shapes.begin(), shapes.end(), d) != shapes.end())) shapes.push_back(move(ptr)); //manque de surchage operateur probablement
 	return *this;
 }
 
 ShapeGroup ShapeGroup::operator-(Drawable& d) {
-	shapes.erase(std::remove(shapes.begin(), shapes.end(), d), shapes.end()); //manque de surchage operateur probablement
+	//shapes.erase(std::remove(shapes.begin(), shapes.end(), d), shapes.end()); //manque de surchage operateur probablement
 	return *this;
 }
 

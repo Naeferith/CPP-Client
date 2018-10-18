@@ -11,6 +11,7 @@
 #include <stdlib.h>
 #include <tchar.h>
 #include <sstream>
+#include <memory>
 
 #include "Vector2D.h"
 #include "Drawable.h"

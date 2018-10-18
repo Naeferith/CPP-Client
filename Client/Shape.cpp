@@ -14,6 +14,8 @@ Shape::~Shape() {
 
 const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
+void Shape::setColor(const Color* c) { color = c; }
+
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
 bool Shape::operator==(const Shape& s) const {

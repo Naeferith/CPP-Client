@@ -1,7 +1,9 @@
 #pragma once
 
+#include <memory>
 #include <vector>
 #include "Drawable.h"
+
 
 /**
 	@brief Représente un ensemble de Shape.
@@ -11,23 +13,35 @@
 class ShapeGroup : public Drawable {
 private:
 	/** @brief La liste des formes. */
-	vector<Drawable> shapes;
+	vector<shared_ptr<Drawable>> shapes;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	ShapeGroup();
 
 	/** @brief Le constructeur par valeurs. */
-	ShapeGroup(const vector<Drawable>& formes, const Color* couleur);
+	ShapeGroup(const vector<shared_ptr<Drawable>>& formes, const Color* couleur);
 
 	/** @brief Le destructeur. */
 	~ShapeGroup();
 
 	/** @brief Accesseur por shapes. */
-	const vector<Drawable> getShapes() const;
+	const vector<shared_ptr<Drawable>> getShapes() const;
+
+	/**	@see Drawable.setColor() */
+	void setColor(const Color* couleur);
 
 	/** @brief Mutateur pour shapes. */
-	void setShapes(const vector<Drawable>& formes);
+	void setShapes(const vector<shared_ptr<Drawable>>& formes);
+
+	/**	@see Drawable.Translate() */
+	void Translate(const Vector2D& vecteur);
+
+	/**	@see Drawable.Scale() */
+	void Scale(const Vector2D& point, const double ratio);
+
+	/**	@see Drawable.Rotate() */
+	void Rotate(const Vector2D& point, const double angle);
 
 	/** @brief Surcharge de l'opérateur +. */
 	ShapeGroup operator+(Drawable& drawable);
@@ -37,7 +51,7 @@ public:
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const ShapeGroup& shapeGroup) const;
-
+	
 	/** @brief Surcharge de l'opérateur =. */
 	const ShapeGroup& operator=(const ShapeGroup& shapeGroup);
 };

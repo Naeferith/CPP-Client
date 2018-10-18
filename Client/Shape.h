@@ -28,30 +28,22 @@ public:
 	/** @brief Accesseur pour vertices. */
 	const vector<Vector2D> getVertices() const;
 
+	/**	@see Drawable.setColor() */
+	void setColor(const Color * c);
+
 	/** @brief Mutateur pour vertices. */
 	void setVertices(const vector<Vector2D>& sommets);
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Shape& shape) const;
 
-	/**
-		@brief Applique une translation.
-		@param vecteur Le vecteur de translation.
-	*/
+	/**	@see Drawable.Translate() */
 	void Translate(const Vector2D& vecteur);
 
-	/**
-		@brief Applique une mise à l'échelle.
-		@param point Le point invariant.
-		@param ratio Le ratio d'échelle.
-	*/
+	/**	@see Drawable.Scale() */
 	void Scale(const Vector2D& point, const double ratio);
 
-	/**
-		@brief Applique une rotation.
-		@param point Le point invariant.
-		@param angle L'angle de rotation en radians.
-	*/
+	/**	@see Drawable.Rotate() */
 	void Rotate(const Vector2D& point, const double angle);
 
 	/** @brief Envoie une requete au serveur de dessin. */

@@ -31,7 +31,27 @@ public:
 	const Color getColor() const;
 
 	/** @brief Muttateur sur color. */
-	void setColor(const Color* couleur);
+	virtual void setColor(const Color* couleur) = 0;
+
+	/**
+		@brief Applique une translation.
+		@param vecteur Le vecteur de translation.
+	*/
+	virtual void Translate(const Vector2D& vecteur) = 0;
+
+	/**
+		@brief Applique une mise à l'échelle.
+		@param point Le point invariant.
+		@param ratio Le ratio d'échelle.
+	*/
+	virtual void Scale(const Vector2D& point, const double ratio) = 0;
+
+	/**
+		@brief Applique une rotation.
+		@param point Le point invariant.
+		@param angle L'angle de rotation en radians.
+	*/
+	virtual void Rotate(const Vector2D& point, const double angle) = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Drawable& drawable) const;
@@ -42,6 +62,3 @@ public:
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual void accept(Visitor* v);
 };
-
-
-

@@ -13,8 +13,6 @@ Drawable::~Drawable() {
 
 const Color Drawable::getColor() const { return *color; }
 
-void Drawable::setColor(const Color* c) { color = c; }
-
 bool Drawable::operator==(const Drawable& d) const {
 	return color==d.color;
 }
