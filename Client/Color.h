@@ -6,7 +6,7 @@
 /**
 	@brief Représente une couleur RGB.
 
-	
+	Une Color a ses composantes comprises entre 0 et 1
 */
 class Color : public Vector3D {
 private:
