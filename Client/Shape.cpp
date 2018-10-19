@@ -54,10 +54,10 @@ string Shape::Draw() {
 					this->color->x <<
 				"</r>" <<
 				"<g>" <<
-					this->color->x <<
+					this->color->y <<
 				"</g>" <<
 				"<b>" <<
-					this->color->x <<
+					this->color->z <<
 				"</b>" <<
 			"</color>" <<
 			"<vertices>"
@@ -70,7 +70,7 @@ string Shape::Draw() {
 					vertice.x <<
 				"</x>" <<
 				"<y>" <<
-					vertice.x <<
+					vertice.y <<
 				"</y>" <<
 			"</vertice>"
 		;
