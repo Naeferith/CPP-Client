@@ -9,7 +9,6 @@
 */
 class Visitor {
 public:
-	virtual void visit(Drawable* vd) = 0;
 	virtual void visit(Shape* vs) = 0;
 	virtual void visit(Circle* vc) = 0;
 };

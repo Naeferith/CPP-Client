@@ -30,5 +30,3 @@ const Drawable& Drawable::operator=(const Drawable &d)
 
 	return *this;
 }
-
-void Drawable::accept(Visitor * v) { v->visit(this); }

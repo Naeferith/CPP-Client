@@ -2,9 +2,6 @@
 #include "Visitor_Send.h"
 #include "SingletonSocket.h"
 
-void Visitor_Send::visit(Drawable * vd) {
-}
-
 void Visitor_Send::visit(Shape * vs) {
 	SingletonSocket socket = SingletonSocket::getInstance();
 	string str = vs->Draw() + "\r\n";

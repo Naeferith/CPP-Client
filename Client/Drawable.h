@@ -59,7 +59,4 @@ public:
 
 	/** @brief Surcharge de l'opérateur =. */
 	const Drawable& operator=(const Drawable& drawable);
-
-	/** @brief Implémentation de la methode accept du DP Visitor. */
-	virtual void accept(Visitor* v);
 };
