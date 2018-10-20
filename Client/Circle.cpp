@@ -27,7 +27,7 @@ void Circle::setRadius(const int i) { radius = i; }
 string Circle::Draw() {
 	std::stringstream result;
 	result <<
-		"<circle>" <<
+		"<circle id=\"" << this << "\">" <<
 			"<center>" <<
 				"<x>" <<
 					this->vertices.front().x <<

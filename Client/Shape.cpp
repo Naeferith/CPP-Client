@@ -48,7 +48,7 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 string Shape::Draw() {
 	std::stringstream result;
 	result <<
-		"<shape>" <<
+		"<shape id=\"" << this << "\">" <<
 			"<color>" <<
 				"<r>" <<
 					this->color->x <<
