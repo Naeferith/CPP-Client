@@ -21,30 +21,39 @@ int main()
 
 #ifdef _DEBUG_GRAPHIC_
 	std::shared_ptr<const Color> color = std::make_shared<const Color>(Color::RED);
-	std::shared_ptr<const Color> color2 = std::make_shared<const Color>(Color::CYAN);
+	std::shared_ptr<const Color> color2 = std::make_shared<const Color>(Color::GREEN);
 	
 	Circle *cercle = new Circle(Vector2D(1,1), 2, color);
 
+	vector<Vector2D> sommets = {
+		Vector2D(50, 50),
+		Vector2D(100, 50),
+		Vector2D(100, 100),
+		Vector2D(50, 100),
+	};
+
+	vector<Vector2D> sommets2 = {
+		Vector2D(250, 250),
+		Vector2D(300, 250),
+		Vector2D(300, 300),
+		Vector2D(250, 300),
+	};
+	
+	cout << cercle->getColor() << endl;
+	Shape *carre = new Shape(sommets, color);
+
+
 	try {
-		cercle->accept(new Visitor_Send);
+		carre->accept(new Visitor_Send);
+		carre->setColor(color2);
+		carre->setVertices(sommets2);
+		carre->accept(new Visitor_Send);
+		//cercle->accept(new Visitor_Send);
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;
 	}
 	
-
-	vector<Vector2D> sommets = {
-		Vector2D(-1, 1),
-		Vector2D(1, 1),
-		Vector2D(1, -1),
-		Vector2D(-1, -1),
-	};
-
-	
-	cout << cercle->getColor() << endl;
-	Shape *carre = new Shape(sommets, color2);
-
-	//carre->accept(new Visitor_Send);
 
 #endif
 
