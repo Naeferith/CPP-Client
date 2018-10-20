@@ -70,7 +70,7 @@ void SingletonSocket::InitWS2() {
 }
 
 SingletonSocket::~SingletonSocket() {
-	if (isConnected) {
+	/*if (isConnected) {
 		int r = shutdown(sock, SD_SEND);
 		if (r == SOCKET_ERROR) {
 			//debug
@@ -79,7 +79,7 @@ SingletonSocket::~SingletonSocket() {
 		//WSACleanup(); //De-init winsock DLL
 		isConnected = false;
 	}
-	isCreated = false;
+	//isCreated = false;*/
 }
 
 SingletonSocket& SingletonSocket::getInstance() { 
@@ -90,17 +90,18 @@ SingletonSocket& SingletonSocket::getInstance() {
 bool SingletonSocket::IsConnected(){ return isConnected; }
 
 void SingletonSocket::Connect(){
-	if (!isCreated) throw Erreur(-1, "Socket non créé");
+	if (!isCreated) SingletonSocket();
 	if (isCreated && !isConnected) {
 		int r = connect(instance.sock, (SOCKADDR *)&instance.sockaddr, sizeof(sockaddr));
 		if (r == SOCKET_ERROR) throw Erreur(WSAGetLastError(), "Connexion au serveur impossible");
+		isConnected = true;
 	}
 }
 
 void SingletonSocket::Send(const char * msg){
 	if (!isConnected) Connect();
 	int r = send(instance.sock, msg, strlen(msg), 0);
-	if (r == SOCKET_ERROR) throw Erreur(-1, "Erreur lors de l'envoi de message");
+	if (r == SOCKET_ERROR) throw Erreur(WSAGetLastError(), "Erreur lors de l'envoi de message");
 }
 
 const SOCKET SingletonSocket::getSocket() const { return sock; }
