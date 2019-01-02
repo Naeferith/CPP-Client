@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "Vector3D.h"
 
+using namespace std;
+
 Vector3D::Vector3D() : x(0), y(0), z(0) {}
 
 Vector3D::Vector3D(const double X, const double Y, const double Z) : x(X), y(Y), z(Z) {}
@@ -29,6 +31,6 @@ const Vector3D Vector3D::operator=(const Vector3D& v) {
 	return *this;
 }
 
-std::ostream & operator<<(std::ostream& strm, const Vector3D& v) {
+ostream & operator<<(ostream& strm, const Vector3D& v) {
 	return strm << "[X: " << v.x << ", Y: " << v.y << ", Z: " << v.z << "]";
 }

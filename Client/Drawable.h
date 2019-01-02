@@ -5,6 +5,8 @@
 
 class Visitor;
 
+using namespace std;
+
 /**
 	@brief Représente un element graphique.
 
@@ -13,14 +15,14 @@ class Visitor;
 class Drawable {
 protected:
 	/** @brief La couleur. */
-	std::shared_ptr<const Color> color;
+	shared_ptr<const Color> color;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	Drawable();
 
 	/** @brief Le constructeur par valeurs. */
-	Drawable(const std::shared_ptr<const Color>& couleur);
+	Drawable(const shared_ptr<const Color>& couleur);
 
 	/** @brief Le constructeur par référence. */
 	Drawable(const Drawable& drawable);
@@ -32,7 +34,7 @@ public:
 	const Color getColor() const;
 
 	/** @brief Muttateur sur color. */
-	virtual void setColor(const std::shared_ptr<const Color>& couleur) = 0;
+	virtual void setColor(const shared_ptr<const Color>& couleur) = 0;
 
 	/**
 		@brief Applique une translation.

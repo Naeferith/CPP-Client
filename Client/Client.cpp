@@ -20,8 +20,8 @@ int main()
 {
 
 #ifdef _DEBUG_GRAPHIC_
-	std::shared_ptr<const Color> color = std::make_shared<const Color>(Color::RED);
-	std::shared_ptr<const Color> color2 = std::make_shared<const Color>(Color::GREEN);
+	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
+	shared_ptr<const Color> color2 = make_shared<const Color>(Color::GREEN);
 	
 	Circle *cercle = new Circle(Vector2D(1,1), 2, color);
 

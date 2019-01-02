@@ -10,5 +10,4 @@
 class Visitor {
 public:
 	virtual void visit(Shape* vs) = 0;
-	virtual void visit(Circle* vc) = 0;
 };

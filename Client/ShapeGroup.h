@@ -4,6 +4,7 @@
 #include <vector>
 #include "Drawable.h"
 
+using namespace std;
 
 /**
 	@brief Représente un ensemble de Shape.
@@ -20,7 +21,7 @@ public:
 	ShapeGroup();
 
 	/** @brief Le constructeur par valeurs. */
-	ShapeGroup(const vector<shared_ptr<Drawable>>& formes, std::shared_ptr<const Color>& couleur);
+	ShapeGroup(const vector<shared_ptr<Drawable>>& formes, shared_ptr<const Color>& couleur);
 
 	/** @brief Le destructeur. */
 	~ShapeGroup();
@@ -29,7 +30,7 @@ public:
 	const vector<shared_ptr<Drawable>> getShapes() const;
 
 	/**	@see Drawable.setColor() */
-	void setColor(const std::shared_ptr<const Color>& couleur);
+	void setColor(const shared_ptr<const Color>& couleur);
 
 	/** @brief Mutateur pour shapes. */
 	void setShapes(const vector<shared_ptr<Drawable>>& formes);

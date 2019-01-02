@@ -10,5 +10,4 @@
 class Visitor_Send : public Visitor {
 public:
 	virtual void visit(Shape* vs);
-	virtual void visit(Circle* vc);
 };
