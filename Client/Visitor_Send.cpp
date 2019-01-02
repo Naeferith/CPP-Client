@@ -7,9 +7,3 @@ void Visitor_Send::visit(Shape * vs) {
 	string str = vs->Draw() + "\r\n";
 	socket.Send(str.c_str());
 }
-
-void Visitor_Send::visit(Circle * vc) {
-	SingletonSocket socket = SingletonSocket::getInstance();
-	string str = vc->Draw() + "\r\n";
-	socket.Send(str.c_str());
-}

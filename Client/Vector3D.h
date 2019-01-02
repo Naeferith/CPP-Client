@@ -5,9 +5,12 @@
 /**
 	@brief Représente un vecteur à 3 dimensions.
 
-	C'est une structure composés de 3 double dont la 3ème composante z est privée.
+	C'est une structure composés de 3 double .
 	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
 */
+
+using namespace std;
+
 struct Vector3D {
 public:
 
@@ -48,5 +51,5 @@ public:
 	const Vector3D operator=(const Vector3D& vecteur);
 
 	/** @brief Surcharge de l'opérateur <<. */
-	friend std::ostream& operator<<(std::ostream& stream, const Vector3D& vecteur);
+	friend ostream& operator<<(ostream& stream, const Vector3D& vecteur);
 };

@@ -4,6 +4,8 @@
 #include "Shape.h"
 #include "Vector2D.h"
 
+using namespace std;
+
 /**	
 	@brief Représente un cercle.
 
@@ -11,8 +13,6 @@
 */
 class Circle : public Shape {
 private:
-	/** @brief Encapsulation de la variable protected verticies. */
-	Shape::vertices;
 	
 	/** @brief Le rayon du cercle. */
 	unsigned int radius;
@@ -22,7 +22,7 @@ public:
 	Circle();
 
 	/** @brief Le constructeur par valeurs. */
-	Circle(const Vector2D& centre, const unsigned int rayon, const std::shared_ptr<const Color>& couleur);
+	Circle(const Vector2D& centre, const unsigned int rayon, const shared_ptr<const Color>& couleur);
 	
 	/** @brief Le constructeur par référence. */
 	Circle(const Circle& cercle);
@@ -37,7 +37,7 @@ public:
 	void setRadius(const int rayon);
 
 	/** @brief Envoie une requete au serveur de dessin. */
-	std::string Draw();
+	string Draw();
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual void accept(Visitor* v);

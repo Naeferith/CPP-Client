@@ -3,6 +3,8 @@
 #include <iostream>
 #include "Vector3D.h"
 
+using namespace std;
+
 /**
 	@brief Représente une couleur RGB.
 
@@ -33,5 +35,5 @@ public:
 	static const Color YELLOW;
 
 	/** @brief Surcharge de l'opérateur <<. */
-	friend std::ostream& operator<<(std::ostream& stream, const Color& couleur);
+	friend ostream& operator<<(ostream& stream, const Color& couleur);
 };

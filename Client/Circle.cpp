@@ -1,9 +1,7 @@
 #include "stdafx.h"
 #include "Circle.h"
 
-Circle::Circle() : Shape() {
-	radius = 0;
-}
+Circle::Circle() : Shape(), radius(0) {}
 
 Circle::Circle(const Vector2D& v, const unsigned int r, const std::shared_ptr<const Color>& c) : Shape() {
 	vertices.push_back(v);

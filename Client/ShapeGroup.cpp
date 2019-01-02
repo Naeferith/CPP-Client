@@ -2,19 +2,19 @@
 #include "ShapeGroup.h"
 #include <algorithm>
 
+using namespace std;
+
 ShapeGroup::ShapeGroup() : Drawable(), shapes() {
 }
 
-ShapeGroup::ShapeGroup(const vector<shared_ptr<Drawable>>& v, std::shared_ptr<const Color>& c) : Drawable(c) {
-	shapes = v;
-}
+ShapeGroup::ShapeGroup(const vector<shared_ptr<Drawable>>& v, shared_ptr<const Color>& c) :
+	Drawable(c), shapes(v) {}
 
-ShapeGroup::~ShapeGroup() {
-}
+ShapeGroup::~ShapeGroup() {}
 
 const vector<shared_ptr<Drawable>> ShapeGroup::getShapes() const { return shapes; }
 
-void ShapeGroup::setColor(const std::shared_ptr<const Color>& couleur) {
+void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
 }
 
