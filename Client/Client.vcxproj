@@ -154,7 +154,8 @@
     <ClInclude Include="Erreur.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeGroup.h" />
-    <ClInclude Include="SingletonSocket.h" />
+    <ClInclude Include="SocketInOut.h" />
+    <ClInclude Include="SingletonWSA.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Vector2D.h" />
@@ -170,7 +171,8 @@
     <ClCompile Include="Erreur.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeGroup.cpp" />
-    <ClCompile Include="SingletonSocket.cpp" />
+    <ClCompile Include="SocketInOut.cpp" />
+    <ClCompile Include="SingletonWSA.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

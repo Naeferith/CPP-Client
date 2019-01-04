@@ -8,7 +8,7 @@
 
 #include "Circle.h"
 #include "ShapeGroup.h"
-#include "SingletonSocket.h"
+#include "SocketInOut.h"
 
 #include "Visitor_Send.h"
 
@@ -59,7 +59,7 @@ int main()
 
 #ifdef _DEBUG_NETWORK_
 	///Création du socket
-	 SingletonSocket sock = SingletonSocket::getInstance();
+	 SocketInOut sock = SocketInOut::getInstance();
 
 	///Envoi d'un message au serveur
 	const char * requete = "bonjour \r\n";
