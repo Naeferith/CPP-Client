@@ -33,12 +33,9 @@ public:
 	/** @brief Accesseur de radius. */
 	const int getRadius() const;
 
+	/** @brief Retourne le nom de la classe. */
+	string getName() const;
+
 	/** @brief Mutateur de radius. */
 	void setRadius(const int rayon);
-
-	/** @brief Envoie une requete au serveur de dessin. */
-	string Draw();
-
-	/** @brief Implémentation de la methode accept du DP Visitor. */
-	virtual void accept(Visitor* v);
 };

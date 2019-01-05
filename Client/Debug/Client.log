@@ -1,2 +1,2 @@
-﻿  Visitor_Send.cpp
-LINK : fatal error LNK1168: impossible d'ouvrir C:\Users\Just-Strato\Documents\Visual Studio 2017\Git_Project\CPP-Client\Debug\Client.exe pour écrire
+﻿  Client.cpp
+  Client.vcxproj -> C:\Users\Just-Strato\Documents\Visual Studio 2017\Git_Project\CPP-Client\Debug\Client.exe

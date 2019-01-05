@@ -47,11 +47,11 @@ public:
 	/**	@see Drawable.Rotate() */
 	void Rotate(const Vector2D& point, const double angle);
 
-	/** @brief Envoie une requete au serveur de dessin. */
-	virtual string Draw();
+	/** @brief Retourne le nom de la classe. */
+	virtual string getName() const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
-	virtual void accept(Visitor* v);
+	string* accept(Visitor* v);
 
 	/** @brief Surcharge de l'opérateur +. */
 	Shape operator+(const Vector2D& vecteur);

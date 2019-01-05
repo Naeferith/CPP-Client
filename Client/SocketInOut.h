@@ -54,6 +54,8 @@ public:
 
 	/** @brief Ferme tout les sockets et coupe la connection. */
 	void Close();
+	/** @brief Ouvre tout les sockets et la connexion. */
+	void Init();
 
 	/** @brief Envoi d'un message au serveur. */
 	void Send(const char* msg);

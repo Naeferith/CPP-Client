@@ -45,9 +45,6 @@
     <ClInclude Include="Visitor.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Visitor_Send.h">
-      <Filter>Fichiers d%27en-tête</Filter>
-    </ClInclude>
     <ClInclude Include="Erreur.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
@@ -55,6 +52,9 @@
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
     <ClInclude Include="SocketInOut.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+    <ClInclude Include="VisitorXML.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
@@ -86,9 +86,6 @@
     <ClCompile Include="Circle.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Visitor_Send.cpp">
-      <Filter>Fichiers sources</Filter>
-    </ClCompile>
     <ClCompile Include="Erreur.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -96,6 +93,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="SocketInOut.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="VisitorXML.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

@@ -10,7 +10,8 @@
 #include "ShapeGroup.h"
 #include "SocketInOut.h"
 
-#include "Visitor_Send.h"
+#include "SingletonWSA.h"
+#include "VisitorXML.h"
 
 #define _DEBUG_GRAPHIC_
 
@@ -42,17 +43,19 @@ int main()
 	cout << cercle->getColor() << endl;
 	Shape *carre = new Shape(sommets, color);
 
+	printf("%s \n\n", (cercle->accept(new VisitorXML()))->c_str());
 
-	try {
-		carre->accept(new Visitor_Send);
+	/*try {
+		SingletonWSA::getInstance();
+		carre->accept(new VisitorXML);
 		carre->setColor(color2);
 		carre->setVertices(sommets2);
-		carre->accept(new Visitor_Send);
-		//cercle->accept(new Visitor_Send);
+		carre->accept(new VisitorXML);
+		cercle->accept(new VisitorXML);
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;
-	}
+	}*/
 	
 
 #endif
@@ -80,7 +83,5 @@ int main()
 
 #endif // _DEBUG_NETWORK_
 
-
-	system("pause");
 	return 0;
 }

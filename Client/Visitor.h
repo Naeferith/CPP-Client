@@ -9,5 +9,8 @@
 */
 class Visitor {
 public:
-	virtual void visit(Shape* vs) = 0;
+	/** @brief Retourne une string qui représente une shape en XML. */
+	virtual string* visit(const Shape* vs) const = 0;
+
+	virtual string* visit(const Circle* vs) const = 0;
 };

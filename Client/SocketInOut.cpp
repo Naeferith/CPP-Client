@@ -3,23 +3,21 @@
 
 SocketInOut::SocketInOut() : address(AF_INET), typeSocket(SOCK_STREAM), port(9003),
 protocol(IPPROTO_TCP), addressIn("127.0.0.1")
-{
-	InitSock();
-	InitSockIn();
-	Connect();
-}
+{	Init();  }
 
 SocketInOut::SocketInOut(int address, int typeSocket, int protocol,
 	const char* addressIn, int port) : address(address), typeSocket(typeSocket),
-	protocol(protocol), addressIn(addressIn), port(port) {
-
-	InitSock();
-	InitSockIn();
-	Connect();
-}
+	protocol(protocol), addressIn(addressIn), port(port) 
+{	Init();  }
 
 SocketInOut::~SocketInOut() {
 	Close();
+}
+
+void SocketInOut::Init() {
+	InitSock();
+	InitSockIn();
+	Connect();
 }
 
 void SocketInOut::Connect(){

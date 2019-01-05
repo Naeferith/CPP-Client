@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Shape.h"
+#include "SingletonWSA.h"
 
 using namespace std;
 
@@ -45,42 +46,11 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 	}
 }
 
-string Shape::Draw() {
-	stringstream result;
-	result <<
-		"<shape id=\"" << this << "\">" <<
-			"<color>" <<
-				"<r>" <<
-					this->color->x <<
-				"</r>" <<
-				"<g>" <<
-					this->color->y <<
-				"</g>" <<
-				"<b>" <<
-					this->color->z <<
-				"</b>" <<
-			"</color>" <<
-			"<vertices>"
-	;
-
-	for (auto &vertice : vertices) {
-		result <<
-			"<vertice>" <<
-				"<x>" <<
-					vertice.x <<
-				"</x>" <<
-				"<y>" <<
-					vertice.y <<
-				"</y>" <<
-			"</vertice>"
-		;
-	}
-
-	result << "</vertices></shape>";
-	return result.str();
+string Shape::getName() const {
+	return string("shape");
 }
 
-void Shape::accept(Visitor * v) { v->visit(this); }
+string* Shape::accept(Visitor * v) { return v->visit(this); }
 
 Shape Shape::operator+(const Vector2D & vecteur) {
 	vertices.emplace_back(vecteur.x, vecteur.y);
