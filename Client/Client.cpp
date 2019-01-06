@@ -43,14 +43,14 @@ int main()
 	cout << cercle->getColor() << endl;
 	Shape *carre = new Shape(sommets, color);
 
-	try {
+	//try {
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
-		socket.Send(carre->accept(new VisitorXML)->c_str());
-	}
-	catch (const Erreur& e) {
-		cout << "ERREUR : " << e.what() << endl;
-	}
+		//socket.Send(carre->accept(new VisitorXML)->c_str());
+	//}
+	//catch (const Erreur& e) {
+		//cout << "ERREUR : " << e.what() << endl;
+	//}
 	
 
 #endif
@@ -77,6 +77,5 @@ int main()
 
 
 #endif // _DEBUG_NETWORK_
-
 	return 0;
 }

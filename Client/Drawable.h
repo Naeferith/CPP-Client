@@ -56,6 +56,9 @@ public:
 	*/
 	virtual void Rotate(const Vector2D& point, const double angle) = 0;
 
+	/** @brief Retourne le nom de la classe. */
+	virtual string getName() const = 0;
+
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Drawable& drawable) const;
 

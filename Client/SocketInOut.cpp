@@ -3,7 +3,7 @@
 #include "SingletonWSA.h"
 
 SocketInOut::SocketInOut() : address(AF_INET), typeSocket(SOCK_STREAM), port(9003),
-protocol(IPPROTO_TCP), addressIn("192.168.1.73")
+protocol(IPPROTO_TCP), addressIn("127.0.0.1")
 {	Init();  }
 
 SocketInOut::SocketInOut(int address, int typeSocket, int protocol,
@@ -18,7 +18,7 @@ SocketInOut::~SocketInOut() {
 void SocketInOut::Init() {
 	InitSock();
 	InitSockIn();
-	Connect();
+	//Connect();
 }
 
 void SocketInOut::Connect(){
@@ -30,14 +30,15 @@ void SocketInOut::Connect(){
 void SocketInOut::InitSock() {
 
 	//Initialisation du socket.
-	if (sock = socket(address, typeSocket, protocol) == INVALID_SOCKET)
+	sock = socket(address, typeSocket, protocol);
+	if (sock == INVALID_SOCKET)
 		throw Erreur(WSAGetLastError(), "Failed initialize socket.\n Did you initialize WSA ?");
 }
 
 void SocketInOut::Close() {
 	//On coupe la connexion pour l'envoie et la réception.
 	if (shutdown(sock, SD_SEND) == SOCKET_ERROR)
-		throw Erreur(WSAGetLastError(), "Failed to shut connection");;
+		throw Erreur(WSAGetLastError(), "Failed to shut connection");
 
 	//On ferme le socket.
 	if (closesocket(sock))
@@ -61,7 +62,7 @@ void SocketInOut::InitSockIn() {
 		throw Erreur(WSAGetLastError(), "Failed convert IP to binary.");
 
 	//on free la mémoire
-	delete[]wadr;
+	//delete[]wadr;
 
 	sockaddr.sin_port = htons(port);
 	// htons() assure que le port est bien inscrit dans le format du 
