@@ -58,7 +58,7 @@ public:
 	void Init();
 
 	/** @brief Envoi d'un message au serveur. */
-	void Send(const char* msg);
+	void Send(const string& msg);
 
 	/** @brief Accesseur de sock. */
 	const SOCKET getSocket() const;

@@ -21,7 +21,7 @@ public:
 
 	/** @brief Accesseur de l'instance unique. Il permet l'initialisation de l'instance
 		Si celle-ci n'a pas déja été faite. Notez qu'une fonction static peut être appellé
-		Sans nécessairement instancié la classe. SingletonWSA::getInstance() est légal*/
+		Sans nécessairement instancier la classe. SingletonWSA::getInstance() est légal*/
 	static const SingletonWSA* getInstance();
 
 	/** @brief Libère la mémoire de l'allocation des DLL WSA et détruit l'instance. */

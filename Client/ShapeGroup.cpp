@@ -32,6 +32,10 @@ void ShapeGroup::Rotate(const Vector2D & point, const double angle) {
 	for (auto &shape : shapes) { shape->Rotate(point, angle); }
 }
 
+string ShapeGroup::getName() const {
+	return string("shape group");
+}
+
 ShapeGroup ShapeGroup::operator+(Drawable& d) {
 	//Si d est deja présent dans shapes, ne fait rien, sinon l'ajoute
 	shared_ptr<Drawable> ptr(&d);

@@ -46,7 +46,7 @@ int main()
 	//try {
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
-		//socket.Send(carre->accept(new VisitorXML)->c_str());
+		socket.Send(*carre->accept(new VisitorXML));
 	//}
 	//catch (const Erreur& e) {
 		//cout << "ERREUR : " << e.what() << endl;

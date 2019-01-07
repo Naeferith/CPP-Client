@@ -18,7 +18,7 @@ SocketInOut::~SocketInOut() {
 void SocketInOut::Init() {
 	InitSock();
 	InitSockIn();
-	//Connect();
+	Connect();
 }
 
 void SocketInOut::Connect(){
@@ -69,8 +69,9 @@ void SocketInOut::InitSockIn() {
 	// réseau (little-endian ou big-endian)
 }
 
-void SocketInOut::Send(const char * msg){
-	if (send(sock, msg, strlen(msg), 0) == SOCKET_ERROR)
+void SocketInOut::Send(const string& msg){
+	string aux = msg + "\r\n";
+	if (send(sock, aux.c_str(), aux.size(), 0) == SOCKET_ERROR)
 		throw Erreur(WSAGetLastError(), "Error can not send message");
 }
 
