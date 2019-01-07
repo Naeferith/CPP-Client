@@ -8,9 +8,10 @@
 
 #include "Circle.h"
 #include "ShapeGroup.h"
-#include "SingletonSocket.h"
+#include "SocketInOut.h"
 
-#include "Visitor_Send.h"
+#include "SingletonWSA.h"
+#include "VisitorXML.h"
 
 #define _DEBUG_GRAPHIC_
 
@@ -42,13 +43,11 @@ int main()
 	cout << cercle->getColor() << endl;
 	Shape *carre = new Shape(sommets, color);
 
-
 	try {
-		carre->accept(new Visitor_Send);
-		carre->setColor(color2);
-		carre->setVertices(sommets2);
-		carre->accept(new Visitor_Send);
-		//cercle->accept(new Visitor_Send);
+		SingletonWSA::getInstance();
+		SocketInOut socket = SocketInOut();
+		socket.Send(*carre->accept(new VisitorXML));
+		socket.Send(*carre->accept(new VisitorXML));
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;
@@ -59,7 +58,7 @@ int main()
 
 #ifdef _DEBUG_NETWORK_
 	///Création du socket
-	 SingletonSocket sock = SingletonSocket::getInstance();
+	 SocketInOut sock = SocketInOut::getInstance();
 
 	///Envoi d'un message au serveur
 	const char * requete = "bonjour \r\n";
@@ -79,8 +78,5 @@ int main()
 
 
 #endif // _DEBUG_NETWORK_
-
-
-	system("pause");
 	return 0;
 }

@@ -44,6 +44,9 @@ public:
 	/**	@see Drawable.Rotate() */
 	void Rotate(const Vector2D& point, const double angle);
 
+	/** @brief Retourne le nom de la classe. */
+	string getName() const;
+
 	/** @brief Surcharge de l'opérateur +. */
 	ShapeGroup operator+(Drawable& drawable);
 

@@ -1,0 +1,25 @@
+#pragma once
+
+#include "Visitor.h"
+
+/**
+	@brief Fonctionnalité du DP Visieur.
+
+	Crée une string en XML décrivant un Shape.
+*/
+class VisitorXML : public Visitor {
+private:
+	/** @brief Retourne un Vector2D au format XML. */
+	string strVector(const Vector2D&) const;
+
+	/** @brief Retourne une Color au format XML. */
+	string strColor(const Color&) const;
+
+	/** @brief Retourne sous forme XML en ajoutant les paramètres. */
+	string* strXML(const Shape* vs, const string& param) const;
+
+public:
+	string* visit(const Shape* vs) const;
+
+	string* visit(const Circle* vs) const;
+};
