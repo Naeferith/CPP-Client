@@ -19,12 +19,11 @@ using namespace std;
 
 int main()
 {
-
 #ifdef _DEBUG_GRAPHIC_
 	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
 	shared_ptr<const Color> color2 = make_shared<const Color>(Color::GREEN);
 	
-	Circle *cercle = new Circle(Vector2D(1,1), 2, color);
+	Circle *cercle = new Circle(Vector2D(400,100), 20, color);
 
 	vector<Vector2D> sommets = {
 		Vector2D(50, 50),
@@ -41,13 +40,13 @@ int main()
 	};
 	
 	cout << cercle->getColor() << endl;
-	Shape *carre = new Shape(sommets, color);
+	Shape *carre = new Shape(sommets, color2);
 
 	try {
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
 		socket.Send(*carre->accept(new VisitorXML));
-		socket.Send(*carre->accept(new VisitorXML));
+		socket.Send(*cercle->accept(new VisitorXML));
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;
@@ -78,5 +77,6 @@ int main()
 
 
 #endif // _DEBUG_NETWORK_
+	system("pause");
 	return 0;
 }

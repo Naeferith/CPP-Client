@@ -23,3 +23,5 @@ const int Circle::getRadius() const { return radius; }
 void Circle::setRadius(const int i) { radius = i; }
 
 string Circle::getName() const { return string("circle"); }
+
+string * Circle::accept(Visitor * v) { return v->visit(this); }

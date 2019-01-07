@@ -36,6 +36,9 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 
+	/** @brief Implémentation de la methode accept du DP Visitor. */
+	string* accept(Visitor* v);
+
 	/** @brief Mutateur de radius. */
 	void setRadius(const int rayon);
 };
