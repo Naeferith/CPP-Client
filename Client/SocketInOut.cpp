@@ -70,8 +70,8 @@ void SocketInOut::InitSockIn() {
 }
 
 void SocketInOut::Send(const string& msg){
-	string aux = msg + "\r\n";
-	if (send(sock, aux.c_str(), aux.size(), 0) == SOCKET_ERROR)
+	string str = msg + "\r\n";
+	if (send(sock, str.c_str(), str.size(), 0) == SOCKET_ERROR)
 		throw Erreur(WSAGetLastError(), "Error can not send message");
 }
 
