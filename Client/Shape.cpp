@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Shape.h"
 #include "SingletonWSA.h"
+#include "Circle.h"
 
 using namespace std;
 

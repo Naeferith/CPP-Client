@@ -33,6 +33,9 @@ public:
 	/** @brief Accesseur de radius. */
 	const int getRadius() const;
 
+	/** @brief Implémentation de la methode accept du DP Visitor. */
+	string* accept(Visitor* v);
+
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 
