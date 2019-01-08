@@ -23,6 +23,8 @@ const Vector3D Vector3D::operator=(const Vector3D& v) {
 	return *this;
 }
 
-ostream & operator<<(ostream& strm, const Vector3D& v) {
-	return strm << "[X: " << v.x << ", Y: " << v.y << ", Z: " << v.z << "]";
+Vector3D::operator string() const {
+	ostringstream oss;
+	oss << Vector2D::operator std::string() << ", Z:" << z;
+	return oss.str();
 }

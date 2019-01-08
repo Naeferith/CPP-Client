@@ -33,12 +33,12 @@ public:
 	/** @brief Mutateur de la composante Z. */
 	void setZ(const double Z);
 
+	/** @brief Surcharge de l'opérateur String. */
+	operator string() const;
+
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Vector3D& vecteur) const;
 
 	/** @brief Surcharge de l'opérateur =. */
 	const Vector3D operator=(const Vector3D& vecteur);
-
-	/** @brief Surcharge de l'opérateur <<. */
-	friend ostream& operator<<(ostream& stream, const Vector3D& vecteur);
 };

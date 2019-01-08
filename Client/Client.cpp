@@ -46,9 +46,13 @@ int main()
 
 	try {
 		SingletonWSA::getInstance();
-		SocketInOut socket = SocketInOut();
-		socket.Send(*carre->accept(new VisitorXML));
+		//SocketInOut socket = SocketInOut();
+		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*->accept(new VisitorXML));
+
+		cout << Vector2D(250, 500) << endl;
+		cout << Vector3D(300, 500, 800) << endl;
+
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;

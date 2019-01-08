@@ -36,10 +36,13 @@ public:
 	void setY(const double Y);
 
 	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const Vector2D&) const;
+	virtual bool operator==(const Vector2D&) const;
 
 	/** @brief Surcharge de l'opérateur =. */
-	const Vector2D operator=(const Vector2D& vecteur);
+	virtual const Vector2D operator=(const Vector2D& vecteur);
+
+	// @brief Surchage de l'opérateur String. */
+	virtual operator string() const;
 
 	/** @brief Surcharge de l'opérateur <<. */
 	friend ostream& operator<<(std::ostream&, const Vector2D&);

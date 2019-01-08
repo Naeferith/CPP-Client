@@ -25,7 +25,13 @@ const Vector2D Vector2D::operator=(const Vector2D& v) {
 	return *this;
 }
 
+Vector2D::operator string() const {
+	ostringstream oss;
+	oss << "X:" << x << ", Y:" << y;
+	return oss.str();
+}
+
 ostream & operator<<(ostream& strm, const Vector2D& v)
 {
-	return strm << "[X: " << v.x << ", Y: " << v.y << "]";
+	return strm << "[" << (string)v << "]";
 }
