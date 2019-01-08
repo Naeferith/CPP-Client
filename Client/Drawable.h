@@ -65,4 +65,6 @@ public:
 	/** @brief Surcharge de l'opérateur =. */
 	const Drawable& operator=(const Drawable& drawable);
 
+	/**@brief Surcharge de l'opérateur String.*/
+	virtual operator string() const = 0;
 };

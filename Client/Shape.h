@@ -16,6 +16,8 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
+	//VERTICIES DEVRAIT ETRE DANS DRAWABLE/////////////////////////////////////
+
 public:
 	/** @brief Le constructeur par défaut. */
 	Shape();
