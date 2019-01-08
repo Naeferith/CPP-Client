@@ -50,7 +50,7 @@ int main()
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*->accept(new VisitorXML));
 
-		cout << *carre;
+		cout << Vector2D(300,500);
 
 	}
 	catch (const Erreur& e) {
