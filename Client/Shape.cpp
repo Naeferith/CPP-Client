@@ -62,3 +62,7 @@ Shape Shape::operator--() {
 	vertices.pop_back();
 	return *this;
 }
+
+Shape::operator string() const {
+	return "";
+}

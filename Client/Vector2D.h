@@ -9,8 +9,14 @@ using namespace std;
 
 	Un Vector2D est un Vector3D dont la composante Z est nulle.
 */
-struct Vector2D : public Vector3D {
+struct Vector2D {
 public:
+	/** @brief La composante X. */
+	double x;
+
+	/** @brief La composante Y. */
+	double y;
+
 	/** @brief Le constructeur par défaut. */
 	Vector2D();
 
@@ -21,10 +27,19 @@ public:
 	Vector2D(const Vector2D& vecteur);
 
 	/** @brief Le destructeur. */
-	~Vector2D();
+	virtual ~Vector2D();
+
+	/** @brief Mutateur de la composante X. */
+	void setX(const double X);
+
+	/** @brief Mutateur de la composante Y. */
+	void setY(const double Y);
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Vector2D&) const;
+
+	/** @brief Surcharge de l'opérateur =. */
+	const Vector2D operator=(const Vector2D& vecteur);
 
 	/** @brief Surcharge de l'opérateur <<. */
 	friend ostream& operator<<(std::ostream&, const Vector2D&);

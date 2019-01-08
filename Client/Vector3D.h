@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include "Vector2D.h"
 
 /**
 	@brief Représente un vecteur à 3 dimensions.
@@ -11,14 +12,8 @@
 
 using namespace std;
 
-struct Vector3D {
+struct Vector3D : public Vector2D{
 public:
-
-	/** @brief La composante X. */
-	double x;
-
-	/** @brief La composante Y. */
-	double y;
 
 	/** @brief La composante Z. */
 	double z;
@@ -34,12 +29,6 @@ public:
 
 	/** @brief Le destructeur. */
 	~Vector3D();
-
-	/** @brief Mutateur de la composante X. */
-	void setX(const double X);
-
-	/** @brief Mutateur de la composante Y. */
-	void setY(const double Y);
 
 	/** @brief Mutateur de la composante Z. */
 	void setZ(const double Z);

@@ -1,15 +1,2 @@
-﻿  stdafx.cpp
-  Circle.cpp
-  Client.cpp
-  Color.cpp
-  Drawable.cpp
-  Erreur.cpp
-  Shape.cpp
-  ShapeGroup.cpp
-  SingletonWSA.cpp
-  SocketInOut.cpp
-  Vector2D.cpp
-  Vector3D.cpp
-  VisitorXML.cpp
-  Génération de code en cours...
-LINK : fatal error LNK1168: impossible d'ouvrir C:\Users\Just-Strato\Documents\Projet_Git\CPP-Client\Debug\Client.exe pour écrire
+﻿  Client.cpp
+  Client.vcxproj -> C:\Users\Just-Strato\Documents\Projet_Git\CPP-Client\Debug\Client.exe

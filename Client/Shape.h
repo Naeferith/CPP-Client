@@ -61,4 +61,7 @@ public:
 		Enlève le dernier Vector2D ajouté.
 	*/
 	Shape operator--();
+
+	/** @brief Surcharge de l'opérateur String.*/
+	virtual operator string() const;
 };
