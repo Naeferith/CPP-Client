@@ -49,8 +49,8 @@ int main()
 		//SocketInOut socket = SocketInOut();
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*->accept(new VisitorXML));
-
-		cout << Vector2D(300,500);
+		circle->setVertices(new Vector2D(500, 1000));
+		cout << *circle;
 
 	}
 	catch (const Erreur& e) {

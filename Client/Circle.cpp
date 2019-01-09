@@ -25,3 +25,9 @@ void Circle::setRadius(const int i) { radius = i; }
 string* Circle::accept(Visitor * v) { return v->visit(this); }
 
 string Circle::getName() const { return string("circle"); }
+
+Circle::operator string() const {
+	ostringstream oss;
+	oss << Shape::operator std::string() << " radius :" << getRadius();
+	return oss.str();
+}

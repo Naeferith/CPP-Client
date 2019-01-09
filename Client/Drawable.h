@@ -64,4 +64,10 @@ public:
 
 	/** @brief Surcharge de l'opérateur =. */
 	const Drawable& operator=(const Drawable& drawable);
+
+	/** @brief Surcharge de l'opérateur String.*/
+	virtual operator string() const = 0;
+
+	/** @brief Surcharge de l'opérateur <<. */
+	friend ostream& operator<<(ostream& strm, const Drawable& v);
 };

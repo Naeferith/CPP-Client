@@ -65,7 +65,7 @@ Shape Shape::operator--() {
 
 Shape::operator string() const {
 	ostringstream oss;
-	oss << getName() << ": ";
-	for (auto &vertice : getVertices()) oss << vertice;
+	oss << getName() << ": " << getColor() << " ";
+	for (auto &vertice : vertices) oss << vertice;
 	return oss.str();
 }

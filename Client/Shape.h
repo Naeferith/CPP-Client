@@ -64,6 +64,6 @@ public:
 	*/
 	Shape operator--();
 
-	/** @brief Surcharge de l'opérateur String.*/
-	virtual operator string() const;
+	/** @biref Surcharge de l'opérateur String. */
+	operator string() const;
 };

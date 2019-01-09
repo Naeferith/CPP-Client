@@ -41,4 +41,6 @@ public:
 
 	/** @brief Mutateur de radius. */
 	void setRadius(const int rayon);
+
+	operator string() const;
 };
