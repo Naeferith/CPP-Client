@@ -3,10 +3,10 @@
 
 Circle::Circle() : Shape(), radius(0) {}
 
-Circle::Circle(const Vector2D& v, const unsigned int r, const std::shared_ptr<const Color>& c) : Shape() {
-	vertices.push_back(v);
+Circle::Circle(const Vector2D& v) : Shape(v) {}
+
+Circle::Circle(const Vector2D& v, const unsigned int r, const std::shared_ptr<const Color>& c) : Shape(v), radius(r){
 	color = c;
-	radius = r;
 }
 
 Circle::Circle(const Circle& c) {

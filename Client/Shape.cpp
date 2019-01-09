@@ -9,6 +9,8 @@ Shape::Shape() : Drawable() {
 	vertices = {};
 }
 
+Shape::Shape(const Vector2D &v) : Drawable(){ operator+(v); }
+
 Shape::Shape(const vector<Vector2D, allocator<Vector2D>>& v, const shared_ptr<const Color>& c) :
 	Drawable(c), vertices(v) {}
 
@@ -54,7 +56,7 @@ string Shape::getName() const {
 string* Shape::accept(Visitor * v) { return v->visit(this); }
 
 Shape Shape::operator+(const Vector2D & vecteur) {
-	vertices.emplace_back(vecteur.x, vecteur.y);
+	vertices.push_back(vecteur);
 	return *this;
 }
 

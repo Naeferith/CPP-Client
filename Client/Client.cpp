@@ -42,14 +42,13 @@ int main()
 	
 	cout << cercle->getColor() << endl;
 	Shape *carre = new Shape(sommets, color);
-	Circle *circle = new Circle();
+	Circle *circle = new Circle(Vector2D(500,1000));
 
 	try {
 		SingletonWSA::getInstance();
 		//SocketInOut socket = SocketInOut();
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*->accept(new VisitorXML));
-		circle->setVertices(new Vector2D(500, 1000));
 		cout << *circle;
 
 	}

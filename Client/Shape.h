@@ -22,6 +22,9 @@ public:
 	/** @brief Le constructeur par défaut. */
 	Shape();
 
+	/** @brief Le constructeur par Vector2D. */
+	Shape(const Vector2D &);
+
 	/** @brief Le constructeur par valeurs. */
 	Shape(const vector<Vector2D, allocator<Vector2D>>& sommets, const shared_ptr<const Color>& couleur);
 	

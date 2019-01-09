@@ -21,6 +21,9 @@ public:
 	/** @brief Le constructeur par défaut. */
 	Circle();
 
+	/** @brief Le constructeur par Vecteur. */
+	Circle(const Vector2D& centre);
+
 	/** @brief Le constructeur par valeurs. */
 	Circle(const Vector2D& centre, const unsigned int rayon, const shared_ptr<const Color>& couleur);
 	
