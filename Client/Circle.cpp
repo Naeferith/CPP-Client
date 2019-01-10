@@ -1,26 +1,28 @@
 #include "stdafx.h"
 #include "Circle.h"
 
-Circle::Circle() : Shape(), radius(0) {}
+Circle::Circle() :Shape(), radius(0) { vertices.push_back(Vector2D()); }
 
 Circle::Circle(const Vector2D& v) : Shape(v) {}
 
-Circle::Circle(const Vector2D& v, const unsigned int r, const std::shared_ptr<const Color>& c) : Shape(v), radius(r){
-	color = c;
-}
+Circle::Circle(const Vector2D& v, const unsigned int r, const std::shared_ptr<const Color>& c) : Shape(v,c), radius(r) {}
 
-Circle::Circle(const Circle& c) {
-	vertices = c.getVertices();
-	color = c.color;
-	radius = c.getRadius();
-}
+Circle::Circle(const Circle& c) : Shape(c), radius(c.getRadius()){}
 
-Circle::~Circle() {
-}
+Circle::~Circle() {}
 
 const int Circle::getRadius() const { return radius; }
 
 void Circle::setRadius(const int i) { radius = i; }
+
+void Circle::setCenter(const Vector2D& v) {
+	vertices[0] = v;
+}
+
+void Circle::setVertices(const vector<Vector2D>& sommets) {
+	if (sommets.size() != 1) throw Erreur(-1, "Circle only need 1 Center.");
+	Shape::setVertices(sommets);
+}
 
 string* Circle::accept(Visitor * v) { return v->visit(this); }
 
@@ -31,3 +33,4 @@ Circle::operator string() const {
 	oss << Shape::operator std::string() << " radius :" << getRadius();
 	return oss.str();
 }
+

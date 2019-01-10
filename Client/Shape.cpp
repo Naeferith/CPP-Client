@@ -11,8 +11,12 @@ Shape::Shape() : Drawable() {
 
 Shape::Shape(const Vector2D &v) : Drawable(){ operator+(v); }
 
-Shape::Shape(const vector<Vector2D, allocator<Vector2D>>& v, const shared_ptr<const Color>& c) :
+Shape::Shape(const Vector2D &v, const shared_ptr<const Color>& c) : Drawable(c) { operator+(v); }
+
+Shape::Shape(const vector<Vector2D>& v, const shared_ptr<const Color>& c) :
 	Drawable(c), vertices(v) {}
+
+Shape::Shape(const Shape& s): Drawable(s), vertices(vector<Vector2D>(s.getVertices())) {}
 
 Shape::~Shape() {}
 
@@ -51,6 +55,10 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 
 string Shape::getName() const {
 	return string("shape");
+}
+
+const int Shape::getNb()const {
+	return vertices.size();
 }
 
 string* Shape::accept(Visitor * v) { return v->visit(this); }

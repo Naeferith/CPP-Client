@@ -13,9 +13,6 @@
 #include <sstream>
 #include <memory>
 
-#include "Vector3D.h"
-#include "Drawable.h"
-#include "Visitor.h"
 #include "Erreur.h"
 
 

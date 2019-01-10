@@ -25,8 +25,14 @@ public:
 	/** @brief Le constructeur par Vector2D. */
 	Shape(const Vector2D &);
 
+	/** @brief Le constructeur par Vector2D et color. */
+	Shape(const Vector2D &, const shared_ptr<const Color>&);
+
 	/** @brief Le constructeur par valeurs. */
 	Shape(const vector<Vector2D, allocator<Vector2D>>& sommets, const shared_ptr<const Color>& couleur);
+
+	/** @brief Le constructeur par copie. */
+	Shape(const Shape&);
 	
 	/** @brief Le destructeur. */
 	~Shape();
@@ -38,7 +44,7 @@ public:
 	void setColor(const shared_ptr<const Color>& couleur);
 
 	/** @brief Mutateur pour vertices. */
-	void setVertices(const vector<Vector2D>& sommets);
+	virtual void setVertices(const vector<Vector2D>& sommets);
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Shape& shape) const;
@@ -54,6 +60,9 @@ public:
 
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const;
+
+	/** @brief Retourne le nombre d'éléments dans Vertices. */
+	const int getNb()const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual string* accept(Visitor* v);

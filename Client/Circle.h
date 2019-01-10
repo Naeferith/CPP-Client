@@ -1,8 +1,5 @@
 #pragma once
-
-#include <memory>
 #include "Shape.h"
-#include "Vector2D.h"
 
 using namespace std;
 
@@ -45,5 +42,17 @@ public:
 	/** @brief Mutateur de radius. */
 	void setRadius(const int rayon);
 
+	/** @brief Remplace le tableau de sommets. */
+	void setVertices(const vector<Vector2D>& sommets);
+
+	/** @brief Change le centre. */
+	void setCenter(const Vector2D&);
+
 	operator string() const;
+
+	/** @brief Suppression de l'opérateur +. */
+	Shape operator+(const Vector2D & vecteur) = delete;
+
+	/** @brief Suppression de l'opérateur --. */
+	Shape operator--() = delete;
 };

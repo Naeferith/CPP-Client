@@ -7,6 +7,7 @@
 #include <Ws2tcpip.h>
 
 #include "Circle.h"
+#include "Rectangle.h"
 #include "ShapeGroup.h"
 #include "SocketInOut.h"
 
@@ -48,8 +49,12 @@ int main()
 		SingletonWSA::getInstance();
 		//SocketInOut socket = SocketInOut();
 		//socket.Send(*carre->accept(new VisitorXML));
-		//socket.Send(*->accept(new VisitorXML));
-		cout << *circle;
+		//socket.Send(*carre->accept(new VisitorXML));
+		cout << "circle" << *circle << endl;
+		Circle circle2 = Circle(*circle);
+		Shape carre2 = Shape(*carre);
+		//*carre--;
+		cout << "circle2" << circle2 << endl <<"carre" << *carre << endl << "carre2" << carre2 << endl;
 
 	}
 	catch (const Erreur& e) {
