@@ -57,7 +57,7 @@
     <ClInclude Include="VisitorXML.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
-    <ClInclude Include="Rectangle.h">
+    <ClInclude Include="Rectangles.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
   </ItemGroup>
@@ -101,7 +101,7 @@
     <ClCompile Include="VisitorXML.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
+    <ClCompile Include="Rectangles.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>

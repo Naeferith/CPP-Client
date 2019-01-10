@@ -3,7 +3,7 @@
 
 Circle::Circle() :Shape(), radius(0) { vertices.push_back(Vector2D()); }
 
-Circle::Circle(const Vector2D& v) : Shape(v) {}
+Circle::Circle(const Vector2D& v) : Circle() { vertices.push_back(v); }
 
 Circle::Circle(const Vector2D& v, const unsigned int r, const std::shared_ptr<const Color>& c) : Shape(v,c), radius(r) {}
 
