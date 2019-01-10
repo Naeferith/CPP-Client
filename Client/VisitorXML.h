@@ -22,4 +22,6 @@ public:
 	string* visit(const Shape* vs) const;
 
 	string* visit(const Circle* vs) const;
+
+	string* visit(const Rectangles* vs) const;
 };

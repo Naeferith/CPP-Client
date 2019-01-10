@@ -29,7 +29,7 @@ public:
 	Shape(const Vector2D &, const shared_ptr<const Color>&);
 
 	/** @brief Le constructeur par valeurs. */
-	Shape(const vector<Vector2D, allocator<Vector2D>>& sommets, const shared_ptr<const Color>& couleur);
+	Shape(const vector<Vector2D>& sommets, const shared_ptr<const Color>& couleur);
 
 	/** @brief Le constructeur par copie. */
 	Shape(const Shape&);
@@ -44,7 +44,7 @@ public:
 	void setColor(const shared_ptr<const Color>& couleur);
 
 	/** @brief Mutateur pour vertices. */
-	virtual void setVertices(const vector<Vector2D>& sommets);
+	void setVertices(const vector<Vector2D>& sommets);
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Shape& shape) const;

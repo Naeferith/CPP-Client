@@ -13,6 +13,7 @@
 #include <sstream>
 #include <memory>
 
+#include "Visitor.h"
 #include "Erreur.h"
 
 

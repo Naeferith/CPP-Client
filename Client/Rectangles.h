@@ -1,3 +1,4 @@
+#pragma once
 #include "Shape.h"
 
 using namespace std;
@@ -11,8 +12,8 @@ class Rectangles : public Shape {
 private:
 
 	/** @brief Le rayon du cercle. */
-	short unsigned int width;
-	short unsigned int height;
+	short int width;
+	short int height;
 
 public:
 	/** @brief Le constructeur par défaut. */
@@ -21,8 +22,11 @@ public:
 	/** @brief Le constructeur par Vecteur. */
 	Rectangles(const Vector2D&);
 
+	/** @brief Le constructeur par Vecteur et couleur. */
+	Rectangles(const Vector2D& v, const shared_ptr<const Color>& couleur);
+
 	/** @brief Le constructeur par valeurs. */
-	Rectangles(const Vector2D&, const short unsigned int width,const short unsigned int height, const shared_ptr<const Color>& couleur);
+	Rectangles(const Vector2D&, const short int width,const short int height, const shared_ptr<const Color>& couleur);
 
 	/** @brief Le constructeur par référence. */
 	Rectangles(const Rectangles&);
@@ -31,10 +35,10 @@ public:
 	~Rectangles();
 
 	/** @brief Accesseur de width. */
-	const short unsigned int getWidth() const;
+	const short int getWidth() const;
 
 	/** @brief Accesseur de height. */
-	const short unsigned int getHeight() const;
+	const short int getHeight() const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	string* accept(Visitor* v);
@@ -43,10 +47,10 @@ public:
 	string getName() const;
 
 	/** @brief Mutateur de width. */
-	void setWidth(const unsigned short int);
+	void setWidth(const short int);
 
 	/** @brief Mutateur de height. */
-	void setHeight(const unsigned short int);
+	void setHeight(const short int);
 
 	/** @brief Remplace le tableau de sommets. */
 	void setVertices(const vector<Vector2D>& sommets);

@@ -5,16 +5,14 @@
 
 using namespace std;
 
-Shape::Shape() : Drawable() {
-	vertices = {};
-}
+Shape::Shape() : Drawable() {}
 
 Shape::Shape(const Vector2D &v) : Drawable(){ operator+(v); }
 
 Shape::Shape(const Vector2D &v, const shared_ptr<const Color>& c) : Drawable(c) { operator+(v); }
 
 Shape::Shape(const vector<Vector2D>& v, const shared_ptr<const Color>& c) :
-	Drawable(c), vertices(v) {}
+	Drawable(c) { setVertices(v); }
 
 Shape::Shape(const Shape& s): Drawable(s), vertices(vector<Vector2D>(s.getVertices())) {}
 
@@ -75,7 +73,8 @@ Shape Shape::operator--() {
 
 Shape::operator string() const {
 	ostringstream oss;
-	oss << getName() << ": " << getColor() << " ";
-	for (auto &vertice : vertices) oss << vertice;
+	oss << getName() << ": " << getColor() << " [>> ";
+	for (auto &vertice : vertices) oss << vertice << " ";
+	oss << "<<]";
 	return oss.str();
 }

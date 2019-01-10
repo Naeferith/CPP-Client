@@ -27,6 +27,7 @@ const Vector2D Vector2D::operator=(const Vector2D& v) {
 
 Vector2D::operator string() const {
 	ostringstream oss;
+	oss << "X:" << x << ", Y:" << y;
 	return oss.str();
 }
 

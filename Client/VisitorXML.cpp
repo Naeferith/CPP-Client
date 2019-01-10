@@ -2,6 +2,9 @@
 #include "VisitorXML.h"
 #include "SocketInOut.h"
 #include "SingletonWSA.h"
+#include "Rectangles.h"
+#include "Circle.h"
+#include "Shape.h"
 
 string VisitorXML::strVector(const Vector2D& vs) const {
 	stringstream oss;
@@ -58,6 +61,14 @@ string* VisitorXML::visit(const Circle* vs) const {
 	stringstream param;
 	//Un cercle possède un radius qui n'est pas un sommet. On l'ajoute donc en paramètre.
 	param << "<radius>" << vs->getRadius() << "</radius>";
+
+	return strXML(vs, param.str());
+}
+
+string* VisitorXML::visit(const Rectangles* vs) const {
+	stringstream param;
+	//Un rectangle possède une hauteur et une largeur qui n'est pas un sommet. On l'ajoute donc en paramètre.
+	param << "<width>" << vs->getWidth() << "</width><height>" << vs->getHeight() << "</height>";
 
 	return strXML(vs, param.str());
 }
