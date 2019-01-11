@@ -11,22 +11,16 @@ using namespace std;
 class Rectangles : public Shape {
 private:
 
-	/** @brief Le rayon du cercle. */
-	short int width;
-	short int height;
+	/** @brief La rotation du rectange. */
+	double rotation;
+	Vector2D rotationCenter;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	Rectangles();
 
-	/** @brief Le constructeur par Vecteur. */
-	Rectangles(const Vector2D&);
-
-	/** @brief Le constructeur par Vecteur et couleur. */
-	Rectangles(const Vector2D& v, const shared_ptr<const Color>& couleur);
-
 	/** @brief Le constructeur par valeurs. */
-	Rectangles(const Vector2D&, const short int width,const short int height, const shared_ptr<const Color>& couleur);
+	Rectangles(const vector<Vector2D>&, const shared_ptr<const Color>& couleur);
 
 	/** @brief Le constructeur par référence. */
 	Rectangles(const Rectangles&);
@@ -35,10 +29,22 @@ public:
 	~Rectangles();
 
 	/** @brief Accesseur de width. */
-	const short int getWidth() const;
+	const Vector2D& getUpLeft() const;
 
 	/** @brief Accesseur de height. */
-	const short int getHeight() const;
+	const Vector2D& getDownRight() const;
+
+	/** @brief Accesseur de rotation. */
+	const double getRotation() const;
+
+	/** @brief Retourne les sommets après rotations. */
+	const vector<Vector2D> getVertices() const;
+
+	/** @brief Accesseur du centre de rotation. */
+	const Vector2D& getRotationCenter() const;
+
+	/** @brief Retourne le centre du rectangle. */
+	Vector2D getCenter() const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	string* accept(Visitor* v);
@@ -47,18 +53,25 @@ public:
 	string getName() const;
 
 	/** @brief Mutateur de width. */
-	void setWidth(const short int);
+	void setUpLeft(const Vector2D&);
 
 	/** @brief Mutateur de height. */
-	void setHeight(const short int);
+	void setDownRight(const Vector2D&);
+
+	/** @brief Mutateur de rotation. */
+	void setRotation(const double);
+
+	/** @brief Mutateur du centre de rotation. */
+	void setRotationCenter(const Vector2D& v);
 
 	/** @brief Remplace le tableau de sommets. */
 	void setVertices(const vector<Vector2D>& sommets);
 
-	/** @brief Change l'origin du rectangle. */
-	void setOrigin(const Vector2D&);
+	/**	@see Drawable.Rotate() */
+	void Rotate(const Vector2D& point, const double angle);
 
-	operator string() const;
+	/** @brief Surcharge de l'opérateur String. */
+	//operator string() const;
 
 	/** @brief Suppression de l'opérateur +. */
 	Shape operator+(const Vector2D & vecteur) = delete;

@@ -16,17 +16,11 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
-	//VERTICIES DEVRAIT ETRE DANS DRAWABLE/////////////////////////////////////
+	vector<Vector2D> RotateVector(vector<Vector2D>&, const Vector2D&, const double) const;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	Shape();
-
-	/** @brief Le constructeur par Vector2D. */
-	Shape(const Vector2D &);
-
-	/** @brief Le constructeur par Vector2D et color. */
-	Shape(const Vector2D &, const shared_ptr<const Color>&);
 
 	/** @brief Le constructeur par valeurs. */
 	Shape(const vector<Vector2D>& sommets, const shared_ptr<const Color>& couleur);
@@ -38,7 +32,7 @@ public:
 	~Shape();
 
 	/** @brief Accesseur pour vertices. */
-	const vector<Vector2D> getVertices() const;
+	virtual const vector<Vector2D> getVertices() const;
 
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
@@ -47,7 +41,7 @@ public:
 	void setVertices(const vector<Vector2D>& sommets);
 
 	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const Shape& shape) const;
+	virtual bool operator==(const Shape& shape) const;
 
 	/**	@see Drawable.Translate() */
 	void Translate(const Vector2D& vecteur);
@@ -62,7 +56,7 @@ public:
 	virtual string getName() const;
 
 	/** @brief Retourne le nombre d'éléments dans Vertices. */
-	const int getNb()const;
+	const int getSize()const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual string* accept(Visitor* v);
@@ -77,5 +71,5 @@ public:
 	Shape operator--();
 
 	/** @biref Surcharge de l'opérateur String. */
-	operator string() const;
+	virtual operator string() const;
 };

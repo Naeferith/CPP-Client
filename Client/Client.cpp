@@ -36,7 +36,7 @@ int main()
 	
 	//Création des 3 différentes formes
 	Shape *shape = new Shape(sommets, color);
-	Rectangles *carre = new Rectangles(Vector2D(), 50, 100, color);
+	Rectangles *carre = new Rectangles(vector<Vector2D>{Vector2D(0,1000), Vector2D(1000, 0)}, color);
 	Circle *circle = new Circle(Vector2D(500,1000), 10, color);
 
 	//Copie des 3 différentes formes

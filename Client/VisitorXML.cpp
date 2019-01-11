@@ -67,8 +67,5 @@ string* VisitorXML::visit(const Circle* vs) const {
 
 string* VisitorXML::visit(const Rectangles* vs) const {
 	stringstream param;
-	//Un rectangle possède une hauteur et une largeur qui n'est pas un sommet. On l'ajoute donc en paramètre.
-	param << "<width>" << vs->getWidth() << "</width><height>" << vs->getHeight() << "</height>";
-
 	return strXML(vs, param.str());
 }

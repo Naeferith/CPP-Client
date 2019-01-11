@@ -25,6 +25,18 @@ const Vector2D Vector2D::operator=(const Vector2D& v) {
 	return *this;
 }
 
+Vector2D Vector2D::operator+(const Vector2D& v) const {
+	return Vector2D(x + v.x, y + v.y);
+}
+
+Vector2D Vector2D::operator-(const Vector2D& v) const {
+	return Vector2D(x - v.x, y - v.y);
+}
+
+Vector2D Vector2D::operator/(const short int den) const {
+	return Vector2D(x / den, y / den);
+}
+
 Vector2D::operator string() const {
 	ostringstream oss;
 	oss << "X:" << x << ", Y:" << y;

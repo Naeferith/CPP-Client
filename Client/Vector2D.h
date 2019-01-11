@@ -36,6 +36,15 @@ public:
 	/** @brief Surcharge de l'opérateur ==. */
 	virtual bool operator==(const Vector2D&) const;
 
+	/** @brief Surcharge de l'opérateur +. */
+	virtual Vector2D operator+(const Vector2D&) const;
+
+	/** @brief Surcharge de l'opérateur -. */
+	virtual Vector2D operator-(const Vector2D&) const;
+
+	/** @brief Surcharge de l'opérateur /. */
+	Vector2D operator/(const short int den) const;
+
 	/** @brief Surcharge de l'opérateur =. */
 	virtual const Vector2D operator=(const Vector2D& vecteur);
 

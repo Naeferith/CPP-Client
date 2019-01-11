@@ -1,15 +1,9 @@
 #include "stdafx.h"
 #include "Shape.h"
-#include "SingletonWSA.h"
-#include "Circle.h"
 
 using namespace std;
 
-Shape::Shape() : Drawable() {}
-
-Shape::Shape(const Vector2D &v) : Drawable(){ operator+(v); }
-
-Shape::Shape(const Vector2D &v, const shared_ptr<const Color>& c) : Drawable(c) { operator+(v); }
+Shape::Shape() : Drawable() { vertices.reserve(1); }
 
 Shape::Shape(const vector<Vector2D>& v, const shared_ptr<const Color>& c) :
 	Drawable(c) { setVertices(v); }
@@ -43,19 +37,25 @@ void Shape::Scale(const Vector2D& point, const double ratio) {
 }
 
 void Shape::Rotate(const Vector2D& point, const double rad) {
-	for (auto &vertice : vertices) {
-		double newX = round((vertice.x - point.x) * cos(rad) - (vertice.y - point.y) * sin(rad));
-		double newY = round((vertice.x - point.x) * sin(rad) + (vertice.y - point.y) * cos(rad));
+	vertices = RotateVector(vertices, point, rad);
+}
+
+vector<Vector2D> Shape::RotateVector(vector<Vector2D>& v, const Vector2D& point, const double rad) const{
+	vector<Vector2D> aux(v);
+	for (auto &vertice : aux) {
+		double newX = round((vertice.x - point.x) * cos(rad) - (vertice.y - point.y) * sin(rad)) + point.x;
+		double newY = round((vertice.x - point.x) * sin(rad) + (vertice.y - point.y) * cos(rad)) + point.y;
 		vertice.setX(newX);
 		vertice.setY(newY);
 	}
+	return aux;
 }
 
 string Shape::getName() const {
 	return string("shape");
 }
 
-const int Shape::getNb()const {
+const int Shape::getSize()const {
 	return vertices.size();
 }
 
@@ -74,7 +74,7 @@ Shape Shape::operator--() {
 Shape::operator string() const {
 	ostringstream oss;
 	oss << getName() << ": " << getColor() << " [>> ";
-	for (auto &vertice : vertices) oss << vertice << " ";
+	for (auto &vertice : getVertices()) oss << vertice << " ";
 	oss << "<<]";
 	return oss.str();
 }

@@ -2,35 +2,61 @@
 #include "Rectangles.h"
 #include "Visitor.h"
 
-Rectangles::Rectangles() : Shape(), width(10), height(10) { vertices.push_back(Vector2D()); }
+Rectangles::Rectangles() : Shape(), rotation(0) { 
+	vertices.emplace_back(0, 0);
+	vertices.emplace_back(100, 100);
+	rotationCenter = getCenter();
+}
 
-Rectangles::Rectangles(const Vector2D& v) : Rectangles() { vertices.push_back(v); }
+Rectangles::Rectangles(const vector<Vector2D>& v, const shared_ptr<const Color>& c) : Shape(v, c), rotation(0) {
+	if (getSize() != 2) throw Erreur(-1, "Rectangles need 2 vectices.");
+	rotationCenter = getCenter();
+}
 
-Rectangles::Rectangles(const Vector2D& v, const shared_ptr<const Color>& couleur) : Shape(v,couleur) {}
-
-Rectangles::Rectangles(const Vector2D& v, const short int width, const short int height, const shared_ptr<const Color>& c) :
-	Shape(v, c), width(width), height(height) {};
-
-Rectangles::Rectangles(const Rectangles& obj) : Shape(obj), width(obj.width), height(obj.height) {}
+Rectangles::Rectangles(const Rectangles& obj) :Shape(obj),
+	rotation(obj.getRotation()), rotationCenter(obj.getRotationCenter()) {}
 
 Rectangles::~Rectangles() {}
 
-const short int Rectangles::getWidth() const { return width; }
+const Vector2D& Rectangles::getUpLeft() const { return vertices.at(0); }
 
-const short int Rectangles::getHeight() const { return height; }
+const Vector2D& Rectangles::getDownRight() const { return vertices.at(1); }
+
+const double Rectangles::getRotation() const { return rotation; }
+
+const Vector2D& Rectangles::getRotationCenter() const { return rotationCenter; }
+
+Vector2D Rectangles::getCenter() const { return (getUpLeft() + getDownRight()) / 2; }
 
 string* Rectangles::accept(Visitor* v) { return v->visit(this); }
 
-string Rectangles::getName() const { return "Rectangle"; }
+string Rectangles::getName() const { return "rectangle"; }
 
-void Rectangles::setWidth(const short int w) { width = w; }
+void Rectangles::setUpLeft(const Vector2D& v) { vertices.at(0) = v; }
 
-void Rectangles::setHeight(const short int h) { height = h; }
+void Rectangles::setDownRight(const Vector2D& v) { vertices.at(1) = v; }
 
-void Rectangles::setOrigin(const Vector2D& v) { vertices[0] = v; }
+void Rectangles::setRotation(const double rot) { rotation = (int)rot % 360; }
 
-Rectangles::operator string() const {
-	ostringstream oss;
-	oss << Shape::operator std::string() << " Width :" << width << " Height :" << height;
-	return oss.str();
+void Rectangles::setRotationCenter(const Vector2D& v) { rotationCenter = v; }
+
+const vector<Vector2D> Rectangles::getVertices() const {
+	vector<Vector2D> vertice{
+			Vector2D(getUpLeft()),
+			Vector2D(getUpLeft().x,getDownRight().y),
+			Vector2D(getDownRight()),
+			Vector2D(getDownRight().x,getUpLeft().y)
+	};
+	if (getRotation() != 0) vertice = RotateVector(vertice, getRotationCenter(), getRotation());
+	return vertice;
+}
+
+void Rectangles::setVertices(const vector<Vector2D>& sommets) { 
+	if (sommets.size() != 2) throw Erreur(-1, "Rectangles need 2 vectices.");
+	Shape::setVertices(sommets);
+}
+
+void Rectangles::Rotate(const Vector2D& point, const double angle) {
+	setRotationCenter(point);
+	setRotation(angle);
 }
