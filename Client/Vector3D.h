@@ -2,32 +2,54 @@
 
 #include <iostream>
 
-/**Repr�sente un vecteur a 3 dimensions
- *
- */
-class Vector3D {
-private:
-	double z;
+/**
+	@brief Représente un vecteur à 3 dimensions.
 
-protected:
+	C'est une structure composés de 3 double .
+	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
+*/
+
+using namespace std;
+
+struct Vector3D {
+public:
+
+	/** @brief La composante X. */
 	double x;
+
+	/** @brief La composante Y. */
 	double y;
 
-public:
+	/** @brief La composante Z. */
+	double z;
+
+	/** @brief Le constructeur par défaut. */
 	Vector3D();
-	Vector3D(const double, const double, const double);
-	Vector3D(const Vector3D&);
+
+	/** @brief Le constructeur par valeurs. */
+	Vector3D(const double X, const double Y, const double Z);
+
+	/** @brief Le constructeur par référence. */
+	Vector3D(const Vector3D& vecteur);
+
+	/** @brief Le destructeur. */
 	~Vector3D();
 
-	const double getX() const;
-	const double getY() const;
-	const double getZ() const;
+	/** @brief Mutateur de la composante X. */
+	void setX(const double X);
 
-	void setX(const double);
-	void setY(const double);
-	void setZ(const double);
+	/** @brief Mutateur de la composante Y. */
+	void setY(const double Y);
 
-	const Vector3D operator=(const Vector3D&);
+	/** @brief Mutateur de la composante Z. */
+	void setZ(const double Z);
 
-	friend std::ostream& operator<<(std::ostream&, const Vector3D&);
+	/** @brief Surcharge de l'opérateur ==. */
+	bool operator==(const Vector3D& vecteur) const;
+
+	/** @brief Surcharge de l'opérateur =. */
+	const Vector3D operator=(const Vector3D& vecteur);
+
+	/** @brief Surcharge de l'opérateur <<. */
+	friend ostream& operator<<(ostream& stream, const Vector3D& vecteur);
 };
