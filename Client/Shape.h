@@ -4,7 +4,6 @@
 #include <memory>
 #include "Drawable.h"
 
-using namespace std;
 
 /**
 	@brief Représente une forme dessinable.
@@ -16,6 +15,8 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
+	double rotationAngle = 0;
+
 public:
 	/** @brief Le constructeur par défaut. */
 	Shape();
@@ -24,10 +25,13 @@ public:
 	Shape(const vector<Vector2D, allocator<Vector2D>>& sommets, const shared_ptr<const Color>& couleur);
 	
 	/** @brief Le destructeur. */
-	~Shape();
+	virtual ~Shape();
 
 	/** @brief Accesseur pour vertices. */
 	const vector<Vector2D> getVertices() const;
+
+	/** @brief Accesseur sur color. */
+	const double getRotationAngle() const;
 
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
