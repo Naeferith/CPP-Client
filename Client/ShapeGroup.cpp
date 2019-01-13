@@ -33,7 +33,7 @@ void ShapeGroup::Rotate(const Vector2D & point, const double angle) {
 }
 
 string ShapeGroup::getName() const {
-	return string("shape group");
+	return string("shapegroup");
 }
 
 ShapeGroup ShapeGroup::operator+(Drawable& d) {
