@@ -4,6 +4,7 @@
   Color.cpp
   Drawable.cpp
   Erreur.cpp
+  Rectangle.cpp
   Shape.cpp
   ShapeGroup.cpp
   SingletonWSA.cpp
