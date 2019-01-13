@@ -2,8 +2,6 @@
 
 #include "Vector3D.h"
 
-using namespace std;
-
 /**
 	@brief Représente un vecteur a 2 dimensions.
 
@@ -27,5 +25,5 @@ public:
 	bool operator==(const Vector2D&) const;
 
 	/** @brief Surcharge de l'opérateur <<. */
-	friend ostream& operator<<(std::ostream&, const Vector2D&);
+	friend std::ostream& operator<<(std::ostream&, const Vector2D&);
 };

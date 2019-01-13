@@ -9,8 +9,6 @@
 	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
 */
 
-using namespace std;
-
 struct Vector3D {
 public:
 
@@ -51,5 +49,5 @@ public:
 	const Vector3D operator=(const Vector3D& vecteur);
 
 	/** @brief Surcharge de l'opérateur <<. */
-	friend ostream& operator<<(ostream& stream, const Vector3D& vecteur);
+	friend std::ostream& operator<<(std::ostream& stream, const Vector3D& vecteur);
 };
