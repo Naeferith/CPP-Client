@@ -7,9 +7,7 @@
 
 using namespace std;
 
-Shape::Shape() : Drawable() {
-	vertices = {};
-}
+Shape::Shape() : Drawable() {vertices.reserve(1);}
 
 Shape::Shape(const vector<Vector2D, allocator<Vector2D>>& v, const shared_ptr<const Color>& c) : Drawable(c), vertices(v) {}
 

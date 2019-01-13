@@ -3,9 +3,7 @@
 
 using namespace shape;
 
-Rectangle::Rectangle() : Shape(), width(0), height(0) {
-	vertices.reserve(1);
-}
+Rectangle::Rectangle() : Shape(), width(0), height(0) {}
 
 shape::Rectangle::Rectangle(const Vector2D & topLeft, const shared_ptr<const Color>& couleur, double width, double height) : Shape(vector<Vector2D>(), couleur), width(width), height(height) {
 	vertices.reserve(1);

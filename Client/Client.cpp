@@ -38,19 +38,33 @@ int main()
 		Vector2D(300, 300),
 		Vector2D(250, 300),
 	};
-	
-	cout << cercle->getColor() << endl;
 	//Shape *carre = new Shape(sommets, color2);
 	
 	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 50, 50);
 
+	shape::Rectangle* rect1 = new shape::Rectangle(Vector2D(200, 100), color2, 50, 50);
+
+	shape::Rectangle* rect2 = new shape::Rectangle(Vector2D(150, 50), color2, 50, 50);
+
+	shape::Rectangle* rect3 = new shape::Rectangle(Vector2D(150, 150), color2, 50, 50);
+
 	try {
+		Vector2D t(175, 125);
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*cercle->accept(new VisitorXML));
-		rect->Rotate(rect->getTopLeft(), 0.785398);
+		rect->Rotate(t, 0.25);
 		socket.Send(*rect->accept(new VisitorXML));
+
+		rect1->Rotate(t, 0.25);
+		socket.Send(*rect1->accept(new VisitorXML));
+
+		rect2->Rotate(t, 0.25);
+		socket.Send(*rect2->accept(new VisitorXML));
+
+		rect3->Rotate(t, 0.25);
+		socket.Send(*rect3->accept(new VisitorXML));
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;
