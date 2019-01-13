@@ -25,3 +25,8 @@ const Drawable& Drawable::operator=(const Drawable &d)
 
 	return *this;
 }
+
+ostream & operator<<(ostream& strm, const Drawable& v)
+{
+	return strm << "[" << (string)v << "]";
+}

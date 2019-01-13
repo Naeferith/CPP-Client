@@ -73,7 +73,7 @@ string* VisitorXML::visit(const Circle* vs) const {
 }
 
 string * VisitorXML::visit(const shape::Rectangle * vs) const {
-	Shape* rectangularShape = new Shape(vs->getCurrentVertices(), make_shared<const Color>(vs->getColor()));
+	Shape rectangularShape(vs->getCurrentVertices(), make_shared<const Color>(vs->getColor()));
 
-	return strXML(rectangularShape, "");
+	return strXML(&rectangularShape);
 }

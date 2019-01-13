@@ -66,3 +66,11 @@ Shape Shape::operator--() {
 	vertices.pop_back();
 	return *this;
 }
+
+Shape::operator string() const {
+	ostringstream oss;
+	oss << getName() << ": " << getColor() << " [>> ";
+	for (auto &vertice : getVertices()) oss << vertice << " ";
+	oss << "<<]";
+	return oss.str();
+}

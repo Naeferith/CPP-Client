@@ -51,8 +51,6 @@ int main()
 		//socket.Send(*cercle->accept(new VisitorXML));
 		rect->Rotate(rect->getTopLeft(), 0.785398);
 		socket.Send(*rect->accept(new VisitorXML));
-		
-		
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;
