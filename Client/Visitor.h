@@ -1,8 +1,8 @@
 #pragma once
 
 #include "Drawable.h"
-#include "Shape.h"
 #include "Circle.h"
+#include "Rectangle.h"
 
 /**
 	@brief Classe abstraite du DP Visiteur.
@@ -13,4 +13,6 @@ public:
 	virtual string* visit(const Shape* vs) const = 0;
 
 	virtual string* visit(const Circle* vs) const = 0;
+
+	virtual string* visit(const shape::Rectangle* vs) const = 0;
 };
