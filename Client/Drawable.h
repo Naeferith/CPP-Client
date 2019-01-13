@@ -1,10 +1,9 @@
 #pragma once
 
+#include <memory>
 #include "Color.h"
 
 class Visitor;
-
-using namespace std;
 
 /**
 	@brief Représente un element graphique.
@@ -27,7 +26,7 @@ public:
 	Drawable(const Drawable& drawable);
 
 	/** @brief Le destructeur. */
-	~Drawable();
+	virtual ~Drawable();
 
 	/** @brief Accesseur sur color. */
 	const Color getColor() const;
@@ -63,10 +62,4 @@ public:
 
 	/** @brief Surcharge de l'opérateur =. */
 	const Drawable& operator=(const Drawable& drawable);
-
-	/** @brief Surcharge de l'opérateur String.*/
-	virtual operator string() const = 0;
-
-	/** @brief Surcharge de l'opérateur <<. */
-	friend ostream& operator<<(ostream& strm, const Drawable& v);
 };

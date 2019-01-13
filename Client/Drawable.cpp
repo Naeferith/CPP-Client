@@ -11,8 +11,7 @@ Drawable::Drawable(const shared_ptr<const Color>& c) : color(c) {}
 
 Drawable::Drawable(const Drawable& d) : color(d.color) {}
 
-Drawable::~Drawable() {
-}
+Drawable::~Drawable() {}
 
 const Color Drawable::getColor() const { return *color; }
 
@@ -25,9 +24,4 @@ const Drawable& Drawable::operator=(const Drawable &d)
 	if (this != &d) color = d.color;
 
 	return *this;
-}
-
-ostream & operator<<(ostream& strm, const Drawable& v)
-{
-	return strm << "[" << (string)v << "]";
 }

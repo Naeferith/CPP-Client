@@ -4,7 +4,6 @@
 #include <memory>
 #include "Drawable.h"
 
-using namespace std;
 
 /**
 	@brief Représente une forme dessinable.
@@ -16,23 +15,23 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
-	vector<Vector2D> RotateVector(vector<Vector2D>&, const Vector2D&, const double) const;
+	double rotationAngle = 0;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	Shape();
 
 	/** @brief Le constructeur par valeurs. */
-	Shape(const vector<Vector2D>& sommets, const shared_ptr<const Color>& couleur);
-
-	/** @brief Le constructeur par copie. */
-	Shape(const Shape&);
+	Shape(const vector<Vector2D, allocator<Vector2D>>& sommets, const shared_ptr<const Color>& couleur);
 	
 	/** @brief Le destructeur. */
-	~Shape();
+	virtual ~Shape();
 
 	/** @brief Accesseur pour vertices. */
-	virtual const vector<Vector2D> getVertices() const;
+	const vector<Vector2D> getVertices() const;
+
+	/** @brief Accesseur sur color. */
+	const double getRotationAngle() const;
 
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
@@ -41,7 +40,7 @@ public:
 	void setVertices(const vector<Vector2D>& sommets);
 
 	/** @brief Surcharge de l'opérateur ==. */
-	virtual bool operator==(const Shape& shape) const;
+	bool operator==(const Shape& shape) const;
 
 	/**	@see Drawable.Translate() */
 	void Translate(const Vector2D& vecteur);
@@ -55,11 +54,8 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const;
 
-	/** @brief Retourne le nombre d'éléments dans Vertices. */
-	const int getSize()const;
-
 	/** @brief Implémentation de la methode accept du DP Visitor. */
-	virtual string* accept(Visitor* v);
+	string* accept(Visitor* v);
 
 	/** @brief Surcharge de l'opérateur +. */
 	Shape operator+(const Vector2D& vecteur);
@@ -69,7 +65,4 @@ public:
 		Enlève le dernier Vector2D ajouté.
 	*/
 	Shape operator--();
-
-	/** @biref Surcharge de l'opérateur String. */
-	virtual operator string() const;
 };

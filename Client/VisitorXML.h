@@ -18,10 +18,12 @@ private:
 	/** @brief Retourne sous forme XML en ajoutant les paramètres. */
 	string* strXML(const Shape* vs, const string& param) const;
 
+	static string makeMarkup(const string& tagName, const double value);
+
 public:
 	string* visit(const Shape* vs) const;
 
 	string* visit(const Circle* vs) const;
 
-	string* visit(const Rectangles* vs) const;
+	string* visit(const shape::Rectangle* vs) const;
 };

@@ -152,7 +152,8 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Erreur.h" />
-    <ClInclude Include="Rectangles.h" />
+    <ClInclude Include="IhasPartialVertices.h" />
+    <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeGroup.h" />
     <ClInclude Include="SocketInOut.h" />
@@ -170,7 +171,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Erreur.cpp" />
-    <ClCompile Include="Rectangles.cpp" />
+    <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeGroup.cpp" />
     <ClCompile Include="SocketInOut.cpp" />

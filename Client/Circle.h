@@ -1,5 +1,8 @@
 #pragma once
+
+#include <memory>
 #include "Shape.h"
+#include "Vector2D.h"
 
 using namespace std;
 
@@ -30,26 +33,12 @@ public:
 	/** @brief Accesseur de radius. */
 	const int getRadius() const;
 
-	/** @brief Implémentation de la methode accept du DP Visitor. */
-	string* accept(Visitor* v);
-
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 
+	/** @brief Implémentation de la methode accept du DP Visitor. */
+	string* accept(Visitor* v);
+
 	/** @brief Mutateur de radius. */
 	void setRadius(const int rayon);
-
-	/** @brief Change le centre. */
-	void setCenter(const Vector2D&);
-
-	operator string() const;
-
-	/** @brief Suppression du remplacement de tableau de sommets. */
-	void setVertices(const vector<Vector2D>& sommets) = delete;
-
-	/** @brief Suppression de l'opérateur +. */
-	Shape operator+(const Vector2D & vecteur) = delete;
-
-	/** @brief Suppression de l'opérateur --. */
-	Shape operator--() = delete;
 };
