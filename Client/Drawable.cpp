@@ -11,8 +11,7 @@ Drawable::Drawable(const shared_ptr<const Color>& c) : color(c) {}
 
 Drawable::Drawable(const Drawable& d) : color(d.color) {}
 
-Drawable::~Drawable() {
-}
+Drawable::~Drawable() {}
 
 const Color Drawable::getColor() const { return *color; }
 

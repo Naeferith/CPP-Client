@@ -5,8 +5,6 @@
 
 class Visitor;
 
-using namespace std;
-
 /**
 	@brief Représente un element graphique.
 
@@ -28,7 +26,7 @@ public:
 	Drawable(const Drawable& drawable);
 
 	/** @brief Le destructeur. */
-	~Drawable();
+	virtual ~Drawable();
 
 	/** @brief Accesseur sur color. */
 	const Color getColor() const;
