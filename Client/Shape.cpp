@@ -8,7 +8,7 @@ Shape::Shape() : Drawable() { vertices.reserve(1); }
 Shape::Shape(const vector<Vector2D>& v, const shared_ptr<const Color>& c) :
 	Drawable(c) { setVertices(v); }
 
-Shape::Shape(const Shape& s): Drawable(s), vertices(vector<Vector2D>(s.getVertices())) {}
+Shape::Shape(const Shape& s): Drawable(s), vertices(vector<Vector2D>(s.vertices)) {}
 
 Shape::~Shape() {}
 
