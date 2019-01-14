@@ -28,5 +28,7 @@ public:
 
 	string* visit(const shape::Rectangle* vs) const;
 
+	string* visit(const ShapeGroup* vs) const;
+
 	string* visit(const ShapeManager* vs) const;
 };
