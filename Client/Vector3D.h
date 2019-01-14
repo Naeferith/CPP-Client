@@ -12,7 +12,7 @@
 
 using namespace std;
 
-class Vector3D : public Vector2D {
+struct Vector3D : public Vector2D {
 public:
 
 	/** @brief La composante Z. */

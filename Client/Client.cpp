@@ -22,8 +22,7 @@ int main()
 #ifdef _DEBUG_GRAPHIC_
 	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
 	shared_ptr<const Color> color2 = make_shared<const Color>(Color::GREEN);
-	
-	Circle *cercle = new Circle(Vector2D(400,100), 20, color);
+
 
 	vector<Vector2D> sommets = {
 		Vector2D(50, 50),
@@ -42,29 +41,16 @@ int main()
 	
 	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 50, 50);
 
-	shape::Rectangle* rect1 = new shape::Rectangle(Vector2D(200, 100), color2, 50, 50);
+	Circle *cercle = new Circle(Vector2D(400, 100), 20, color);
 
-	shape::Rectangle* rect2 = new shape::Rectangle(Vector2D(150, 50), color2, 50, 50);
+	Shape *shape = new Shape(sommets, color);
 
-	shape::Rectangle* rect3 = new shape::Rectangle(Vector2D(150, 150), color2, 50, 50);
 
 	try {
-		Vector2D t(175, 125);
 		SingletonWSA::getInstance();
-		SocketInOut socket = SocketInOut();
-		//socket.Send(*carre->accept(new VisitorXML));
-		//socket.Send(*cercle->accept(new VisitorXML));
-		rect->Rotate(t, 0.25);
-		socket.Send(*rect->accept(new VisitorXML));
+		//SocketInOut socket = SocketInOut();
+		cout << *rect << endl << *cercle << endl << *shape << endl;
 
-		rect1->Rotate(t, 0.25);
-		socket.Send(*rect1->accept(new VisitorXML));
-
-		rect2->Rotate(t, 0.25);
-		socket.Send(*rect2->accept(new VisitorXML));
-
-		rect3->Rotate(t, 0.25);
-		socket.Send(*rect3->accept(new VisitorXML));
 	}
 	catch (const Erreur& e) {
 		cout << "ERREUR : " << e.what() << endl;

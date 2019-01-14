@@ -7,7 +7,7 @@ using namespace std;
 
 	Un Vector2D est un Vector3D dont la composante Z est nulle.
 */
-class Vector2D {
+struct Vector2D {
 public:
 	/** @brief La composante X. */
 	double x;

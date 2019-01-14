@@ -34,4 +34,12 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 	return temp.getVertices();
 }
 
+string Rectangle::getName() const { return string("rectangle"); }
+
+Rectangle::operator string() const {
+	stringstream oss;
+	oss << Shape::operator string() << " Width :" << getWidth() << " Height :" << getHeight();
+	return oss.str();
+}
+
 string * Rectangle::accept(Visitor * v) { return v->visit(this); }
