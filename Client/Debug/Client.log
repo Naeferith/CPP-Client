@@ -1,2 +1,22 @@
+<<<<<<< HEAD
 ﻿  Client.cpp
   Client.vcxproj -> C:\Users\Just-Strato\Documents\Visual Studio 2017\Git_Project\CPP-Client\Debug\Client.exe
+=======
+﻿  stdafx.cpp
+  Circle.cpp
+  Client.cpp
+  Color.cpp
+  Drawable.cpp
+  Erreur.cpp
+  Rectangle.cpp
+  Shape.cpp
+  ShapeGroup.cpp
+  ShapeManager.cpp
+  SingletonWSA.cpp
+  SocketInOut.cpp
+  Vector2D.cpp
+  Vector3D.cpp
+  VisitorXML.cpp
+  Génération de code en cours...
+  Client.vcxproj -> E:\documents\UFRMIM\L3\c++\CPP-Client\Debug\Client.exe
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716

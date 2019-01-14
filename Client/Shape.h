@@ -55,7 +55,7 @@ public:
 	virtual string getName() const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
-	string* accept(Visitor* v);
+	virtual string* accept(Visitor* v);
 
 	/** @brief Surcharge de l'opérateur +. */
 	Shape operator+(const Vector2D& vecteur);

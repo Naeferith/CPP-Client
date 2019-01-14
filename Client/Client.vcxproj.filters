@@ -63,6 +63,12 @@
     <ClInclude Include="IhasPartialVertices.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+<<<<<<< HEAD
+=======
+    <ClInclude Include="ShapeManager.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -107,5 +113,11 @@
     <ClCompile Include="Rectangle.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+<<<<<<< HEAD
+=======
+    <ClCompile Include="ShapeManager.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
   </ItemGroup>
 </Project>

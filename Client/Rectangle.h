@@ -41,5 +41,23 @@ namespace shape {
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
 		string* accept(Visitor* v);
+<<<<<<< HEAD
+=======
+
+		/** @brief Retourne le nom de la classe. */
+		string getName() const;
+
+		/** @brief Surcharge de l'opérateur string. */
+		operator string() const;
+
+		/** @brief Suppression du remplacement de tableau de sommets. */
+		void setVertices(const vector<Vector2D>& sommets) = delete;
+
+		/** @brief Suppression de l'opérateur +. */
+		Shape operator+(const Vector2D & vecteur) = delete;
+
+		/** @brief Suppression de l'opérateur --. */
+		Shape operator--() = delete;
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 	};
 }

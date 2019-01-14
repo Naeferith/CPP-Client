@@ -156,6 +156,7 @@
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeGroup.h" />
+    <ClInclude Include="ShapeManager.h" />
     <ClInclude Include="SocketInOut.h" />
     <ClInclude Include="SingletonWSA.h" />
     <ClInclude Include="stdafx.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeGroup.cpp" />
+    <ClCompile Include="ShapeManager.cpp" />
     <ClCompile Include="SocketInOut.cpp" />
     <ClCompile Include="SingletonWSA.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -36,6 +36,8 @@ string ShapeGroup::getName() const {
 	return string("shapegroup");
 }
 
+string * ShapeGroup::accept(Visitor * v) { return v->visit(this); }
+
 ShapeGroup ShapeGroup::operator+(Drawable& d) {
 	//Si d est deja présent dans shapes, ne fait rien, sinon l'ajoute
 	shared_ptr<Drawable> ptr(&d);

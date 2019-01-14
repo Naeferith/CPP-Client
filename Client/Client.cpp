@@ -8,6 +8,7 @@
 
 #include "Circle.h"
 #include "ShapeGroup.h"
+#include "ShapeManager.h"
 #include "SocketInOut.h"
 
 #include "SingletonWSA.h"
@@ -19,7 +20,31 @@ using namespace std;
 
 int main()
 {
+<<<<<<< HEAD
+=======
+#ifdef _DEBUG_MANAGER_
+	ShapeManager* shapes = ShapeManager::getInstance();
+
+	vector<Vector2D> sommets = {
+		Vector2D(50, 50),
+		Vector2D(100, 50),
+		Vector2D(100, 100),
+		Vector2D(50, 100),
+	};
+
+	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
+
+	Shape* s0 = new Shape(sommets, color);
+
+	*shapes + s0;
+
+
+#endif
+
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 #ifdef _DEBUG_GRAPHIC_
+	ShapeManager* shapes = ShapeManager::getInstance();
+
 	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
 	shared_ptr<const Color> color2 = make_shared<const Color>(Color::GREEN);
 	
@@ -40,6 +65,7 @@ int main()
 	};
 	//Shape *carre = new Shape(sommets, color2);
 	
+<<<<<<< HEAD
 	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 50, 50);
 
 	shape::Rectangle* rect1 = new shape::Rectangle(Vector2D(200, 100), color2, 50, 50);
@@ -47,11 +73,18 @@ int main()
 	shape::Rectangle* rect2 = new shape::Rectangle(Vector2D(150, 50), color2, 50, 50);
 
 	shape::Rectangle* rect3 = new shape::Rectangle(Vector2D(150, 150), color2, 50, 50);
+=======
+	std::cout << cercle->getColor() << endl;
+	//Shape *carre = new Shape(sommets, color2);
+	
+	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 50, 50);
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 
 	try {
 		Vector2D t(175, 125);
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
+<<<<<<< HEAD
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*cercle->accept(new VisitorXML));
 		rect->Rotate(t, 0.25);
@@ -65,9 +98,21 @@ int main()
 
 		rect3->Rotate(t, 0.25);
 		socket.Send(*rect3->accept(new VisitorXML));
+=======
+		*shapes + rect;
+		
+		//socket.Send(*carre->accept(new VisitorXML));
+		//socket.Send(*cercle->accept(new VisitorXML));
+		rect->Rotate(rect->getTopLeft(), 0.785398);
+		socket.Send(*shapes->accept(new VisitorXML));
+		
+		//socket.Send(*rect->accept(new VisitorXML));
+		
+		
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 	}
 	catch (const Erreur& e) {
-		cout << "ERREUR : " << e.what() << endl;
+		std::cout << "ERREUR : " << e.what() << endl;
 	}
 	
 

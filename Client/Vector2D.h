@@ -4,10 +4,13 @@ using namespace std;
 
 /**
 	@brief Représente un vecteur a 2 dimensions.
-
 	Un Vector2D est un Vector3D dont la composante Z est nulle.
 */
+<<<<<<< HEAD
 class Vector2D {
+=======
+struct Vector2D {
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 public:
 	/** @brief La composante X. */
 	double x;

@@ -5,14 +5,17 @@
 
 /**
 	@brief Représente un vecteur à 3 dimensions.
-
 	C'est une structure composés de 3 double .
 	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
 */
 
 using namespace std;
 
+<<<<<<< HEAD
 class Vector3D : public Vector2D {
+=======
+struct Vector3D : public Vector2D {
+>>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 public:
 
 	/** @brief La composante Z. */
