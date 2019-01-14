@@ -39,6 +39,9 @@ namespace shape {
 		/** @see IhasPartialVertices.getCurrentVertices() */
 		vector<Vector2D> getCurrentVertices() const;
 
+		/**	@see Drawable.Scale() */
+		void Scale(const Vector2D& point, const double ratio);
+
 		/** @brief Implémentation de la methode accept du DP Visitor. */
 		string* accept(Visitor* v);
 

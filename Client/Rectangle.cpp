@@ -38,6 +38,12 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 	return temp.getVertices();
 }
 
+void shape::Rectangle::Scale(const Vector2D & point, const double ratio) {
+	Shape::Scale(point, ratio);
+	width  *= ratio;
+	height *= ratio;
+}
+
 string * Rectangle::accept(Visitor * v) { return v->visit(this); }
 
 Rectangle::operator string() const {

@@ -36,6 +36,9 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 
+	/**	@see Drawable.Scale() */
+	void Scale(const Vector2D& point, const double ratio);
+
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	string* accept(Visitor* v);
 

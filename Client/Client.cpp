@@ -73,9 +73,14 @@ int main()
 		
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*cercle->accept(new VisitorXML));
-		rect->Rotate(rect->getTopLeft(), 0.785398);
+		//rect->Rotate(rect->getTopLeft(), 0.785398);
 		socket.Send(*shapes->accept(new VisitorXML));
 		
+		rect->Scale(rect->getTopLeft(), 2);
+		rect->setColor(color);
+
+		socket.Send(*shapes->accept(new VisitorXML));
+
 		//socket.Send(*rect->accept(new VisitorXML));
 		
 		
