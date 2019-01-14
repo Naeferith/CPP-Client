@@ -77,3 +77,11 @@ string * VisitorXML::visit(const shape::Rectangle * vs) const {
 
 	return strXML(rectangularShape, "");
 }
+
+string * VisitorXML::visit(const ShapeManager * vs) const {
+	stringstream XMLS;
+	for (auto it = vs->getShapes().begin(); it != vs->getShapes().end(); it++)
+	{
+		//How do I access each element?  
+	}
+}

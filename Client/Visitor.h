@@ -15,4 +15,6 @@ public:
 	virtual string* visit(const Circle* vs) const = 0;
 
 	virtual string* visit(const shape::Rectangle* vs) const = 0;
+
+	virtual string* visit(const ShapeManager vs) const = 0;
 };

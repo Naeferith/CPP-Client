@@ -8,17 +8,37 @@
 
 #include "Circle.h"
 #include "ShapeGroup.h"
+#include "ShapeManager.h"
 #include "SocketInOut.h"
 
 #include "SingletonWSA.h"
 #include "VisitorXML.h"
 
-#define _DEBUG_GRAPHIC_
+#define _DEBUG_MANAGER_
 
 using namespace std;
 
 int main()
 {
+#ifdef _DEBUG_MANAGER_
+	ShapeManager* shapes = ShapeManager::getInstance();
+
+	vector<Vector2D> sommets = {
+		Vector2D(50, 50),
+		Vector2D(100, 50),
+		Vector2D(100, 100),
+		Vector2D(50, 100),
+	};
+
+	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
+
+	Shape* s0 = new Shape(sommets, color);
+
+	*shapes + s0;
+
+
+#endif
+
 #ifdef _DEBUG_GRAPHIC_
 	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
 	shared_ptr<const Color> color2 = make_shared<const Color>(Color::GREEN);
