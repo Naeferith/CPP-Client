@@ -20,6 +20,8 @@ const double shape::Rectangle::getHeight() const { return height; }
 
 Vector2D shape::Rectangle::getTopLeft() const { return vertices.at(0); }
 
+string Rectangle::getName() const { return "rectangle"; }
+
 vector<Vector2D> Rectangle::getCurrentVertices() const {
 	Vector2D topLeft = getTopLeft();
 	
@@ -37,3 +39,9 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 }
 
 string * Rectangle::accept(Visitor * v) { return v->visit(this); }
+
+Rectangle::operator string() const {
+	stringstream oss;
+	oss << Shape::operator string() << " Width :" << getWidth() << " Height :" << getHeight();
+	return oss.str();
+}

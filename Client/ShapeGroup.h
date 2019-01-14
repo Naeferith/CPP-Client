@@ -60,4 +60,7 @@ public:
 	
 	/** @brief Surcharge de l'opérateur =. */
 	const ShapeGroup& operator=(const ShapeGroup& shapeGroup);
+
+	/** @brief Surcharge de l'opérateur String.*/
+	virtual operator string() const;
 };

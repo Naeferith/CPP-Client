@@ -58,3 +58,11 @@ const ShapeGroup& ShapeGroup::operator=(const ShapeGroup& s) {
 	if (this == &s) return *this;
 	return *this;
 }
+
+ShapeGroup::operator string()const {
+	ostringstream oss;
+	oss << getName() << ": ";
+	for (auto &shape : shapes)
+		oss << shape;
+	return oss.str();
+}

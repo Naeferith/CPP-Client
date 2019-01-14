@@ -41,4 +41,16 @@ public:
 
 	/** @brief Mutateur de radius. */
 	void setRadius(const int rayon);
+
+	/** @brief Surcharge de l'opérateur String. */
+	operator string() const;
+
+	/** @brief Suppression du remplacement de tableau de sommets. */
+	void setVertices(const vector<Vector2D>& sommets) = delete;
+
+	/** @brief Suppression de l'opérateur +. */
+	Shape operator+(const Vector2D & vecteur) = delete;
+
+	/** @brief Suppression de l'opérateur --. */
+	Shape operator--() = delete;
 };
