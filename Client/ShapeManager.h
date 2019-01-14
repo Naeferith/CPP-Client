@@ -1,21 +1,21 @@
 #pragma once
 
 #include "Drawable.h"
-#include <map>
+#include <vector>
 #include <memory>
 
 class ShapeManager {
 	private:
 		static ShapeManager* instance;
-		int keyIndex = 0;
-		std::map<int, Drawable*> shapes;
+		std::vector<Drawable*> shapes;
 		ShapeManager();
+
 	public:
 		~ShapeManager();
 
 		static ShapeManager* getInstance();
 
-		const std::map<int, Drawable*> getShapes() const;
+		const std::vector<Drawable*> getShapes() const;
 
 		ShapeManager* operator+(Drawable* drawable);
 

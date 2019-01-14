@@ -11,9 +11,14 @@ class Visitor;
 	Un Drawable représente tout objet dessinable sur l'écran de dessin. Il est défini par une couleur.
 */
 class Drawable {
+private:
+	static int indexId;
+
 protected:
 	/** @brief La couleur. */
 	shared_ptr<const Color> color;
+
+	int id;
 
 public:
 	/** @brief Le constructeur par défaut. */
@@ -30,6 +35,11 @@ public:
 
 	/** @brief Accesseur sur color. */
 	const Color getColor() const;
+
+	/** @brief Accesseur sur l'id. */
+	const int getId() const;
+
+	void setId(const int Id);
 
 	/** @brief Muttateur sur color. */
 	virtual void setColor(const shared_ptr<const Color>& couleur) = 0;
@@ -56,6 +66,8 @@ public:
 
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const = 0;
+
+	virtual string* accept(Visitor* v) = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const Drawable& drawable) const;

@@ -4,18 +4,17 @@
 ShapeManager* ShapeManager::instance = nullptr;
 
 ShapeManager::ShapeManager() {
-	//shapes = {};
+	shapes = {};
 }
 
 ShapeManager::~ShapeManager() {}
 
 ShapeManager* ShapeManager::getInstance() { return (instance == nullptr) ? new ShapeManager() : instance; }
 
-const std::map<int, Drawable*> ShapeManager::getShapes() const { return shapes; }
+const std::vector<Drawable*> ShapeManager::getShapes() const { return shapes; }
 
 ShapeManager* ShapeManager::operator+(Drawable* drawable) {
-	shapes.insert(std::make_pair(keyIndex, drawable));
-	keyIndex++;
+	shapes.push_back(drawable);
 	return instance;
 }
 
