@@ -27,11 +27,8 @@ public:
 	string* visit(const Circle* vs) const;
 
 	string* visit(const shape::Rectangle* vs) const;
-<<<<<<< HEAD
-=======
 
 	string* visit(const ShapeGroup* vs) const;
 
 	string* visit(const ShapeManager* vs) const;
->>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 };

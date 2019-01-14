@@ -11,11 +11,7 @@
 
 using namespace std;
 
-<<<<<<< HEAD
-class Vector3D : public Vector2D {
-=======
 struct Vector3D : public Vector2D {
->>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 public:
 
 	/** @brief La composante Z. */

@@ -4,10 +4,7 @@
 #include "SingletonWSA.h"
 
 #include <memory>
-<<<<<<< HEAD
-=======
 #include <map>
->>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 
 string VisitorXML::strVector(const Vector2D& vs) const {
 	stringstream oss;
@@ -48,11 +45,7 @@ string* VisitorXML::strXML(const Shape* vs, const string& param = "") const {
 	   Les paramètres sont des attributs propres qui ne sont pas des sommets, comme 
 	   le radius du cercle*/
 	result << 
-<<<<<<< HEAD
-		"<" << name << " id=\"" << this << "\">" << 
-=======
 		"<" << name << " id=\"" << vs->getId() << "\">" << 
->>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 			strColor(vs->getColor()) << param <<
 		"<vertices>";
 			for (auto &vertice : vs->getVertices()) result << strVector(vertice);
@@ -81,11 +74,6 @@ string* VisitorXML::visit(const Circle* vs) const {
 }
 
 string * VisitorXML::visit(const shape::Rectangle * vs) const {
-<<<<<<< HEAD
-	Shape rectangularShape(vs->getCurrentVertices(), make_shared<const Color>(vs->getColor()));
-
-	return strXML(&rectangularShape);
-=======
 	Shape* rectangularShape = new Shape(vs->getCurrentVertices(), make_shared<const Color>(vs->getColor()));
 	rectangularShape->setId(vs->getId());
 	return strXML(rectangularShape, "");
@@ -106,5 +94,4 @@ string * VisitorXML::visit(const ShapeManager * vs) const {
 		XMLS << *s->accept(new VisitorXML) << suffix;
 	}
 	return new string(XMLS.str());
->>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
 }

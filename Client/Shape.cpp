@@ -7,7 +7,9 @@
 
 using namespace std;
 
-Shape::Shape() : Drawable() {vertices.reserve(1);}
+Shape::Shape() : Drawable() {
+	vertices = {};
+}
 
 Shape::Shape(const vector<Vector2D, allocator<Vector2D>>& v, const shared_ptr<const Color>& c) : Drawable(c), vertices(v) {}
 
@@ -34,8 +36,8 @@ void Shape::Translate(const Vector2D& V) {
 
 void Shape::Scale(const Vector2D& point, const double ratio) {
 	for (auto &vertice : vertices) {
-		vertice.setX(round( (vertice.x - point.x) * ratio ));
-		vertice.setY(round( (vertice.y - point.y) * ratio ));
+		vertice.setX(round((vertice.x - point.x) * ratio) + point.x);
+		vertice.setY(round((vertice.y - point.y) * ratio) + point.y);
 	}
 }
 

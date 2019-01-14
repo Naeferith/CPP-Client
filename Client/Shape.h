@@ -43,13 +43,13 @@ public:
 	bool operator==(const Shape& shape) const;
 
 	/**	@see Drawable.Translate() */
-	void Translate(const Vector2D& vecteur);
+	virtual void Translate(const Vector2D& vecteur);
 
 	/**	@see Drawable.Scale() */
-	void Scale(const Vector2D& point, const double ratio);
+	virtual void Scale(const Vector2D& point, const double ratio);
 
 	/**	@see Drawable.Rotate() */
-	void Rotate(const Vector2D& point, const double angle);
+	virtual void Rotate(const Vector2D& point, const double angle);
 
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const;

@@ -27,8 +27,4 @@ Vector3D::operator string() const {
 	ostringstream oss;
 	oss << Vector2D::operator string() << ", Z:" << z;
 	return oss.str();
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> bafa4096d91de08c21b782d05e28f0a16617a716
