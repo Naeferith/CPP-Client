@@ -47,6 +47,8 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 
+	string* accept(Visitor* v);
+
 	/** @brief Surcharge de l'opérateur +. */
 	ShapeGroup operator+(Drawable& drawable);
 
@@ -58,4 +60,7 @@ public:
 	
 	/** @brief Surcharge de l'opérateur =. */
 	const ShapeGroup& operator=(const ShapeGroup& shapeGroup);
+
+	/** @brief Surcharge de l'opérateur String.*/
+	virtual operator string() const;
 };

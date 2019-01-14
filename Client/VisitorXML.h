@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Visitor.h"
+#include "ShapeManager.h"
 
 /**
 	@brief Fonctionnalité du DP Visieur.
@@ -26,4 +27,8 @@ public:
 	string* visit(const Circle* vs) const;
 
 	string* visit(const shape::Rectangle* vs) const;
+
+	string* visit(const ShapeGroup* vs) const;
+
+	string* visit(const ShapeManager* vs) const;
 };

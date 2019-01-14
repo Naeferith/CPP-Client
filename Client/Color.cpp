@@ -8,7 +8,8 @@ const Color Color::GREEN(0, 1, 0);
 const Color Color::RED(1, 0, 0);
 const Color Color::YELLOW(1, 1, 0);
 
-std::ostream & operator<<(std::ostream& strm, const Color& c)
-{
-	return strm << "[R: " << c.x << ", G: " << c.y << ", B: " << c.z << "]";
+Color::operator string() const {
+	ostringstream oss;
+	oss << "R:" << x << ", G:" << y << ", B:" << z;
+	return oss.str();
 }

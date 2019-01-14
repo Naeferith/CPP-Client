@@ -34,6 +34,6 @@ public:
 	/** @brief Couleur jaune (255,255,0). */
 	static const Color YELLOW;
 
-	/** @brief Surcharge de l'opérateur <<. */
-	friend ostream& operator<<(ostream& stream, const Color& couleur);
+	/** @brief Surcharge de l'opérateur String. */
+	virtual operator string() const;
 };

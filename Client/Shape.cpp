@@ -36,8 +36,8 @@ void Shape::Translate(const Vector2D& V) {
 
 void Shape::Scale(const Vector2D& point, const double ratio) {
 	for (auto &vertice : vertices) {
-		vertice.setX(round( (vertice.x - point.x) * ratio ));
-		vertice.setY(round( (vertice.y - point.y) * ratio ));
+		vertice.setX(round((vertice.x - point.x) * ratio) + point.x);
+		vertice.setY(round((vertice.y - point.y) * ratio) + point.y);
 	}
 }
 
@@ -65,4 +65,12 @@ Shape Shape::operator+(const Vector2D & vecteur) {
 Shape Shape::operator--() {
 	vertices.pop_back();
 	return *this;
+}
+
+Shape::operator string() const {
+	ostringstream oss;
+	oss << getName() << ": " << getColor() << " [>> ";
+	for (auto &vertice : getVertices()) oss << vertice << " ";
+	oss << "<<]";
+	return oss.str();
 }

@@ -8,6 +8,7 @@
 
 #include "Circle.h"
 #include "ShapeGroup.h"
+#include "ShapeManager.h"
 #include "SocketInOut.h"
 
 #include "SingletonWSA.h"
@@ -19,7 +20,28 @@ using namespace std;
 
 int main()
 {
+#ifdef _DEBUG_MANAGER_
+	ShapeManager* shapes = ShapeManager::getInstance();
+
+	vector<Vector2D> sommets = {
+		Vector2D(50, 50),
+		Vector2D(100, 50),
+		Vector2D(100, 100),
+		Vector2D(50, 100),
+	};
+
+	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
+
+	Shape* s0 = new Shape(sommets, color);
+
+	*shapes + s0;
+
+
+#endif
+
 #ifdef _DEBUG_GRAPHIC_
+	ShapeManager* shapes = ShapeManager::getInstance();
+
 	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
 	shared_ptr<const Color> color2 = make_shared<const Color>(Color::GREEN);
 	
@@ -39,7 +61,7 @@ int main()
 		Vector2D(250, 300),
 	};
 	
-	cout << cercle->getColor() << endl;
+	std::cout << cercle->getColor() << endl;
 	//Shape *carre = new Shape(sommets, color2);
 	
 	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 50, 50);
@@ -47,15 +69,24 @@ int main()
 	try {
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
+		*shapes + rect;
+		
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*cercle->accept(new VisitorXML));
-		rect->Rotate(rect->getTopLeft(), 0.785398);
-		socket.Send(*rect->accept(new VisitorXML));
+		//rect->Rotate(rect->getTopLeft(), 0.785398);
+		socket.Send(*shapes->accept(new VisitorXML));
+		
+		rect->Scale(rect->getTopLeft(), 2);
+		rect->setColor(color);
+
+		socket.Send(*shapes->accept(new VisitorXML));
+
+		//socket.Send(*rect->accept(new VisitorXML));
 		
 		
 	}
 	catch (const Erreur& e) {
-		cout << "ERREUR : " << e.what() << endl;
+		std::cout << "ERREUR : " << e.what() << endl;
 	}
 	
 

@@ -39,7 +39,25 @@ namespace shape {
 		/** @see IhasPartialVertices.getCurrentVertices() */
 		vector<Vector2D> getCurrentVertices() const;
 
+		/**	@see Drawable.Scale() */
+		void Scale(const Vector2D& point, const double ratio);
+
 		/** @brief Implémentation de la methode accept du DP Visitor. */
 		string* accept(Visitor* v);
+
+		/** @brief Retourne le nom de la classe. */
+		string getName() const;
+
+		/** @brief Surcharge de l'opérateur string. */
+		operator string() const;
+
+		/** @brief Suppression du remplacement de tableau de sommets. */
+		void setVertices(const vector<Vector2D>& sommets) = delete;
+
+		/** @brief Suppression de l'opérateur +. */
+		Shape operator+(const Vector2D & vecteur) = delete;
+
+		/** @brief Suppression de l'opérateur --. */
+		Shape operator--() = delete;
 	};
 }
