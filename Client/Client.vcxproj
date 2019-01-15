@@ -154,6 +154,11 @@
     <ClInclude Include="Erreur.h" />
     <ClInclude Include="FileHandler.h" />
     <ClInclude Include="IhasPartialVertices.h" />
+    <ClInclude Include="NodeInterface.h" />
+    <ClInclude Include="NodeInterface_Circle.h" />
+    <ClInclude Include="NodeInterface_Rectangle.h" />
+    <ClInclude Include="NodeInterface_Shape.h" />
+    <ClInclude Include="NodeInterface_ShapeGroup.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Shape.h" />
     <ClInclude Include="ShapeGroup.h" />
@@ -162,6 +167,7 @@
     <ClInclude Include="SingletonWSA.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Vector3D.h" />
     <ClInclude Include="Visitor.h" />
@@ -174,6 +180,11 @@
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Erreur.cpp" />
     <ClCompile Include="FileHandler.cpp" />
+    <ClCompile Include="NodeInterface.cpp" />
+    <ClCompile Include="NodeInterface_Circle.cpp" />
+    <ClCompile Include="NodeInterface_Rectangle.cpp" />
+    <ClCompile Include="NodeInterface_Shape.cpp" />
+    <ClCompile Include="NodeInterface_ShapeGroup.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeGroup.cpp" />
