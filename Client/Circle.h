@@ -15,14 +15,14 @@ class Circle : public Shape {
 private:
 	
 	/** @brief Le rayon du cercle. */
-	unsigned int radius;
+	double radius;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	Circle();
 
 	/** @brief Le constructeur par valeurs. */
-	Circle(const Vector2D& centre, const unsigned int rayon, const shared_ptr<const Color>& couleur);
+	Circle(const Vector2D& centre, const double rayon, const shared_ptr<const Color>& couleur);
 	
 	/** @brief Le constructeur par référence. */
 	Circle(const Circle& cercle);
@@ -43,7 +43,7 @@ public:
 	string* accept(Visitor* v);
 
 	/** @brief Mutateur de radius. */
-	void setRadius(const int rayon);
+	void setRadius(const double rayon);
 
 	/** @brief Surcharge de l'opérateur String. */
 	operator string() const;
