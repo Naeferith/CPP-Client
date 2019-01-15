@@ -9,16 +9,19 @@
 
 using namespace tinyxml2;
 
-string FileHandler::path = string("");
+string FileHandler::filePath(const string& name) {
+	stringstream ss;
+	ss << name << ".xml";
+	return ss.str();
+}
 
 void FileHandler::save(const string& name="export") {
 	//Generate export file name
-	stringstream ss;
-	ss << FileHandler::path << name << ".xml";
+	string path = filePath(name);
 
 	//Create output file
 	ofstream myfile;
-	myfile.open(ss.str());
+	myfile.open(path);
 
 	//Retrieve current shapes
 	myfile << ShapeManager::getInstance()->accept(new VisitorXML);
@@ -27,14 +30,12 @@ void FileHandler::save(const string& name="export") {
 	myfile.close();
 }
 
-void FileHandler::load(const string & name) {
+void FileHandler::load(const string & name="export") {
 	//Generate input file name
-	stringstream ss;
-	ss << FileHandler::path << name << ".xml";
+	string line, path = filePath(name);
 
 	//Open file
-	string line; //Line reader
-	ifstream myfile(ss.str());
+	ifstream myfile(path);
 	if (myfile.is_open()) {
 		XMLDocument XMLShape;
 		XMLError e;

@@ -24,7 +24,13 @@ void Circle::Scale(const Vector2D & point, const double ratio) {
 	radius *= ratio;
 }
 
-string * Circle::accept(Visitor * v) { return v->visit(this); }
+string Circle::accept(Visitor * v) {
+	string str, *ptr = v->visit(this);
+	str = *ptr;
+	
+	delete ptr;
+	return str;
+}
 
 Circle::operator string() const {
 	ostringstream oss;

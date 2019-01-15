@@ -55,7 +55,13 @@ string Shape::getName() const {
 	return string("shape");
 }
 
-string* Shape::accept(Visitor * v) { return v->visit(this); }
+string Shape::accept(Visitor * v) {
+	string str, *ptr = v->visit(this);
+	str = *ptr;
+
+	delete ptr;
+	return str;
+}
 
 Shape Shape::operator+(const Vector2D & vecteur) {
 	vertices.emplace_back(vecteur.x, vecteur.y);

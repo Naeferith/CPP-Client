@@ -20,5 +20,5 @@ class ShapeManager {
 		ShapeManager* operator+(Drawable* drawable);
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
-		string* accept(Visitor* v);
+		string accept(Visitor* v);
 };

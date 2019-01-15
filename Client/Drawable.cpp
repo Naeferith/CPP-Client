@@ -38,3 +38,11 @@ ostream & operator<<(ostream& strm, const Drawable& v)
 {
 	return strm << "[" << (string)v << "]";
 }
+
+string Drawable::accept(Visitor * v) {
+	string str, *ptr = v->visit(this);
+	str = *ptr;
+
+	delete ptr;
+	return str;
+}
