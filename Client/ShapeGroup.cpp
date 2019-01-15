@@ -4,21 +4,20 @@
 
 using namespace std;
 
-ShapeGroup::ShapeGroup() : Drawable(), shapes() {
+ShapeGroup::ShapeGroup() : Drawable() {
+	shapeGroups.push_back(this);
 }
 
-ShapeGroup::ShapeGroup(const vector<shared_ptr<Drawable>>& v, shared_ptr<const Color>& c) :
-	Drawable(c), shapes(v) {}
+ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
+	Drawable(c){ shapeGroups.push_back(this); }
 
 ShapeGroup::~ShapeGroup() {}
 
-const vector<shared_ptr<Drawable>> ShapeGroup::getShapes() const { return shapes; }
+const vector<Drawable*> ShapeGroup::getShapes() const { return shapes; }
 
 void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
 }
-
-void ShapeGroup::setShapes(const vector<shared_ptr<Drawable>>& v) { shapes = v; }
 
 void ShapeGroup::Translate(const Vector2D& vecteur) {
 	for (auto &shape : shapes) { shape->Translate(vecteur); }
@@ -38,25 +37,40 @@ string ShapeGroup::getName() const {
 
 string * ShapeGroup::accept(Visitor * v) { return v->visit(this); }
 
-ShapeGroup ShapeGroup::operator+(Drawable& d) {
-	//Si d est deja présent dans shapes, ne fait rien, sinon l'ajoute
-	shared_ptr<Drawable> ptr(&d);
-	//if (!(std::find(shapes.begin(), shapes.end(), d) != shapes.end())) shapes.push_back(ptr); //manque de surchage operateur probablement
+const vector<ShapeGroup*> ShapeGroup::getShapeGroups() const {
+	return shapeGroups;
+}
+
+ShapeGroup& ShapeGroup::operator+(Drawable* d) {
+	//Regarde dans chaque ShapeGroupe crées, y compris donc celui-ci, si le Drawable
+	//Est déjà présent
+	for (auto &shape : getShapeGroups()) {
+		if (*shape == *d) throw Erreur(-6, "Drawable already inside !");
+	}
+	
+	shapes.push_back(d);
+
 	return *this;
 }
 
-ShapeGroup ShapeGroup::operator-(Drawable& d) {
-	//shapes.erase(std::remove(shapes.begin(), shapes.end(), d), shapes.end()); //manque de surchage operateur probablement
+ShapeGroup& ShapeGroup::operator-(Drawable& d) {
+	for (vector<Drawable*>::const_iterator it = shapes.begin(); it != shapes.end(); it++) {
+		if (**it == d) {
+			shapes.erase(it);
+			return *this;
+		}
+	}
 	return *this;
 }
 
-bool ShapeGroup::operator==(const ShapeGroup& s) const {
-	return Drawable::operator==(s) && (shapes == s.shapes);
-}
-
-const ShapeGroup& ShapeGroup::operator=(const ShapeGroup& s) {
-	if (this == &s) return *this;
-	return *this;
+bool ShapeGroup::operator==(const Drawable& s) const {
+	if (getId() == s.getId()) return true;
+	
+	//On test si s est présent dans les shapes
+	for (auto &shape : getShapes()) { 
+		if (*shape == s) return true;
+	}
+	return false;
 }
 
 ShapeGroup::operator string()const {
