@@ -70,10 +70,10 @@ public:
 	virtual string* accept(Visitor* v) = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const Drawable& drawable) const;
+	virtual bool operator==(const Drawable& drawable) const;
 
 	/** @brief Surcharge de l'opérateur =. */
-	const Drawable& operator=(const Drawable& drawable);
+	virtual const Drawable& operator=(const Drawable& drawable);
 
 	/** @brief Surcharge de l'opérateur String.*/
 	virtual operator string() const = 0;
