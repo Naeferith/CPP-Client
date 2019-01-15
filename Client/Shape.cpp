@@ -51,9 +51,7 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 	rotationAngle = fmod(rotationAngle + rad, 2 * MY_PI);
 }
 
-string Shape::getName() const {
-	return string("shape");
-}
+string Shape::getName() const {	return string("shape"); }
 
 string* Shape::accept(Visitor * v) { return v->visit(this); }
 
