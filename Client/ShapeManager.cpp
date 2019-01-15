@@ -3,9 +3,7 @@
 
 ShapeManager* ShapeManager::instance = nullptr;
 
-ShapeManager::ShapeManager() {
-	shapes = {};
-}
+ShapeManager::ShapeManager() {}
 
 ShapeManager::~ShapeManager() {}
 
