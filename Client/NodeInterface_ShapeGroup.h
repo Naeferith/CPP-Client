@@ -8,4 +8,6 @@ public:
 	~NodeInterface_ShapeGroup();
 
 	void executeRequest(XMLDocument& xml) override;
+
+	const vector<Vector2D> retrieveVertices(XMLDocument& doc);
 };

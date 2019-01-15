@@ -8,13 +8,5 @@ NodeInterface_Shape::NodeInterface_Shape(NodeInterface* ni) : NodeInterface(ni) 
 NodeInterface_Shape::~NodeInterface_Shape() {}
 
 void NodeInterface_Shape::executeRequest(XMLDocument& xml) {
-	ShapeManager::getInstance()->operator+ (
-		new Shape(
-			vector<Vector2D>(
-
-				), 
-			make_shared<const Color>(Color::BLACK)
-		));
-
-	XMLElement* color = xml.FirstChildElement("color");
+	ShapeManager::getInstance()->operator+ (new Shape(retrieveVertices(xml), retrieveColor(xml)));
 }

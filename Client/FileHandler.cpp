@@ -47,8 +47,8 @@ void FileHandler::load(const string & name) {
 		NodeInterface* chain = nullptr;
 		chain = new NodeInterface_Shape(chain);
 		chain = new NodeInterface_Circle(chain);
-		chain = new NodeInterface_Rectangle(chain);
-		chain = new NodeInterface_ShapeGroup(chain);
+		//chain = new NodeInterface_Rectangle(chain);
+		//chain = new NodeInterface_ShapeGroup(chain);
 
 		while (getline(myfile, line)) {
 			//Each line should be an XML Drawable
@@ -57,10 +57,10 @@ void FileHandler::load(const string & name) {
 			e = XMLShape.Parse(line.c_str());		//Parse line as XML
 			if (e != XML_SUCCESS) break;			//Check if XML is valid
 
-			XMLNode* root = XMLShape.FirstChild();	//Retrieve root node -> Shape specification
-			if (root == nullptr) break;				//Check if XML is not empty
-
-			chain->interact(root);
+			try {
+				chain->interact(XMLShape);
+			}
+			catch (const Erreur& e) { std::cout << e.what() << std::endl; }
 		}
 		myfile.close();
 	}
