@@ -152,6 +152,7 @@
     <ClInclude Include="Color.h" />
     <ClInclude Include="Drawable.h" />
     <ClInclude Include="Erreur.h" />
+    <ClInclude Include="FileHandler.h" />
     <ClInclude Include="IhasPartialVertices.h" />
     <ClInclude Include="Rectangle.h" />
     <ClInclude Include="Shape.h" />
@@ -172,6 +173,7 @@
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Drawable.cpp" />
     <ClCompile Include="Erreur.cpp" />
+    <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="Rectangle.cpp" />
     <ClCompile Include="Shape.cpp" />
     <ClCompile Include="ShapeGroup.cpp" />
@@ -184,6 +186,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Vector3D.cpp" />
     <ClCompile Include="VisitorXML.cpp" />
