@@ -47,8 +47,8 @@ void FileHandler::load(const string & name) {
 		NodeInterface* chain = nullptr;
 		chain = new NodeInterface_Shape(chain);
 		chain = new NodeInterface_Circle(chain);
-		//chain = new NodeInterface_Rectangle(chain);
-		//chain = new NodeInterface_ShapeGroup(chain);
+		chain = new NodeInterface_Rectangle(chain);
+		chain = new NodeInterface_ShapeGroup(chain);
 
 		while (getline(myfile, line)) {
 			//Each line should be an XML Drawable

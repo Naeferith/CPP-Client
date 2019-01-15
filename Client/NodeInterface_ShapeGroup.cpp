@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "NodeInterface_ShapeGroup.h"
 
-NodeInterface_ShapeGroup::NodeInterface_ShapeGroup(NodeInterface * ni) {
+NodeInterface_ShapeGroup::NodeInterface_ShapeGroup(NodeInterface * ni) : NodeInterface(ni) {
 	drawable = new ShapeGroup();
 }
 
