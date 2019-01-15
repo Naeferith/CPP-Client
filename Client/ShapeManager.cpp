@@ -9,7 +9,10 @@ ShapeManager::ShapeManager() {
 
 ShapeManager::~ShapeManager() {}
 
-ShapeManager* ShapeManager::getInstance() { return (instance == nullptr) ? new ShapeManager() : instance; }
+ShapeManager* ShapeManager::getInstance() {
+	if (instance == nullptr) instance = new ShapeManager();
+	return instance; 
+}
 
 const std::vector<Drawable*> ShapeManager::getShapes() const { return shapes; }
 
