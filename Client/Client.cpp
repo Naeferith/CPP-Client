@@ -10,6 +10,7 @@
 #include "ShapeGroup.h"
 #include "ShapeManager.h"
 #include "SocketInOut.h"
+#include "FileHandler.h"
 
 #include "SingletonWSA.h"
 #include "VisitorXML.h"
@@ -40,10 +41,11 @@ int main()
 #endif
 
 #ifdef _DEBUG_GRAPHIC_
+	FileHandler::load("import");
 	ShapeManager* shapes = ShapeManager::getInstance();
 
-	shared_ptr<const Color> color = make_shared<const Color>(Color::RED);
-	shared_ptr<const Color> color2 = make_shared<const Color>(Color::GREEN);
+	shared_ptr<const Color> color = make_shared<const Color>(Color::retrieveDefaultColor(1,0,0));
+	shared_ptr<const Color> color2 = make_shared<const Color>(Color::retrieveDefaultColor(0,1,0));
 	
 	Circle *cercle = new Circle(Vector2D(400,100), 20, color);
 
@@ -69,7 +71,7 @@ int main()
 	try {
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
-		*shapes + rect;
+		//*shapes + rect;
 		
 		//socket.Send(*carre->accept(new VisitorXML));
 		//socket.Send(*cercle->accept(new VisitorXML));

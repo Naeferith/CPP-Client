@@ -8,7 +8,7 @@ int Drawable::indexId = 0;
 void Drawable::setId(const int Id) { id = Id; }
 
 Drawable::Drawable() : id(++Drawable::indexId) {
-	color = make_shared<const Color>(Color::BLACK);
+	color = make_shared<const Color>(Color::retrieveDefaultColor(0,0,0));
 }
 
 Drawable::Drawable(const shared_ptr<const Color>& c) : color(c), id(++Drawable::indexId) {}

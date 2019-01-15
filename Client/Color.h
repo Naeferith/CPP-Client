@@ -1,7 +1,9 @@
 #pragma once
 
 #include <iostream>
+#include <map>
 #include "Vector3D.h"
+
 
 using namespace std;
 
@@ -16,23 +18,17 @@ private:
 	Color(const double r, const double g, const double b) : Vector3D(r, g, b) {}
 
 public:
-	/** @brief Couleur noire (0,0,0). */
-	static const Color BLACK;
+	/** @brief Collection des couleurs par défaut. */
+	static const map<string, const Color> colors;
 
-	/** @brief Couleur bleue (0,0,255). */
-	static const Color BLUE;
-
-	/** @brief Couleur cyan (0,255,255). */
-	static const Color CYAN;
-
-	/** @brief Couleur verte (0,255,0). */
-	static const Color GREEN;
-
-	/** @brief Couleur rouge (255,0,0). */
-	static const Color RED;
-
-	/** @brief Couleur jaune (255,255,0). */
-	static const Color YELLOW;
+	/** 
+		@brief Recherche une couleur par défaut. 
+		@param r La composante R.
+		@param g La composante G.
+		@param b La composante B.
+		@return La couleur si trouvée, BLACK(0,0,0) sinon.
+	*/
+	static const Color retrieveDefaultColor(const double r, const double g, const double b);
 
 	/** @brief Surcharge de l'opérateur String. */
 	virtual operator string() const;
