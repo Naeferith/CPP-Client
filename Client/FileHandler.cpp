@@ -6,6 +6,10 @@
 #include <fstream>
 
 #include "tinyxml2.h"
+#include "NodeInterface_Shape.h"
+#include "NodeInterface_ShapeGroup.h"
+#include "NodeInterface_Circle.h"
+#include "NodeInterface_Rectangle.h"
 
 using namespace tinyxml2;
 
@@ -38,6 +42,14 @@ void FileHandler::load(const string & name) {
 	if (myfile.is_open()) {
 		XMLDocument XMLShape;
 		XMLError e;
+
+		//Responsability chain
+		NodeInterface* chain = nullptr;
+		chain = new NodeInterface_Shape(chain);
+		chain = new NodeInterface_Circle(chain);
+		chain = new NodeInterface_Rectangle(chain);
+		chain = new NodeInterface_ShapeGroup(chain);
+
 		while (getline(myfile, line)) {
 			//Each line should be an XML Drawable
 			//Thus, interpret each line as an XMLDocument
@@ -48,12 +60,7 @@ void FileHandler::load(const string & name) {
 			XMLNode* root = XMLShape.FirstChild();	//Retrieve root node -> Shape specification
 			if (root == nullptr) break;				//Check if XML is not empty
 
-			//root->Value();
-
-
-
-
-
+			chain->interact(root);
 		}
 		myfile.close();
 	}
