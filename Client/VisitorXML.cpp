@@ -3,6 +3,9 @@
 #include "SocketInOut.h"
 #include "SingletonWSA.h"
 
+#include <memory>
+#include <map>
+
 string VisitorXML::strVector(const Vector2D& vs) const {
 	stringstream oss;
 	oss	<<
@@ -42,7 +45,7 @@ string* VisitorXML::strXML(const Shape* vs, const string& param = "") const {
 	   Les paramètres sont des attributs propres qui ne sont pas des sommets, comme 
 	   le radius du cercle*/
 	result << 
-		"<" << name << " id=\"" << this << "\">" << 
+		"<" << name << " id=\"" << vs->getId() << "\">" << 
 			strColor(vs->getColor()) << param <<
 		"<vertices>";
 			for (auto &vertice : vs->getVertices()) result << strVector(vertice);
@@ -52,6 +55,12 @@ string* VisitorXML::strXML(const Shape* vs, const string& param = "") const {
 	return new string(result.str());
 }
 
+string VisitorXML::makeMarkup(const string& tagName, const double value) {
+	stringstream result;
+	result << "<" << tagName << ">" << value << "</" << tagName << ">";
+	return result.str();
+}
+
 string* VisitorXML::visit(const Shape * vs) const{
 	return strXML(vs);
 }
@@ -59,7 +68,30 @@ string* VisitorXML::visit(const Shape * vs) const{
 string* VisitorXML::visit(const Circle* vs) const {
 	stringstream param;
 	//Un cercle possède un radius qui n'est pas un sommet. On l'ajoute donc en paramètre.
-	param << "<radius>" << vs->getRadius() << "</radius>";
+	param << makeMarkup("radius", vs->getRadius());
 
 	return strXML(vs, param.str());
+}
+
+string * VisitorXML::visit(const shape::Rectangle * vs) const {
+	Shape* rectangularShape = new Shape(vs->getCurrentVertices(), make_shared<const Color>(vs->getColor()));
+	rectangularShape->setId(vs->getId());
+	return strXML(rectangularShape, "");
+}
+
+string * VisitorXML::visit(const ShapeGroup * vs) const
+{
+	return nullptr;
+}
+
+string * VisitorXML::visit(const ShapeManager * vs) const {
+	stringstream XMLS;
+	string suffix;
+	vector<Drawable*> m = vs->getShapes();
+	for (auto s : m) {
+		
+		suffix = (s == m.back()) ? "" : "\r\n";
+		XMLS << *s->accept(new VisitorXML) << suffix;
+	}
+	return new string(XMLS.str());
 }

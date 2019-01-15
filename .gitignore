@@ -35,3 +35,11 @@
 *.db
 .vs/Client/v15/.suo
 *.ipch
+*.log
+*.tlog
+*.lastbuildstate
+*.idb
+*.pdb
+*.ilk
+*.codeanalysisast
+*.opendb

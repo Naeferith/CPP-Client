@@ -3,6 +3,8 @@
 #include <sstream>
 #include <Ws2tcpip.h>
 
+#pragma comment(lib, "ws2_32.lib")
+
 
 /** 
 	@brief Socket de dialogue. 

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Visitor.h"
+#include "ShapeManager.h"
 
 /**
 	@brief Fonctionnalité du DP Visieur.
@@ -18,8 +19,16 @@ private:
 	/** @brief Retourne sous forme XML en ajoutant les paramètres. */
 	string* strXML(const Shape* vs, const string& param) const;
 
+	static string makeMarkup(const string& tagName, const double value);
+
 public:
 	string* visit(const Shape* vs) const;
 
 	string* visit(const Circle* vs) const;
+
+	string* visit(const shape::Rectangle* vs) const;
+
+	string* visit(const ShapeGroup* vs) const;
+
+	string* visit(const ShapeManager* vs) const;
 };
