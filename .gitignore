@@ -41,3 +41,5 @@
 *.idb
 *.pdb
 *.ilk
+*.codeanalysisast
+*.opendb
