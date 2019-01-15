@@ -14,7 +14,7 @@ ShapeManager* ShapeManager::getInstance() {
 	return instance; 
 }
 
-const std::vector<Drawable*> ShapeManager::getShapes() const { return shapes; }
+const std::vector<Drawable*> ShapeManager::getShapes() { return getInstance()->shapes; }
 
 ShapeManager* ShapeManager::operator+(Drawable* drawable) {
 	shapes.push_back(drawable);

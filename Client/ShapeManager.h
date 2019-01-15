@@ -15,7 +15,7 @@ class ShapeManager {
 
 		static ShapeManager* getInstance();
 
-		const std::vector<Drawable*> getShapes() const;
+		static const std::vector<Drawable*> getShapes();
 
 		ShapeManager* operator+(Drawable* drawable);
 
