@@ -1,6 +1,8 @@
 #pragma once
 #include <Ws2tcpip.h>
 
+#pragma comment(lib, "ws2_32.lib")
+
 /**
 	@brief Singleton de WSA
 
