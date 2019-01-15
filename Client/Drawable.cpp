@@ -22,13 +22,12 @@ const Color Drawable::getColor() const { return *color; }
 const int Drawable::getId() const { return id; }
 
 bool Drawable::operator==(const Drawable& d) const {
-	return id==d.id && color==d.color;
+	return id == d.id;
 }
 
 const Drawable& Drawable::operator=(const Drawable &d)
 {
 	if (this != &d) {
-		id = d.id;
 		color = d.color;
 	}
 	return *this;
