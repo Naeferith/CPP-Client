@@ -8,5 +8,5 @@ NodeInterface_Rectangle::NodeInterface_Rectangle(NodeInterface * ni) : NodeInter
 NodeInterface_Rectangle::~NodeInterface_Rectangle() {}
 
 void NodeInterface_Rectangle::executeRequest(XMLDocument& xml) {
-	ShapeManager::getInstance()->operator+ (new shape::Rectangle(retrieveVertices(xml).at(0), retrieveColor(xml), retrieveDoubleProperty(xml, "width"), retrieveDoubleProperty(xml, "height")));
+	ShapeManager::getInstance()->operator+ (make_shared<shape::Rectangle>(retrieveVertices(xml).at(0), retrieveColor(xml), retrieveDoubleProperty(xml, "width"), retrieveDoubleProperty(xml, "height")));
 }

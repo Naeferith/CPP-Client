@@ -8,5 +8,5 @@ NodeInterface_Shape::NodeInterface_Shape(NodeInterface* ni) : NodeInterface(ni) 
 NodeInterface_Shape::~NodeInterface_Shape() {}
 
 void NodeInterface_Shape::executeRequest(XMLDocument& xml) {
-	ShapeManager::getInstance()->operator+ (new Shape(retrieveVertices(xml), retrieveColor(xml)));
+	ShapeManager::getInstance()->operator+ (make_shared<Shape>(retrieveVertices(xml), retrieveColor(xml)));
 }

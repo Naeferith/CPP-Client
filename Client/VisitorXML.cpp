@@ -87,7 +87,7 @@ string * VisitorXML::visit(const ShapeGroup * vs) const
 string * VisitorXML::visit(const ShapeManager * vs) const {
 	stringstream XMLS;
 	string suffix;
-	vector<Drawable*> m = vs->getShapes();
+	vector<shared_ptr<Drawable>> m = vs->getShapes();
 	for (auto s : m) {
 		
 		suffix = (s == m.back()) ? "" : "\r\n";

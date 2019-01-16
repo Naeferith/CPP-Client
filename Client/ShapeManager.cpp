@@ -14,9 +14,9 @@ ShapeManager* ShapeManager::getInstance() {
 	return instance; 
 }
 
-const std::vector<Drawable*> ShapeManager::getShapes() const { return shapes; }
+const std::vector<shared_ptr<Drawable>> ShapeManager::getShapes() const { return shapes; }
 
-ShapeManager* ShapeManager::operator+(Drawable* drawable) {
+ShapeManager* ShapeManager::operator+(shared_ptr<Drawable> drawable) {
 	shapes.push_back(drawable);
 	return instance;
 }
