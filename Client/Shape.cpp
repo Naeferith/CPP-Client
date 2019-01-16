@@ -3,8 +3,6 @@
 #include "SingletonWSA.h"
 #include <math.h>
 
-# define MY_PI 3.14159265358979323846 
-
 using namespace std;
 
 Shape::Shape() : Drawable() {
@@ -35,10 +33,17 @@ void Shape::Translate(const Vector2D& V) {
 double Shape::Area() const {
 	//L'air d'un point ou d'un segment est null
 	if (vertices.size() < 3) return 0;
-	
-	for (int k = 0; k < vertices.size(); k++) {
 
+	double area = 0;
+	size_t size = vertices.size() - 1;
+	Vector2D a = vertices.at(0), b, c;
+
+	for (int k = 1; k < size; ++k) {
+		b = vertices.at(k);
+		c = vertices.at(k+1);
+		area += 0.5*Det(a, b, c);
 	}
+	return area;
 }
 
 void Shape::Scale(const Vector2D& point, const double ratio) {

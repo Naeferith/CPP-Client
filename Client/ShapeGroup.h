@@ -31,6 +31,9 @@ public:
 	/** @brief Accesseur por shapes. */
 	const vector<Drawable*>& getShapes() const;
 
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const;
+
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
 

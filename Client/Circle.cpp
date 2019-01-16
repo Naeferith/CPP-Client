@@ -13,6 +13,10 @@ Circle::Circle(const Circle& c) : Shape(c), radius(c.radius) {}
 Circle::~Circle() {
 }
 
+double Circle::Area() const {
+	return MY_PI * radius * radius;
+}
+
 const double Circle::getRadius() const { return radius; }
 
 void Circle::setRadius(const double i) { radius = i; }

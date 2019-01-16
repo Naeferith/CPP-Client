@@ -39,6 +39,9 @@ namespace shape {
 		/** @see IhasPartialVertices.getCurrentVertices() */
 		vector<Vector2D> getCurrentVertices() const;
 
+		/** @brief Retourne l'aire du Drawable. **/
+		virtual double Area() const;
+
 		/**	@see Drawable.Scale() */
 		void Scale(const Vector2D& point, const double ratio);
 

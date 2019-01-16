@@ -33,6 +33,9 @@ public:
 	/** @brief Accesseur de radius. */
 	const double getRadius() const;
 
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const;
+
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 

@@ -7,18 +7,18 @@ Rectangle::Rectangle() : Shape(), width(0), height(0) {
 	vertices.reserve(1);
 }
 
-shape::Rectangle::Rectangle(const Vector2D & topLeft, const shared_ptr<const Color>& couleur, double width, double height) : Shape(vector<Vector2D>(), couleur), width(width), height(height) {
+Rectangle::Rectangle(const Vector2D & topLeft, const shared_ptr<const Color>& couleur, double width, double height) : Shape(vector<Vector2D>(), couleur), width(width), height(height) {
 	vertices.reserve(1);
 	vertices.emplace_back(topLeft.x, topLeft.y);
 }
 
 Rectangle::~Rectangle() {}
 
-const double shape::Rectangle::getWidth() const { return width; }
+const double Rectangle::getWidth() const { return width; }
 
-const double shape::Rectangle::getHeight() const { return height; }
+const double Rectangle::getHeight() const { return height; }
 
-Vector2D shape::Rectangle::getTopLeft() const { return vertices.at(0); }
+Vector2D Rectangle::getTopLeft() const { return vertices.at(0); }
 
 string Rectangle::getName() const { return "rectangle"; }
 
@@ -38,7 +38,14 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 	return temp.getVertices();
 }
 
-void shape::Rectangle::Scale(const Vector2D & point, const double ratio) {
+double Rectangle::Area() const {
+	Vector2D a = getTopLeft(),
+		b = Vector2D(a.x + width, a.y),
+		c = Vector2D(a.x, a.y + height);
+	return Det(a, b, c);
+}
+
+void Rectangle::Scale(const Vector2D & point, const double ratio) {
 	Shape::Scale(point, ratio);
 	width  *= ratio;
 	height *= ratio;

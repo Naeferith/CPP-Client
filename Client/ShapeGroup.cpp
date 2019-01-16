@@ -13,6 +13,12 @@ ShapeGroup::~ShapeGroup() { for (auto &shape : shapes) shape->setGroup(NULL); }
 
 const vector<Drawable*>& ShapeGroup::getShapes() const { return shapes; }
 
+double ShapeGroup::Area() const {
+	double sum = 0;
+	for (auto &shape : shapes) sum += shape->Area();
+	return sum;
+}
+
 void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
 }
