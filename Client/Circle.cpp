@@ -13,7 +13,7 @@ Circle::Circle(const Circle& c) : Shape(c), radius(c.radius) {}
 Circle::~Circle() {
 }
 
-const int Circle::getRadius() const { return radius; }
+const double Circle::getRadius() const { return radius; }
 
 void Circle::setRadius(const double i) { radius = i; }
 

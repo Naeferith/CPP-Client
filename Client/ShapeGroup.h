@@ -52,10 +52,10 @@ public:
 	ShapeGroup& operator+(Drawable* drawable);
 
 	/** @brief Surcharge de l'opérateur -. */
-	ShapeGroup& operator-(Drawable& drawable);
+	ShapeGroup& operator-(Drawable* drawable);
 
 	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const Drawable& shapeGroup) const;
+	bool operator==(const Drawable* shapeGroup) const;
 
 	/** @brief Surcharge de l'opérateur String.*/
 	virtual operator string() const;

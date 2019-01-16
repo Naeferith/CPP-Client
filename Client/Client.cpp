@@ -63,28 +63,23 @@ int main()
 		Vector2D(250, 300),
 	};
 	
-	std::cout << cercle->getColor() << endl;
-	//Shape *carre = new Shape(sommets, color2);
-	
+	Shape* shape = new Shape(sommets, color);
+	Circle* circle = new Circle(Vector2D(), 50, color);
 	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 50, 50);
+	ShapeGroup* shpgrp = new ShapeGroup(color);
 
 	try {
 		SingletonWSA::getInstance();
-		SocketInOut socket = SocketInOut();
-		//*shapes + rect;
-		
-		//socket.Send(*carre->accept(new VisitorXML));
-		//socket.Send(*cercle->accept(new VisitorXML));
-		//rect->Rotate(rect->getTopLeft(), 0.785398);
-		socket.Send(*shapes->accept(new VisitorXML));
-		
-		rect->Scale(rect->getTopLeft(), 2);
-		rect->setColor(color);
+		//SocketInOut socket = SocketInOut();
 
-		socket.Send(*shapes->accept(new VisitorXML));
-
-		//socket.Send(*rect->accept(new VisitorXML));
-		
+		cout << *shape << endl;
+		cout << *circle << endl;
+		cout << *rect << endl;
+		*shpgrp + shape;
+		*shpgrp + circle;
+		*shpgrp + rect;
+		*shpgrp - shape;
+		cout << *shpgrp << endl;
 		
 	}
 	catch (const Erreur& e) {

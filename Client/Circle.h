@@ -31,7 +31,7 @@ public:
 	~Circle();
 
 	/** @brief Accesseur de radius. */
-	const int getRadius() const;
+	const double getRadius() const;
 
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;

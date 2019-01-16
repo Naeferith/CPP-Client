@@ -38,31 +38,32 @@ string * ShapeGroup::accept(Visitor * v) { return v->visit(this); }
 ShapeGroup& ShapeGroup::operator+(Drawable* d) {
 	//Regarde dans chaque ShapeGroupe crées, y compris donc celui-ci, si le Drawable
 	//Est déjà présent
-	if (d->getGroup) throw Erreur(-6, "Drawable already in a group !");
+	if (d->getGroup()) throw Erreur(-6, "Drawable already in a group !");
 	
 	d->setGroup(this);
+	d->setColor(make_shared<const Color>(getColor()));
 	shapes.push_back(d);
 
 	return *this;
 }
 
-ShapeGroup& ShapeGroup::operator-(Drawable& d) {
+ShapeGroup& ShapeGroup::operator-(Drawable* d) {
 	for (vector<Drawable*>::const_iterator it = shapes.begin(); it != shapes.end(); it++) {
-		if (**it == d) {
+		if (**it == *d) {
 			shapes.erase(it);
-			d.setGroup(NULL);
+			d->setGroup(NULL);
 			return *this;
 		}
 	}
 	return *this;
 }
 
-bool ShapeGroup::operator==(const Drawable& s) const {
-	if (getId() == s.getId()) return true;
+bool ShapeGroup::operator==(const Drawable* s) const {
+	if (getId() == s->getId()) return true;
 	
 	//On test si s est présent dans les shapes
 	for (auto &shape : getShapes()) { 
-		if (*shape == s) return true;
+		if (*shape == *s) return true;
 	}
 	return false;
 }
@@ -71,6 +72,6 @@ ShapeGroup::operator string()const {
 	ostringstream oss;
 	oss << getName() << ": ";
 	for (auto &shape : shapes)
-		oss << shape;
+		oss << *shape;
 	return oss.str();
 }
