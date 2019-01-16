@@ -26,7 +26,7 @@ public:
 	/** @brief Le destructeur. On copie simplement les pointeurs,
 	On ne doit donc pas libérer chaque Drawable* ici, mais dans la zone
 	de Création. */
-	~ShapeGroup();
+	virtual ~ShapeGroup();
 
 	/** @brief Accesseur por shapes. */
 	const vector<Drawable*>& getShapes() const;

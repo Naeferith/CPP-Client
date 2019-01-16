@@ -9,7 +9,7 @@ ShapeGroup::ShapeGroup() : Drawable() {}
 ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
 	Drawable(c) {}
 
-ShapeGroup::~ShapeGroup() {}
+ShapeGroup::~ShapeGroup() { for (auto &shape : shapes) shape->setGroup(NULL); }
 
 const vector<Drawable*>& ShapeGroup::getShapes() const { return shapes; }
 
