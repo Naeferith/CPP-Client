@@ -29,7 +29,7 @@ public:
 	~ShapeGroup();
 
 	/** @brief Accesseur por shapes. */
-	const vector<shared_ptr<Drawable>> getShapes() const;
+	const vector<Drawable*>& getShapes() const;
 
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);

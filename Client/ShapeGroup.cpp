@@ -11,7 +11,7 @@ ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
 
 ShapeGroup::~ShapeGroup() {}
 
-const vector<shared_ptr<Drawable>> ShapeGroup::getShapes() const { return shapes; }
+const vector<Drawable*>& ShapeGroup::getShapes() const { return shapes; }
 
 void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
