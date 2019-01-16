@@ -36,6 +36,9 @@ public:
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
 
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const;
+
 	/** @brief Mutateur pour vertices. */
 	void setVertices(const vector<Vector2D>& sommets);
 

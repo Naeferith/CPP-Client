@@ -30,6 +30,13 @@ void Shape::Translate(const Vector2D& V) {
 	}
 }
 
+double Shape::Area() const {
+	//L'air d'un point ou d'un segment est null
+	if (vertices.size() < 3) return 0;
+	
+	for(auto &vertice : vertices)
+}
+
 void Shape::Scale(const Vector2D& point, const double ratio) {
 	for (auto &vertice : vertices) {
 		vertice.setX(round((vertice.x - point.x) * ratio) + point.x);

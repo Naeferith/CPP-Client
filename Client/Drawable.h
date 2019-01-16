@@ -54,6 +54,12 @@ public:
 	/** @brief Muttateur de group. */
 	void setGroup(ShapeGroup* grp);
 
+	/** @brief Retourne le determinant. */
+	static double Det(const Vector2D&, const Vector2D&, const Vector2D&);
+
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const = 0;
+
 	/**
 		@brief Applique une translation.
 		@param vecteur Le vecteur de translation.

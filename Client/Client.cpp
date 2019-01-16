@@ -72,14 +72,14 @@ int main()
 		SingletonWSA::getInstance();
 		//SocketInOut socket = SocketInOut();
 
-		cout << *shape << endl;
+		/*cout << *shape << endl;
 		cout << *circle << endl;
-		cout << *rect << endl;
+		cout << *rect << endl;*/
 		*shpgrp + shape;
 		*shpgrp + circle;
 		*shpgrp + rect;
 		*shpgrp - shape;
-		cout << *shpgrp << endl;
+		cout << *shpgrp->accept(new VisitorXML) << endl;
 		
 	}
 	catch (const Erreur& e) {
