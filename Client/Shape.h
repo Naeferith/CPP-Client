@@ -42,9 +42,6 @@ public:
 	/** @brief Mutateur pour vertices. */
 	void setVertices(const vector<Vector2D>& sommets);
 
-	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const Shape& shape) const;
-
 	/**	@see Drawable.Translate() */
 	virtual void Translate(const Vector2D& vecteur);
 

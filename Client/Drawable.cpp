@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Drawable.h"
+#include "ShapeGroup.h"
 
 using namespace std;
 
@@ -17,18 +18,25 @@ Drawable::Drawable(const Drawable& d) : color(d.color), id(d.id) {}
 
 Drawable::~Drawable() {}
 
+ShapeGroup* Drawable::getGroup() {
+	return group;
+}
+
+void Drawable::setGroup(ShapeGroup* grp) {
+	group = grp;
+}
+
 const Color Drawable::getColor() const { return *color; }
 
 const int Drawable::getId() const { return id; }
 
 bool Drawable::operator==(const Drawable& d) const {
-	return id==d.id && color==d.color;
+	return id == d.id;
 }
 
 const Drawable& Drawable::operator=(const Drawable &d)
 {
 	if (this != &d) {
-		id = d.id;
 		color = d.color;
 	}
 	return *this;

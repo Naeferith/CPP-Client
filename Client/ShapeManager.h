@@ -15,10 +15,10 @@ class ShapeManager {
 
 		static ShapeManager* getInstance();
 
-		const std::vector<shared_ptr<Drawable>> getShapes() const;
+		const std::vector<shared_ptr<Drawable>> getShapes() const
 
 		ShapeManager* operator+(shared_ptr<Drawable> drawable);
 
-		/** @brief Implémentation de la methode accept du DP Visitor. */
+		/** @brief ImplÃ©mentation de la methode accept du DP Visitor. */
 		string* accept(Visitor* v);
 };

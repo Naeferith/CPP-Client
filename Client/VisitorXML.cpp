@@ -76,12 +76,21 @@ string* VisitorXML::visit(const Circle* vs) const {
 string * VisitorXML::visit(const shape::Rectangle * vs) const {
 	Shape* rectangularShape = new Shape(vs->getCurrentVertices(), make_shared<const Color>(vs->getColor()));
 	rectangularShape->setId(vs->getId());
-	return strXML(rectangularShape, "");
+	return strXML(rectangularShape);
 }
 
 string * VisitorXML::visit(const ShapeGroup * vs) const
 {
-	return nullptr;
+	stringstream oss;
+	string *str, name = vs->getName();
+	oss << "<" << name << ">";
+	for (auto &shape : vs->getShapes()) {
+		str = shape->accept(new VisitorXML);
+		oss << *str;
+		delete(str);
+	}
+	oss << "</" << name << ">";
+	return new string(oss.str());
 }
 
 string * VisitorXML::visit(const ShapeManager * vs) const {

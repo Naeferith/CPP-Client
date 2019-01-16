@@ -14,26 +14,25 @@ using namespace std;
 class ShapeGroup : public Drawable {
 private:
 	/** @brief La liste des formes. */
-	vector<shared_ptr<Drawable>> shapes;
+	vector<Drawable*> shapes;
 
 public:
 	/** @brief Le constructeur par défaut. */
 	ShapeGroup();
 
 	/** @brief Le constructeur par valeurs. */
-	ShapeGroup(const vector<shared_ptr<Drawable>>& formes, shared_ptr<const Color>& couleur);
+	ShapeGroup(shared_ptr<const Color>& couleur);
 
-	/** @brief Le destructeur. */
-	~ShapeGroup();
+	/** @brief Le destructeur. On copie simplement les pointeurs,
+	On ne doit donc pas libérer chaque Drawable* ici, mais dans la zone
+	de Création. */
+	virtual ~ShapeGroup();
 
 	/** @brief Accesseur por shapes. */
-	const vector<shared_ptr<Drawable>> getShapes() const;
+	const vector<Drawable*>& getShapes() const;
 
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
-
-	/** @brief Mutateur pour shapes. */
-	void setShapes(const vector<shared_ptr<Drawable>>& formes);
 
 	/**	@see Drawable.Translate() */
 	void Translate(const Vector2D& vecteur);
@@ -50,16 +49,13 @@ public:
 	string* accept(Visitor* v);
 
 	/** @brief Surcharge de l'opérateur +. */
-	ShapeGroup operator+(Drawable& drawable);
+	ShapeGroup& operator+(Drawable* drawable);
 
 	/** @brief Surcharge de l'opérateur -. */
-	ShapeGroup operator-(Drawable& drawable);
+	ShapeGroup& operator-(Drawable* drawable);
 
 	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const ShapeGroup& shapeGroup) const;
-	
-	/** @brief Surcharge de l'opérateur =. */
-	const ShapeGroup& operator=(const ShapeGroup& shapeGroup);
+	bool operator==(const Drawable* shapeGroup) const;
 
 	/** @brief Surcharge de l'opérateur String.*/
 	virtual operator string() const;
