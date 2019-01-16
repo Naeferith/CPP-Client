@@ -14,7 +14,7 @@ using namespace std;
 class ShapeGroup : public Drawable {
 private:
 	/** @brief La liste des formes. */
-	vector<Drawable*> shapes;
+	vector<shared_ptr<Drawable>> shapes;
 
 public:
 	/** @brief Le constructeur par défaut. */
@@ -29,7 +29,7 @@ public:
 	virtual ~ShapeGroup();
 
 	/** @brief Accesseur por shapes. */
-	const vector<Drawable*>& getShapes() const;
+	const vector<shared_ptr<Drawable>>& getShapes() const;
 
 	/** @brief Retourne l'aire du Drawable. **/
 	virtual double Area() const;
@@ -52,13 +52,13 @@ public:
 	string* accept(Visitor* v);
 
 	/** @brief Surcharge de l'opérateur +. */
-	ShapeGroup& operator+(Drawable* drawable);
+	ShapeGroup& operator+(shared_ptr<Drawable> drawable);
 
 	/** @brief Surcharge de l'opérateur -. */
-	ShapeGroup& operator-(Drawable* drawable);
+	ShapeGroup& operator-(shared_ptr<Drawable> drawable);
 
 	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const Drawable* shapeGroup) const;
+	bool operator==(const shared_ptr<Drawable> shapeGroup) const;
 
 	/** @brief Surcharge de l'opérateur String.*/
 	virtual operator string() const;
