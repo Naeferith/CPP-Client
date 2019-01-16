@@ -13,6 +13,8 @@ Shape::Shape() : Drawable() {
 
 Shape::Shape(const vector<Vector2D, allocator<Vector2D>>& v, const shared_ptr<const Color>& c) : Drawable(c), vertices(v) {}
 
+Shape::Shape(const Shape & s) : Drawable(s.color), vertices(s.vertices) {}
+
 Shape::~Shape() {}
 
 const vector<Vector2D> Shape::getVertices() const { return vertices; }

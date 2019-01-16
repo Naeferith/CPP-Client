@@ -8,5 +8,5 @@ NodeInterface_Circle::NodeInterface_Circle(NodeInterface * ni) : NodeInterface(n
 NodeInterface_Circle::~NodeInterface_Circle() {}
 
 void NodeInterface_Circle::executeRequest(XMLDocument& xml) {
-	ShapeManager::getInstance()->operator+ (new Circle(retrieveVertices(xml).at(0), retrieveDoubleProperty(xml, "radius"), retrieveColor(xml)));
+	ShapeManager::getInstance()->operator+ (make_shared<Circle>(retrieveVertices(xml).at(0), retrieveDoubleProperty(xml, "radius"), retrieveColor(xml)));
 }

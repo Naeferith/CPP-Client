@@ -32,7 +32,6 @@ shared_ptr<const Color> NodeInterface::retrieveColor(XMLDocument & doc) {
 	double R = ::atof(colorNode->FirstChildElement("r")->GetText());
 	double G = ::atof(colorNode->FirstChildElement("g")->GetText());
 	double B = ::atof(colorNode->FirstChildElement("b")->GetText());
-	if (R < 0 || R > 1 || G < 0 || G > 1 || B < 0 || B > 1) throw Erreur(-1, "XML Error : invalid color");
 	return make_shared<const Color>(Color::retrieveDefaultColor(R, G, B));
 }
 
