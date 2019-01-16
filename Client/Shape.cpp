@@ -36,7 +36,9 @@ double Shape::Area() const {
 	//L'air d'un point ou d'un segment est null
 	if (vertices.size() < 3) return 0;
 	
-	for(auto &vertice : vertices)
+	for (int k = 0; k < vertices.size(); k++) {
+
+	}
 }
 
 void Shape::Scale(const Vector2D& point, const double ratio) {
