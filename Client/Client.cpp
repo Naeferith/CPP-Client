@@ -47,7 +47,7 @@ int main()
 	shared_ptr<const Color> color = make_shared<const Color>(Color::retrieveDefaultColor(1,0,0));
 	shared_ptr<const Color> color2 = make_shared<const Color>(Color::retrieveDefaultColor(0,1,0));
 	
-	Circle *cercle = new Circle(Vector2D(400,100), 20, color);
+	shared_ptr<Circle> cercle = make_shared<Circle>(Vector2D(400,100), 20, color);
 
 	vector<Vector2D> sommets = {
 		Vector2D(50, 50),
@@ -111,6 +111,6 @@ int main()
 
 
 #endif // _DEBUG_NETWORK_
-	system("pause");
+system("pause");
 	return 0;
 }
