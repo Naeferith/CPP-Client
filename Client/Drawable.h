@@ -3,6 +3,7 @@
 #include <memory>
 #include "Color.h"
 
+class ShapeGroup;
 class Visitor;
 
 /**
@@ -13,6 +14,9 @@ class Visitor;
 class Drawable {
 private:
 	static int indexId;
+
+	/** @brief Groupe auquel appartient le Drawable. */
+	ShapeGroup* group = NULL;
 
 protected:
 	/** @brief La couleur. */
@@ -36,6 +40,9 @@ public:
 	/** @brief Accesseur sur color. */
 	const Color getColor() const;
 
+	/** @brief Accesseur de group. */
+	ShapeGroup* getGroup();
+
 	/** @brief Accesseur sur l'id. */
 	const int getId() const;
 
@@ -43,6 +50,9 @@ public:
 
 	/** @brief Muttateur sur color. */
 	virtual void setColor(const shared_ptr<const Color>& couleur) = 0;
+
+	/** @brief Muttateur de group. */
+	void setGroup(ShapeGroup* grp);
 
 	/**
 		@brief Applique une translation.

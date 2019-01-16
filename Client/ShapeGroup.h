@@ -13,18 +13,8 @@ using namespace std;
 */
 class ShapeGroup : public Drawable {
 private:
-	/** @brief Tout les shapeGroups crées, un homme a dit un jour:
-	"une forme ne peut appartenir qu'à un seul groupe à la fois" */
-	static vector<ShapeGroup*> shapeGroups;
-	
 	/** @brief La liste des formes. */
 	vector<Drawable*> shapes;
-
-	/** @brief Mutateur pour shapes. */
-	void setShapes(const vector<shared_ptr<Drawable>>& formes);
-
-	/** @brief Accesseur de shapeGroups. */
-	const vector<ShapeGroup*> getShapeGroups() const;
 
 public:
 	/** @brief Le constructeur par défaut. */

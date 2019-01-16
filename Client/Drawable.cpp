@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Drawable.h"
+#include "ShapeGroup.h"
 
 using namespace std;
 
@@ -16,6 +17,14 @@ Drawable::Drawable(const shared_ptr<const Color>& c) : color(c), id(++Drawable::
 Drawable::Drawable(const Drawable& d) : color(d.color), id(d.id) {}
 
 Drawable::~Drawable() {}
+
+ShapeGroup* Drawable::getGroup() {
+	return group;
+}
+
+void Drawable::setGroup(ShapeGroup* grp) {
+	group = grp;
+}
 
 const Color Drawable::getColor() const { return *color; }
 

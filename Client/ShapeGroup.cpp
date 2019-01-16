@@ -4,12 +4,10 @@
 
 using namespace std;
 
-ShapeGroup::ShapeGroup() : Drawable() {
-	shapeGroups.push_back(this);
-}
+ShapeGroup::ShapeGroup() : Drawable() {}
 
 ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
-	Drawable(c){ shapeGroups.push_back(this); }
+	Drawable(c) {}
 
 ShapeGroup::~ShapeGroup() {}
 
@@ -37,17 +35,12 @@ string ShapeGroup::getName() const {
 
 string * ShapeGroup::accept(Visitor * v) { return v->visit(this); }
 
-const vector<ShapeGroup*> ShapeGroup::getShapeGroups() const {
-	return shapeGroups;
-}
-
 ShapeGroup& ShapeGroup::operator+(Drawable* d) {
 	//Regarde dans chaque ShapeGroupe crées, y compris donc celui-ci, si le Drawable
 	//Est déjà présent
-	for (auto &shape : getShapeGroups()) {
-		if (*shape == *d) throw Erreur(-6, "Drawable already inside !");
-	}
+	if (d->getGroup) throw Erreur(-6, "Drawable already in a group !");
 	
+	d->setGroup(this);
 	shapes.push_back(d);
 
 	return *this;
@@ -57,6 +50,7 @@ ShapeGroup& ShapeGroup::operator-(Drawable& d) {
 	for (vector<Drawable*>::const_iterator it = shapes.begin(); it != shapes.end(); it++) {
 		if (**it == d) {
 			shapes.erase(it);
+			d.setGroup(NULL);
 			return *this;
 		}
 	}
