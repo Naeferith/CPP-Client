@@ -63,14 +63,14 @@ int main()
 		Vector2D(250, 300),
 	};
 	
-	Shape* shape = new Shape(sommets, color);
-	Circle* circle = new Circle(Vector2D(), 50, color);
-	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 50, 50);
-	ShapeGroup* shpgrp = new ShapeGroup(color);
+	shared_ptr<Shape> shape = make_shared<Shape>(sommets, color);
+	shared_ptr<Shape> circle = make_shared<Circle>(Vector2D(200, 200), 50, color);
+	shared_ptr<shape::Rectangle>rect = make_shared<shape::Rectangle>(Vector2D(100, 100), color2, 50, 50);
+	shared_ptr<ShapeGroup> shpgrp = make_shared<ShapeGroup>(color);
 
 	try {
 		SingletonWSA::getInstance();
-		//SocketInOut socket = SocketInOut();
+		SocketInOut socket = SocketInOut();
 
 		cout << *shape << endl;
 		cout << *circle << endl;
@@ -81,6 +81,7 @@ int main()
 		*shpgrp - shape;
 		cout << *shpgrp << endl;
 		
+		socket.Send(*circle->accept(new VisitorXML));
 	}
 	catch (const Erreur& e) {
 		std::cout << "ERREUR : " << e.what() << endl;

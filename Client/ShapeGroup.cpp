@@ -11,7 +11,7 @@ ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
 
 ShapeGroup::~ShapeGroup() { for (auto &shape : shapes) shape->setGroup(NULL); }
 
-const vector<Drawable*>& ShapeGroup::getShapes() const { return shapes; }
+const vector<shared_ptr<Drawable>>& ShapeGroup::getShapes() const { return shapes; }
 
 void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
@@ -35,7 +35,7 @@ string ShapeGroup::getName() const {
 
 string * ShapeGroup::accept(Visitor * v) { return v->visit(this); }
 
-ShapeGroup& ShapeGroup::operator+(Drawable* d) {
+ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
 	//Regarde dans chaque ShapeGroupe crées, y compris donc celui-ci, si le Drawable
 	//Est déjà présent
 	if (d->getGroup()) throw Erreur(-6, "Drawable already in a group !");
@@ -47,8 +47,8 @@ ShapeGroup& ShapeGroup::operator+(Drawable* d) {
 	return *this;
 }
 
-ShapeGroup& ShapeGroup::operator-(Drawable* d) {
-	for (vector<Drawable*>::const_iterator it = shapes.begin(); it != shapes.end(); it++) {
+ShapeGroup& ShapeGroup::operator-(shared_ptr<Drawable> d) {
+	for (auto it = shapes.begin(); it != shapes.end(); it++) {
 		if (**it == *d) {
 			shapes.erase(it);
 			d->setGroup(NULL);
@@ -58,7 +58,7 @@ ShapeGroup& ShapeGroup::operator-(Drawable* d) {
 	return *this;
 }
 
-bool ShapeGroup::operator==(const Drawable* s) const {
+bool ShapeGroup::operator==(const shared_ptr<Drawable> s) const {
 	if (getId() == s->getId()) return true;
 	
 	//On test si s est présent dans les shapes
