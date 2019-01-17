@@ -9,7 +9,12 @@ ShapeGroup::ShapeGroup() : Drawable() {}
 ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
 	Drawable(c) {}
 
-ShapeGroup::~ShapeGroup() { for (auto &shape : shapes) shape->setGroup(NULL); }
+ShapeGroup::~ShapeGroup() {
+	for (auto &shape : shapes) {
+		shape->setGroup(NULL);
+		shape.reset();
+	}
+}
 
 const vector<shared_ptr<Drawable>>& ShapeGroup::getShapes() const { return shapes; }
 
@@ -56,9 +61,9 @@ ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
 ShapeGroup& ShapeGroup::operator-(shared_ptr<Drawable> d) {
 	for (auto it = shapes.begin(); it != shapes.end(); it++) {
 		if (**it == *d) {
-			d.reset(); //supprime l'objet de se pointeur
-			shapes.erase(it);// retire le pointeur du vecteur
 			d->setGroup(NULL);
+			d.reset();
+			shapes.erase(it);// retire le pointeur du vecteur
 			return *this;
 		}
 	}
