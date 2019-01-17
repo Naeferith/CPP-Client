@@ -48,7 +48,7 @@ ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
 	
 	d->setGroup(this);
 	d->setColor(make_shared<const Color>(getColor()));
-	shapes.push_back(d);
+	shapes.push_back(make_shared<Drawable>(d));
 
 	return *this;
 }
@@ -56,7 +56,8 @@ ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
 ShapeGroup& ShapeGroup::operator-(shared_ptr<Drawable> d) {
 	for (auto it = shapes.begin(); it != shapes.end(); it++) {
 		if (**it == *d) {
-			shapes.erase(it);
+			d.reset(); //supprime l'objet de se pointeur
+			shapes.erase(it);// retire le pointeur du vecteur
 			d->setGroup(NULL);
 			return *this;
 		}

@@ -41,10 +41,10 @@ int main()
 		Vector2D(55, 45),
 	};
 	
-	Shape* shape = new Shape(sommets2, color);
-	Circle* circle = new Circle(Vector2D(), 8, color);
-	shape::Rectangle* rect = new shape::Rectangle(Vector2D(100, 100), color2, 5, 8);
-	ShapeGroup* shpgrp = new ShapeGroup(color);
+	shared_ptr<Shape> shape = make_shared<Shape>(sommets2, color);
+	shared_ptr<Circle> circle = make_shared<Circle>(Vector2D(), 8, color);
+	shared_ptr<shape::Rectangle> rect = make_shared<shape::Rectangle>(Vector2D(100, 100), color2, 5, 8);
+	shared_ptr<ShapeGroup> shpgrp = make_shared<ShapeGroup>(color);
 
 	try {
 		//SingletonWSA::getInstance();
