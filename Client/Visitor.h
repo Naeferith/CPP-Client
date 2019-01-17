@@ -14,13 +14,13 @@ protected:
 
 public:
 	/** @brief Retourne une string qui représente une shape en XML. */
-	virtual string visit(const Shape* vs) const = 0;
+	virtual string visit(const shared_ptr<Shape> vs) const = 0;
 
-	virtual string visit(const Circle* vs) const = 0;
+	virtual string visit(const shared_ptr<Circle> vs) const = 0;
 
-	virtual string visit(const shape::Rectangle* vs) const = 0;
+	virtual string visit(const shared_ptr<shape::Rectangle> vs) const = 0;
 
-	virtual string visit(const ShapeGroup* vs) const = 0;
+	virtual string visit(const shared_ptr<ShapeGroup> vs) const = 0;
 
-	virtual string visit(const ShapeManager* vs) const = 0;
+	virtual string visit(const shared_ptr<ShapeManager> vs) const = 0;
 };
