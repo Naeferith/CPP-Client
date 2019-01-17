@@ -14,7 +14,7 @@ private:
 	string strVector(const Vector2D&) const;
 
 	/** @brief Retourne une Color au format XML. */
-	string strColor(const Color&) const;
+	string strColor(const shared_ptr<const Color>&) const;
 
 	/** @brief Retourne sous forme XML en ajoutant les paramètres. */
 	string* strXML(const Shape* vs, const string& param) const;

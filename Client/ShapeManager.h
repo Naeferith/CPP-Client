@@ -11,7 +11,7 @@ class ShapeManager {
 		ShapeManager();
 
 	public:
-		~ShapeManager();
+		virtual ~ShapeManager();
 
 		static ShapeManager* getInstance();
 

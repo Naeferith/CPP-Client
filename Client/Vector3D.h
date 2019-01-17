@@ -27,7 +27,7 @@ public:
 	Vector3D(const Vector3D& vecteur);
 
 	/** @brief Le destructeur. */
-	~Vector3D();
+	virtual ~Vector3D();
 
 	/** @brief Mutateur de la composante Z. */
 	void setZ(const double Z);

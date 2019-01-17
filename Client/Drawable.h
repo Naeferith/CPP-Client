@@ -38,7 +38,7 @@ public:
 	virtual ~Drawable();
 
 	/** @brief Accesseur sur color. */
-	const Color getColor() const;
+	const shared_ptr<const Color>& getColor() const;
 
 	/** @brief Accesseur de group. */
 	ShapeGroup* getGroup();

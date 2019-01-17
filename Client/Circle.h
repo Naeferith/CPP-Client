@@ -28,7 +28,7 @@ public:
 	Circle(const Circle& cercle);
 	
 	/** @brief Le destructeur. */
-	~Circle();
+	virtual ~Circle();
 
 	/** @brief Accesseur de radius. */
 	const double getRadius() const;

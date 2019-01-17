@@ -5,7 +5,7 @@
 class NodeInterface_Rectangle : public NodeInterface {
 public:
 	NodeInterface_Rectangle(NodeInterface* ni);
-	~NodeInterface_Rectangle();
+	virtual ~NodeInterface_Rectangle();
 
 	void executeRequest(XMLDocument& xml) override;
 };

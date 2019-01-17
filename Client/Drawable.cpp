@@ -32,7 +32,7 @@ double Drawable::Det(const Vector2D& a, const Vector2D& b, const Vector2D& c) {
 	return (ab.x * ac.y) - (ab.y * ac.x);
 }
 
-const Color Drawable::getColor() const { return *color; }
+const shared_ptr<const Color>& Drawable::getColor() const { return color; }
 
 const int Drawable::getId() const { return id; }
 

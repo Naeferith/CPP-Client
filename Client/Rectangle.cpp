@@ -32,7 +32,7 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 		Vector2D(topLeft.x + width, topLeft.y),
 	};
 	
-	Shape temp = Shape(currentVertices, make_shared<const Color>(Color::retrieveDefaultColor(0,0,0)));
+	Shape temp = Shape(currentVertices,make_shared<const Color>(Color::retrieveDefaultColor(0,0,0)));
 	temp.Rotate(topLeft, rotationAngle);
 
 	return temp.getVertices();

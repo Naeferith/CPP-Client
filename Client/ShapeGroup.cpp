@@ -12,7 +12,7 @@ ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
 ShapeGroup::~ShapeGroup() {
 	for (auto &shape : shapes) {
 		shape->setGroup(NULL);
-		shape.reset();
+		shape.reset(); 
 	}
 }
 
@@ -52,8 +52,8 @@ ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
 	if (d->getGroup()) throw Erreur(-6, "Drawable already in a group !");
 	
 	d->setGroup(this);
-	d->setColor(make_shared<const Color>(getColor()));
-	shapes.push_back(make_shared<Drawable>(d));
+	d->setColor(getColor());
+	shapes.push_back(shared_ptr<Drawable>(d));
 
 	return *this;
 }

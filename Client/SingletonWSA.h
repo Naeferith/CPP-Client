@@ -19,7 +19,7 @@ private:
 
 public:
 	/** @brief Le destructeur par défaut. */
-	~SingletonWSA();
+	virtual ~SingletonWSA();
 
 	/** @brief Accesseur de l'instance unique. Il permet l'initialisation de l'instance
 		Si celle-ci n'a pas déja été faite. Notez qu'une fonction static peut être appellé

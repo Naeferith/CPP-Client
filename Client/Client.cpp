@@ -41,10 +41,10 @@ int main()
 		Vector2D(55, 45),
 	};
 	
-	shared_ptr<Shape> shape = make_shared<Shape>(sommets2, color);
-	shared_ptr<Circle> circle = make_shared<Circle>(Vector2D(), 8, color);
-	shared_ptr<shape::Rectangle> rect = make_shared<shape::Rectangle>(Vector2D(100, 100), color2, 5, 8);
-	shared_ptr<ShapeGroup> shpgrp = make_shared<ShapeGroup>(color);
+	shared_ptr<Shape> shape(new Shape(sommets2, color));
+	shared_ptr<Circle> circle(new Circle(Vector2D(), 8, color));
+	shared_ptr<shape::Rectangle> rect(new shape::Rectangle(Vector2D(100, 100), color2, 5, 8));
+	shared_ptr<ShapeGroup> shpgrp(new ShapeGroup(color));
 
 	try {
 		//SingletonWSA::getInstance();
@@ -67,6 +67,13 @@ int main()
 	catch (const Erreur& e) {
 		std::cout << "ERREUR : " << e.what() << endl;
 	}
+
+	shape.reset();
+	circle.reset();
+	rect.reset();
+
+	shpgrp.reset();
+
 system("pause");
 	return 0;
 }

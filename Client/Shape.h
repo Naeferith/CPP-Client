@@ -22,7 +22,7 @@ public:
 	Shape();
 
 	/** @brief Le constructeur par valeurs. */
-	Shape(const vector<Vector2D, allocator<Vector2D>>& sommets, const shared_ptr<const Color>& couleur);
+	Shape(const vector<Vector2D>& sommets, const shared_ptr<const Color>& couleur);
 
 	/** @brief Le constructeur par copie. */
 	Shape(const Shape& s);
