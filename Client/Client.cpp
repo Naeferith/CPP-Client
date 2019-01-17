@@ -56,13 +56,19 @@ int main()
 		*shpgrp + shape;
 		*shpgrp + circle;
 		*shpgrp + rect;
+
+		cout << *shpgrp << endl << endl << endl;
+
 		//*shpgrp - shape;
+
 		//cout << *shpgrp->accept(new VisitorXML) << endl;
+
+		cout << *shpgrp << endl;
 		
 		cout << shape->Area() << endl; //1440m²
 		cout << circle->Area() << endl;//201.06m²
 		cout << rect->Area() << endl;  //40m²
-		cout << shpgrp->getShapes().size() << endl;//1681,06m²
+		cout << shpgrp->Area() << endl;//1681,06m²
 	}
 	catch (const Erreur& e) {
 		std::cout << "ERREUR : " << e.what() << endl;

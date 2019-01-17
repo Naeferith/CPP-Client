@@ -12,10 +12,6 @@ using namespace std;
 	Un ShapeGroup est une collection de Drawable.
 */
 class ShapeGroup : public Drawable, public DrawableGroup {
-private:
-	/** @brief La liste des formes. */
-	vector<shared_ptr<Drawable>> shapes;
-
 public:
 	/** @brief Le constructeur par défaut. */
 	ShapeGroup();
