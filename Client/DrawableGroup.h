@@ -16,11 +16,14 @@ protected:
 	vector<shared_ptr<Drawable>> shapes;
 
 public:
+	/** @brief Destructeur de DrawableGroup. */
+	virtual ~DrawableGroup();
+
 	/** @brief Accesseur pour shapes. */
 	const vector<shared_ptr<Drawable>>& getShapes() const;
 
 	/** @brief Supprime l'élément à l'indice. */
-	void Delete(int i);
+	virtual void Delete(int i);
 
 	/** @brief Surcharge de l'opérateur +. */
 	DrawableGroup& operator+(shared_ptr<Drawable> drawable);
