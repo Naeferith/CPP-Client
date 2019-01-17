@@ -1,23 +1,18 @@
 #pragma once
 
-#include "Drawable.h"
+#include "DrawableGroup.h"
 #include <vector>
 #include <memory>
 
-class ShapeManager {
+class ShapeManager : public DrawableGroup {
 	private:
 		static ShapeManager* instance;
-		std::vector<shared_ptr<Drawable>> shapes;
 		ShapeManager();
 
 	public:
 		virtual ~ShapeManager();
 
 		static ShapeManager* getInstance();
-
-		const std::vector<shared_ptr<Drawable>> getShapes() const;
-
-		ShapeManager* operator+(shared_ptr<Drawable> drawable);
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
 		string* accept(Visitor* v);
