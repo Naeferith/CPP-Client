@@ -83,7 +83,7 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const = 0;
 
-	virtual string* accept(Visitor* v) = 0;
+	virtual string  accept(Visitor* v) = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */
 	virtual bool operator==(const Drawable& drawable) const;

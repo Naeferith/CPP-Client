@@ -51,7 +51,7 @@ void Rectangle::Scale(const Vector2D & point, const double ratio) {
 	height *= ratio;
 }
 
-string * Rectangle::accept(Visitor * v) { return v->visit(this); }
+string  Rectangle::accept(Visitor * v) { return v->visit(this); }
 
 Rectangle::operator string() const {
 	stringstream oss;

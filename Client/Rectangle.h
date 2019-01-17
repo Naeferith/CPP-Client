@@ -46,7 +46,7 @@ namespace shape {
 		void Scale(const Vector2D& point, const double ratio);
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
-		string* accept(Visitor* v);
+		string  accept(Visitor* v);
 
 		/** @brief Retourne le nom de la classe. */
 		string getName() const;

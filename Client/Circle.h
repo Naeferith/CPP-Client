@@ -45,7 +45,7 @@ public:
 	/** @brief Implémentation de la methode accept du DP Visitor.
 		@param v la Classe Visitor à visiter.
 		@return la string obtenue par la visit de la classe. */
-	string* accept(Visitor* v);
+	string  accept(Visitor* v);
 
 	/** @brief Mutateur de radius. */
 	void setRadius(const double rayon);

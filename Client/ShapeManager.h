@@ -15,5 +15,5 @@ class ShapeManager : public DrawableGroup {
 		static ShapeManager* getInstance();
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
-		string* accept(Visitor* v);
+		string  accept(Visitor* v);
 };
