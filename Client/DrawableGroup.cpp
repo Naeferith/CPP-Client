@@ -19,6 +19,7 @@ void DrawableGroup::Delete(shared_ptr<Drawable> d) {
 		if (*shapes.at(k) == *d) {
 			d.reset();
 			Delete(k);
+			break;
 		}
 	}
 }

@@ -59,7 +59,7 @@ int main()
 
 		//cout << *shpgrp << endl << endl << endl;
 
-		shpgrp->Delete(2);
+		shpgrp->Delete(shape);
 
 		cout << endl << endl << *shpgrp << endl;
 
