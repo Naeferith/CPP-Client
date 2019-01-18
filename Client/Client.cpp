@@ -50,20 +50,22 @@ int main()
 		//SingletonWSA::getInstance();
 		//SocketInOut socket = SocketInOut();
 
-		/*cout << *shape << endl;
+		cout << *shape << endl;
 		cout << *circle << endl;
-		cout << *rect << endl;*/
-		*shpgrp + shape;
-		*shpgrp + circle;
-		*shpgrp + rect;
+		cout << *rect << endl;
+		shpgrp->add(shape);
+		shpgrp->add(circle);
+		shpgrp->add(rect);
 
-		cout << *shpgrp << endl << endl << endl;
+		//cout << *shpgrp << endl << endl << endl;
 
-		//*shpgrp - shape;
+		shpgrp->Delete(2);
+
+		cout << endl << endl << *shpgrp << endl;
 
 		//cout << *shpgrp->accept(new VisitorXML) << endl;
 
-		cout << *shpgrp << endl;
+		//cout << *shpgrp << endl;
 		
 		cout << shape->Area() << endl; //1440m²
 		cout << circle->Area() << endl;//201.06m²

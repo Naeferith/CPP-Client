@@ -37,6 +37,7 @@ const shared_ptr<const Color>& Drawable::getColor() const { return color; }
 const int Drawable::getId() const { return id; }
 
 bool Drawable::operator==(const Drawable& d) const {
+	cout << d;
 	return id == d.id;
 }
 

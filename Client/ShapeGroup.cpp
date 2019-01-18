@@ -46,22 +46,22 @@ string ShapeGroup::getName() const {
 
 string  ShapeGroup::accept(Visitor * v) { return v->visit(shared_ptr<ShapeGroup>(this)); }
 
-ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
-	//Regarde dans chaque ShapeGroupe crées, y compris donc celui-ci, si le Drawable
-	//Est déjà présent
+void ShapeGroup::add(shared_ptr<Drawable> d) {
 	if (d->getGroup()) throw Erreur(-6, "Drawable already in a group !");
-	
+
 	d->setGroup(this);
 	d->setColor(getColor());
-	DrawableGroup::operator+(d);
-
-	return *this;
+	DrawableGroup::add(d);
 }
 
-ShapeGroup& ShapeGroup::operator-(shared_ptr<Drawable> d) {
+void ShapeGroup::Delete(int i) {
+	shapes.at(i)->setGroup(NULL);
+	DrawableGroup::Delete(i);
+}
+
+void ShapeGroup::Delete(shared_ptr<Drawable> d) {
 	d->setGroup(NULL);
-	DrawableGroup::operator-(d);
-	return *this;
+	DrawableGroup::Delete(d);
 }
 
 bool ShapeGroup::operator==(const shared_ptr<Drawable> s) const {

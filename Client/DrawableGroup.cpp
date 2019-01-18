@@ -12,21 +12,19 @@ void DrawableGroup::Delete(int i) {
 	shapes.erase(shapes.begin()+i);
 }
 
-DrawableGroup& DrawableGroup::operator+(shared_ptr<Drawable> d) {
-
-	shapes.push_back(d);
-	return *this;
-}
-
-DrawableGroup& DrawableGroup::operator-(shared_ptr<Drawable> d) {
-	for (int k = 0; k < shapes.size(); ++k) {
+void DrawableGroup::Delete(shared_ptr<Drawable> d) {
+	int k = -1;
+	size_t s= shapes.size();
+	while (++k < s) {
 		if (*shapes.at(k) == *d) {
 			d.reset();
 			Delete(k);
-			return *this;
 		}
 	}
-	throw Erreur(-9, "Drawable not found.");
+}
+
+void DrawableGroup::add(shared_ptr<Drawable> drawable) {
+	shapes.push_back(drawable);
 }
 
 bool DrawableGroup::operator==(const shared_ptr<Drawable> sg) const {
