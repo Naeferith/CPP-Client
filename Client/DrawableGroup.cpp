@@ -35,3 +35,12 @@ bool DrawableGroup::operator==(const shared_ptr<Drawable> sg) const {
 	}
 	return false;
 }
+
+DrawableGroup::operator string() const {
+	ostringstream oss;
+	oss << " [>> ";
+	for (auto &shape : shapes)
+		oss << *shape;
+	oss << " <<]";
+	return oss.str();
+}

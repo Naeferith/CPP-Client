@@ -15,7 +15,7 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
-	double rotationAngle = 0;
+	double rotationAngle = 0;  // ????????????????
 
 public:
 	/** @brief Le constructeur par défaut. */

@@ -32,20 +32,17 @@ public:
 	/** @brief Mutateur de la composante Y. */
 	void setY(const double Y);
 
-	/** @brief Surcharge de l'opérateur ==. */
-	virtual bool operator==(const Vector2D&) const;
-
 	/** @brief Surcharge de l'opérateur +. */
 	virtual Vector2D operator+(const Vector2D&) const;
 
 	/** @brief Surcharge de l'opérateur -. */
 	virtual Vector2D operator-(const Vector2D&) const;
 
-	/** @brief Surcharge de l'opérateur /. */
-	Vector2D operator/(const short int den) const;
+	/** @brief Surcharge de l'opérateur *. */
+	friend Vector2D operator*(const double) const;
 
-	/** @brief Surcharge de l'opérateur =. */
-	virtual const Vector2D operator=(const Vector2D& vecteur);
+	/** @brief Surcharge de l'opérateur /. */
+	Vector2D operator/(const double den) const;
 
 	// @brief Surchage de l'opérateur String. */
 	virtual operator string() const;
@@ -53,3 +50,6 @@ public:
 	/** @brief Surcharge de l'opérateur <<. */
 	friend ostream& operator<<(std::ostream&, const Vector2D&);
 };
+
+/** @brief Surcharge de l'opérateur * inversé. */
+Vector2D operator*(const Vector2D&, const double);

@@ -71,8 +71,6 @@ bool ShapeGroup::operator==(const shared_ptr<Drawable> s) const {
 
 ShapeGroup::operator string()const {
 	ostringstream oss;
-	oss << getName() << ": ";
-	for (auto &shape : shapes)
-		oss << *shape;
+	oss << Drawable::operator std::string() << DrawableGroup::operator std::string();
 	return oss.str();
 }

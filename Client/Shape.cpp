@@ -19,15 +19,12 @@ const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
 const double Shape::getRotationAngle() const { return rotationAngle; }
 
-void Shape::setColor(const shared_ptr<const Color>& c) { color = c; }
+void Shape::setColor(const shared_ptr<const Color>& c) { color = shared_ptr<const Color>(c); }
 
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
 void Shape::Translate(const Vector2D& V) {
-	for (auto &vertice : vertices) {
-		vertice.setX(round( vertice.x + V.x ));
-		vertice.setY(round( vertice.y + V.y ));
-	}
+	for (auto &vertice : vertices) vertice = vertice + V ;
 }
 
 double Shape::Area() const {
@@ -50,6 +47,8 @@ void Shape::Scale(const Vector2D& point, const double ratio) {
 	for (auto &vertice : vertices) {
 		vertice.setX(round((vertice.x - point.x) * ratio) + point.x);
 		vertice.setY(round((vertice.y - point.y) * ratio) + point.y);
+
+		vertice = (vertice - point) * ratio + point;
 	}
 }
 
@@ -79,7 +78,7 @@ Shape Shape::operator--() {
 
 Shape::operator string() const {
 	ostringstream oss;
-	oss << getName() << ": " << getColor() << " [>> ";
+	oss << Drawable::operator std::string() << " [>> ";
 	for (auto &vertice : getVertices()) oss << vertice << " ";
 	oss << "<<]";
 	return oss.str();

@@ -27,9 +27,9 @@ void Drawable::setGroup(ShapeGroup* grp) {
 }
 
 double Drawable::Det(const Vector2D& a, const Vector2D& b, const Vector2D& c) {
-	Vector2D ab = b - c,
+	Vector2D ab = b - a,
 		ac = c - a;
-	return (ab.x * ac.y) - (ab.y * ac.x);
+	return (ab.x * ac.y) - (ab.y * ac.x); // TODO
 }
 
 const shared_ptr<const Color>& Drawable::getColor() const { return color; }
@@ -48,7 +48,13 @@ const Drawable& Drawable::operator=(const Drawable &d)
 	return *this;
 }
 
+Drawable::operator string() const {
+	ostringstream oss;
+	oss << getName() << ": " << *getColor();
+	return oss.str();
+}
+
 ostream & operator<<(ostream& strm, const Drawable& v)
 {
-	return strm << "[" << (string)v << "]";
+	return strm << "[ " << (string)v << " ]";
 }

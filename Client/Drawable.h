@@ -55,7 +55,7 @@ public:
 	void setGroup(ShapeGroup* grp);
 
 	/** @brief Retourne le determinant. */
-	static double Det(const Vector2D&, const Vector2D&, const Vector2D&);
+	static double Det(const Vector2D&, const Vector2D&, const Vector2D&); // DEPLACEMENT
 
 	/** @brief Retourne l'aire du Drawable. **/
 	virtual double Area() const = 0;
@@ -65,6 +65,8 @@ public:
 		@param vecteur Le vecteur de translation.
 	*/
 	virtual void Translate(const Vector2D& vecteur) = 0;
+
+	//virtual shared_ptr<Drawable> Translate(const Vector2D& vector) const = 0; // TODO
 
 	/**
 		@brief Applique une mise à l'échelle.
@@ -92,7 +94,7 @@ public:
 	virtual const Drawable& operator=(const Drawable& drawable);
 
 	/** @brief Surcharge de l'opérateur String.*/
-	virtual operator string() const = 0;
+	virtual operator string() const;
 
 	/** @brief Surcharge de l'opérateur <<. */
 	friend ostream& operator<<(ostream& strm, const Drawable& v);
