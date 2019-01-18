@@ -14,35 +14,23 @@ public:
 	/** @brief La composante Y. */
 	double y;
 
-	/** @brief Le constructeur par défaut. */
-	Vector2D();
-
 	/** @brief Le constructeur par valeurs. */
-	Vector2D(const double X, const double Y);
+	Vector2D(const double X=0, const double Y=0) : x(X), y(Y) {}
 
-	/** @brief Le constructeur par référence. */
-	Vector2D(const Vector2D& vecteur);
-
-	/** @brief Le destructeur. */
-	virtual ~Vector2D();
-
-	/** @brief Mutateur de la composante X. */
-	void setX(const double X);
-
-	/** @brief Mutateur de la composante Y. */
-	void setY(const double Y);
+	/** @brief Retourne le determinant. */
+	static double Det(const Vector2D&, const Vector2D&, const Vector2D&);
 
 	/** @brief Surcharge de l'opérateur +. */
-	virtual Vector2D operator+(const Vector2D&) const;
+	virtual Vector2D operator+(const Vector2D& v) const { return Vector2D(x + v.x, y + v.y); }
 
 	/** @brief Surcharge de l'opérateur -. */
-	virtual Vector2D operator-(const Vector2D&) const;
+	virtual Vector2D operator-(const Vector2D& v) const { return Vector2D(x - v.x, y - v.y); }
 
 	/** @brief Surcharge de l'opérateur *. */
-	friend Vector2D operator*(const double) const;
+	Vector2D operator*(const double a) const { return Vector2D(x * a, y * a);; }
 
 	/** @brief Surcharge de l'opérateur /. */
-	Vector2D operator/(const double den) const;
+	Vector2D operator/(const double den) const { return *this*(1 / den); }
 
 	// @brief Surchage de l'opérateur String. */
 	virtual operator string() const;
@@ -52,4 +40,4 @@ public:
 };
 
 /** @brief Surcharge de l'opérateur * inversé. */
-Vector2D operator*(const Vector2D&, const double);
+Vector2D operator*(const double a, const Vector2D& v) { return v*a; }
