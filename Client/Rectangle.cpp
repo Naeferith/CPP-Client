@@ -40,9 +40,12 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 
 double Rectangle::Area() const {
 	Vector2D a = getTopLeft(),
-		b = Vector2D(a.x + width, a.y),
-		c = Vector2D(a.x, a.y + height);
-	return Det(a, b, c);
+			b = Vector2D(a.x + width, a.y),
+			c = Vector2D(a.x, a.y + height),
+
+		ab = b - a,
+		ac = c - a;
+	return Vector2D::Det(ab, ac);
 }
 
 void Rectangle::Scale(const Vector2D & point, const double ratio) {

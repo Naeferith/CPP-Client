@@ -30,6 +30,15 @@ public:
 	/** @brief Retourne l'aire du Drawable. **/
 	virtual double Area() const;
 
+	/** @brief Supprime l'élément i variant de 0 à size-1. */
+	virtual void Delete(int i);
+
+	/** @brief Supprime l'élément de shapes. */
+	virtual void Delete(shared_ptr<Drawable>);
+
+	/** @brief Ajout d'un Drawable. */
+	void add(shared_ptr<Drawable> drawable);
+
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
 
@@ -46,13 +55,6 @@ public:
 	string getName() const;
 
 	string  accept(Visitor* v);
-
-	/** @brief Surcharge de l'opérateur +. */
-	ShapeGroup& operator+(shared_ptr<Drawable> drawable);
-
-	/** @brief Surcharge de l'opérateur -. */
-	ShapeGroup& operator-(shared_ptr<Drawable> drawable);
-
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;
 

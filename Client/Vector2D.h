@@ -18,7 +18,7 @@ public:
 	Vector2D(const double X=0, const double Y=0) : x(X), y(Y) {}
 
 	/** @brief Retourne le determinant. */
-	static double Det(const Vector2D&, const Vector2D&, const Vector2D&);
+	static double Det(const Vector2D& ab, const Vector2D& ac) { return (ab.x * ac.y) - (ab.y * ac.x); }
 
 	/** @brief Surcharge de l'opérateur +. */
 	virtual Vector2D operator+(const Vector2D& v) const { return Vector2D(x + v.x, y + v.y); }

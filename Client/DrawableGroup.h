@@ -22,14 +22,14 @@ public:
 	/** @brief Accesseur pour shapes. */
 	const vector<shared_ptr<Drawable>>& getShapes() const;
 
-	/** @brief Supprime l'élément à l'indice. */
+	/** @brief Supprime l'élément i variant de 0 à size-1. */
 	virtual void Delete(int i);
 
-	/** @brief Surcharge de l'opérateur +. */
-	DrawableGroup& operator+(shared_ptr<Drawable> drawable);
+	/** @brief Supprime l'élément de shapes. */
+	virtual void Delete(shared_ptr<Drawable>);
 
-	/** @brief Surcharge de l'opérateur -. */
-	DrawableGroup& operator-(shared_ptr<Drawable> drawable);
+	/** @brief Ajout d'un Drawable. */
+	void add(shared_ptr<Drawable> drawable);
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;

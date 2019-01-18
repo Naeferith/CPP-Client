@@ -13,10 +13,6 @@ Vector3D::~Vector3D() {}
 
 void Vector3D::setZ(const double Z) { z = Z; }
 
-bool Vector3D::operator==(const Vector3D& v) const {
-	return Vector2D::operator==(v) && v.z == z;
-}
-
 const Vector3D Vector3D::operator=(const Vector3D& v) {
 	Vector2D::operator=(v);
 	z = v.z;

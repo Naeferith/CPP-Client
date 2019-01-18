@@ -33,31 +33,31 @@ double Shape::Area() const {
 
 	double area = 0;
 	size_t size = vertices.size() - 1;
-	Vector2D a = vertices.at(0), b, c;
+	Vector2D a = vertices.at(0), b, c, ab, ac;
 
 	for (int k = 1; k < size; ++k) {
 		b = vertices.at(k);
 		c = vertices.at(k+1);
-		area += 0.5*Det(a, b, c);
+		ab = b - a;
+		ac = c - a;
+		area += 0.5*Vector2D::Det(ab, ac);
 	}
 	return area;
 }
 
 void Shape::Scale(const Vector2D& point, const double ratio) {
-	for (auto &vertice : vertices) {
-		vertice.setX(round((vertice.x - point.x) * ratio) + point.x);
-		vertice.setY(round((vertice.y - point.y) * ratio) + point.y);
-
+	for (auto &vertice : vertices) 
 		vertice = (vertice - point) * ratio + point;
-	}
 }
 
 void Shape::Rotate(const Vector2D& point, const double rad) {
+	double cos_rad = cos(rad), sin_rad = sin(rad);
 	for (auto &vertice : vertices) {
-		double newX = round((vertice.x - point.x) * cos(rad) - (vertice.y - point.y) * sin(rad));
-		double newY = round((vertice.x - point.x) * sin(rad) + (vertice.y - point.y) * cos(rad));
-		vertice.setX(newX + point.x);
-		vertice.setY(newY + point.y);
+		Vector2D v = vertice - point;
+		v.x = ((v.x) * cos_rad - (v.y) * sin_rad);
+		v.y = round((v.x) * sin_rad + (v.y) * cos_rad);
+		v + point;
+		vertice = v;
 	}
 	rotationAngle = fmod(rotationAngle + rad, 2 * MY_PI);
 }

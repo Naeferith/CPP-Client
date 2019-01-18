@@ -52,7 +52,7 @@ public:
 	SocketInOut(int address, int typeSocket, int protocol, const char* addressIn, int port);
 
 	/** @brief Le destructeur. */
-	virtual ~SocketInOut();
+	~SocketInOut();
 
 	/** @brief Ferme tout les sockets et coupe la connection. */
 	void Close();
