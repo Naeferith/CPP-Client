@@ -12,4 +12,4 @@ ShapeManager* ShapeManager::getInstance() {
 	return instance; 
 }
 
-string  ShapeManager::accept(Visitor * v) { return v->visit(this); }
+string  ShapeManager::accept(Visitor * v) { return v->visit(shared_ptr<ShapeManager>(this)); }

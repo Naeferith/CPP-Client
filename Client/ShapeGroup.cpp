@@ -44,7 +44,7 @@ string ShapeGroup::getName() const {
 	return string("shapegroup");
 }
 
-string  ShapeGroup::accept(Visitor * v) { return v->visit(this); }
+string  ShapeGroup::accept(Visitor * v) { return v->visit(shared_ptr<ShapeGroup>(this)); }
 
 ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
 	//Regarde dans chaque ShapeGroupe crées, y compris donc celui-ci, si le Drawable
