@@ -59,20 +59,13 @@ int main()
 		shpgrp->add(shape);
 		shpgrp->add(circle);
 		shpgrp->add(rect);
-
 		cout << endl << endl << *shpgrp << endl;
 
 		shpgrp2->add(shpgrp);
-
-		//cout << *shpgrp << endl << endl << endl;
-
-		//shpgrp->Delete(shape);
-
-		cout << endl << endl << *shpgrp2 << endl << endl;
-
 		shpgrp->setColor(color);
-
 		cout << endl << endl << *shpgrp2 << endl << endl;
+
+		cout << endl << endl << shpgrp2->accept(new VisitorXML) << endl << endl;
 
 		//cout << *shpgrp->accept(new VisitorXML) << endl;
 

@@ -62,7 +62,7 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 
 string Shape::getName() const {	return string("shape"); }
 
-string  Shape::accept(Visitor * v) { return v->visit(shared_ptr<Shape>(this)); }
+string  Shape::accept(Visitor * v) { return v->visit(this); }
 
 Shape Shape::operator+(const Vector2D & vecteur) {
 	vertices.emplace_back(vecteur.x, vecteur.y);
