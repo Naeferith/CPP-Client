@@ -41,25 +41,30 @@ int main()
 		Vector2D(55, 45),
 	};
 	
-	shared_ptr<Shape> shape(new Shape(sommets2, color));
-	shared_ptr<Circle> circle(new Circle(Vector2D(), 8, color));
-	shared_ptr<shape::Rectangle> rect(new shape::Rectangle(Vector2D(100, 100), color2, 5, 8));
+	shared_ptr<Shape> shape = make_shared<Shape>(sommets, color);
+	shared_ptr<Circle> circle = make_shared<Circle>(Vector2D(), 8, color);
+	shared_ptr<shape::Rectangle> rect = make_shared<shape::Rectangle>(Vector2D(100, 100), color2, 5, 8);
 
-	shared_ptr<ShapeGroup> shpgrp(new ShapeGroup(color)),
+	shared_ptr<ShapeGroup> shpgrp = make_shared<ShapeGroup>(color),
 		shpgrp2(new ShapeGroup(color2));
 
 	try {
-		//SingletonWSA::getInstance();
-		//SocketInOut socket = SocketInOut();
+		SingletonWSA::getInstance();
+		SocketInOut socket = SocketInOut();
+
+		ShapeManager* shp = ShapeManager::getInstance();
+		
 
 		cout << *shape << endl;
 		cout << *circle << endl;
 		cout << *rect << endl;
 
-		shpgrp->add(shape);
-		shpgrp->add(circle);
-		shpgrp->add(rect);
+		shp->add(shape);
+		shp->add(circle);
+		shp->add(rect);
 		cout << endl << endl << *shpgrp << endl;
+
+		socket.Send(shp->accept(new VisitorXML));
 
 		shpgrp2->add(shpgrp);
 		shpgrp->setColor(color);

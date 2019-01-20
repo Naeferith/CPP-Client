@@ -87,6 +87,9 @@
     <ClInclude Include="tinyxml2.h">
       <Filter>Fichiers d%27en-tête</Filter>
     </ClInclude>
+    <ClInclude Include="DrawableGroup.h">
+      <Filter>Fichiers d%27en-tête</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -153,6 +156,9 @@
       <Filter>Fichiers sources</Filter>
     </ClCompile>
     <ClCompile Include="NodeInterface_ShapeGroup.cpp">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawableGroup.cpp">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
   </ItemGroup>
