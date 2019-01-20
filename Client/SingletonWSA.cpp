@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SingletonWSA.h"
 
-//Unique initialisation de l'instance à NULL
+//Unique initialisation de l'instance Ã  NULL
 SingletonWSA* SingletonWSA::instance = NULL;
 
 SingletonWSA::SingletonWSA() {
@@ -10,12 +10,12 @@ SingletonWSA::SingletonWSA() {
 	WSADATA wsaData;
 
 	if (WSAStartup(MAKEWORD(2, 0), &wsaData)) throw Erreur(WSAGetLastError(),"Failed initializing Winsock2");
-	/* MAKEWORD(2,0) sert à indiquer la version de la librairie à utiliser : 1 pour winsock et 2 pour winsock2
-	   en cas de succès, wsaData a été initialisée et l'appel a renvoyé la valeur 0. */
+	/* MAKEWORD(2,0) sert Ã  indiquer la version de la librairie Ã  utiliser : 1 pour winsock et 2 pour winsock2
+	   en cas de succÃ¨s, wsaData a Ã©tÃ© initialisÃ©e et l'appel a renvoyÃ  la valeur 0. */
 }
 
 SingletonWSA::~SingletonWSA() {
-	//Si l'instance a bien été crée précédement on libère les librairies init.
+	//Si l'instance a bien Ã©tÃ© crÃ©e prÃ©cÃ©dement on libÃ©re les librairies init.
 	if (instance != NULL) { WSACleanup(); instance = NULL; }
 }
 
@@ -27,6 +27,6 @@ const SingletonWSA* SingletonWSA::getInstance() {
 }
 
 void SingletonWSA::close() {
-	//Suppréssion de l'objet et réinisialisation de l'instance unique.
+	//Suppression de l'objet et rÃ©inisialisation de l'instance unique.
 	delete(instance);
 }

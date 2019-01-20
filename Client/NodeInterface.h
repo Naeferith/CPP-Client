@@ -4,10 +4,10 @@
 
 using namespace tinyxml2;
 
-/** @brief Classe abstraite représentant un maillon
+/** @brief Classe abstraite reprÃ©sentant un maillon
 
-	Tout maillon représentant un expert de chargement ou d'écriture
-	d'une forme dans un fichier devra hériter de cette classe.
+	Tout maillon reprÃ©sentant un expert de chargement ou d'Ã©criture
+	d'une forme dans un fichier devra hÃ©riter de cette classe.
 	
 */
 
@@ -18,11 +18,11 @@ private:
 
 protected:
 	
-	/** @brief La forme chargé par l'expert. */
+	/** @brief La forme chargÃ© par l'expert. */
 	Drawable* drawable  = nullptr;
 
 public:
-	/** @brief Constructeur par défaut. */
+	/** @brief Constructeur par dÃ©faut. */
 	NodeInterface();
 
 	/** @brief Constructeur par maillon. */
@@ -40,19 +40,19 @@ public:
 	const NodeInterface* getNext() const;
 
 	/** @brief Tentative de reconnaissance de l'expert
-		@param str doit être le nom du Drawable.
+		@param str doit etre le nom du Drawable.
 	*/
 	bool canInterpret(const string& str) const;
 
 	/** @brief Tentative de reconnaissance par le maillon du document XML. */
 	void interact(tinyxml2::XMLDocument& xml);
 
-	/** @brief Récupération de la couleur du fichier XML. */
+	/** @brief RÃ©cupÃ©tion de la couleur du fichier XML. */
 	shared_ptr<const Color> retrieveColor(tinyxml2::XMLDocument& doc);
 
-	/** @brief Récupération des vertices du fichier XML. */
+	/** @brief RÃ©cupÃ©ration des vertices du fichier XML. */
 	virtual const vector<Vector2D> retrieveVertices(tinyxml2::XMLDocument& doc);
 
-	/** @brief Récupération du radius du fichier XML. */
+	/** @brief RÃ©cupÃ©ration du radius du fichier XML. */
 	const double retrieveDoubleProperty(tinyxml2::XMLDocument& doc, const string& prop);
 };

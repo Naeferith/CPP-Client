@@ -23,7 +23,7 @@ string  VisitorXML::strXML(const Shape* vs, const string& param = "") const {
 	string name = vs->getName();
 
 	/* Retourne une chaine selon la nomenclature : Name - ID - Color - Param - Vertices
-	   Les paramètres sont des attributs propres qui ne sont pas des sommets, comme 
+	   Les paramÃ¨tres sont des attributs propres qui ne sont pas des sommets, comme 
 	   le radius du cercle*/
 	result << 
 		"<" << name << " id=\"" << vs->getId() << "\">" << 
@@ -42,9 +42,7 @@ string  VisitorXML::visit(const Shape* vs) const{
 
 string  VisitorXML::visit(const Circle* vs) const {
 	stringstream param;
-	//Un cercle possède un radius qui n'est pas un sommet. On l'ajoute donc en paramètre.
 	param << makeMarkup("radius", vs->getRadius());
-
 	return strXML(vs, param.str());
 }
 
@@ -54,8 +52,7 @@ string  VisitorXML::visit(const shape::Rectangle* vs) const {
 	return strXML(rectangularShape);
 }
 
-string  VisitorXML::visit(const ShapeGroup* vs) const
-{
+string  VisitorXML::visit(const ShapeGroup* vs) const {
 	stringstream oss;
 	string str, name = vs->getName();
 	oss << "<" << name << ">";

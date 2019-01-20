@@ -6,9 +6,9 @@
 using namespace std;
 
 /**
-	@brief ReprÈsente un ensemble de Drawable.
+	@brief Repr√©sente un ensemble de Drawable.
 	
-	Un Drawable est une collection de Drawable. 
+	Un DrawableGroup est une collection de Drawable. 
 */
 class DrawableGroup {
 protected:
@@ -22,18 +22,24 @@ public:
 	/** @brief Accesseur pour shapes. */
 	const vector<shared_ptr<Drawable>>& getShapes() const;
 
-	/** @brief Supprime l'ÈlÈment i variant de 0 ‡ size-1. */
+	/** @brief Supprime un √©l√©ment selon un index
+		@param i L'index variant de 0 √† size-1. 
+	*/
 	virtual void Delete(int i);
 
-	/** @brief Supprime l'ÈlÈment de shapes. */
-	virtual void Delete(shared_ptr<Drawable>);
+	/** @brief Supprime l'√©l√©ment de shapes. 
+		@param d Le pionteur sur l'√©l√©ment √† supprimer.
+	*/
+	virtual void Delete(shared_ptr<Drawable> d);
 
-	/** @brief Ajout d'un Drawable. */
+	/** @brief Ajout d'un Drawable. 
+		@param drawable Le Drawable √© ajouter.
+	*/
 	void add(shared_ptr<Drawable> drawable);
 
-	/** @brief Surcharge de l'opÈrateur ==. */
+	/** @brief Surcharge de l'op√©rateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;
 
-	/** @brief Surcharge de l'opÈrateur string. */
+	/** @brief Surcharge de l'op√©teur string. */
 	operator string() const;
 };

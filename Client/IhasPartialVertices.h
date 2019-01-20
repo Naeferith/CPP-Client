@@ -5,16 +5,16 @@
 #include "Vector2D.h"
 
 /**
-	@brief Interface pour les Shape partiellement définies
+	@brief Interface pour les Shape partiellement dÃ©finies
 
-	Certaines formes comme les Rectangle peuvent etre défini par un Vector2D ainsi qu'une longueur et une largeur.
-	Or, cette figure dispose de 4 points. L'interface permet donc de calculer les points restants à partir des données qui la définissent.
+	Certaines formes comme les Rectangle peuvent etre dÃ©fini par un Vector2D ainsi qu'une longueur et une largeur.
+	Or, cette figure dispose de 4 points. L'interface permet donc de calculer les points restants Ã  partir des donnÃ©es qui la dÃ©finissent.
 */
 class IhasPartialVertices {
 	public:
 		/** @brief Le destructeur. */
 		virtual ~IhasPartialVertices() {}
 
-		/** @brief Récupère la totalité des sommets d'une forme IhasPartialVertices. */
+		/** @brief RÃ©cupÃ©re la totalitÃ© des sommets d'une forme IhasPartialVertices. */
 		virtual vector<Vector2D> getCurrentVertices() const = 0;
 };

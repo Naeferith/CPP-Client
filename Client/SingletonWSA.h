@@ -6,27 +6,26 @@
 /**
 	@brief Singleton de WSA
 
-	C'est un singleton qui initialise une seul fois les DLL WSA avec
-	une instance unique statique
+	C'est un singleton qui initialise une seul fois les DLL WSA avec une instance unique statique.
 */
 class SingletonWSA {
 private:
 	/** @brief Instance singleton. */
 	static SingletonWSA* instance;
 
-	/** @brief Le constructeur par défaut. */
+	/** @brief Le constructeur par dÃ©faut. */
 	SingletonWSA();
 
 public:
-	/** @brief Le destructeur par défaut. */
+	/** @brief Le destructeur par dÃ©faut. */
 	~SingletonWSA();
 
 	/** @brief Accesseur de l'instance unique. Il permet l'initialisation de l'instance
-		Si celle-ci n'a pas déja été faite. Notez qu'une fonction static peut être appellé
-		Sans nécessairement instancier la classe. SingletonWSA::getInstance() est légal*/
+		Si celle-ci n'a pas dÃ©ja Ã©tÃ© faite. Notez qu'une fonction static peut etre appellÃ©.
+		Sans nÃ©cessairement instancier la classe. SingletonWSA::getInstance() est lÃ©gal*/
 	static const SingletonWSA* getInstance();
 
-	/** @brief Libère la mémoire de l'allocation des DLL WSA et détruit l'instance. */
+	/** @brief LibÃ¨re la mÃ©moire de l'allocation des DLL WSA et dÃ©truit l'instance. */
 	static void close();
 
 };

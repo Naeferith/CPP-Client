@@ -26,7 +26,7 @@ void Shape::Translate(const Vector2D& V) {
 }
 
 double Shape::Area() const {
-	//L'air d'un point ou d'un segment est null
+	//L'air d'un point ou d'un segment est nulle
 	if (vertices.size() < 3) return 0;
 
 	double area = 0;
