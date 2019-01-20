@@ -52,7 +52,7 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 	double cos_rad = cos(rad), sin_rad = sin(rad);
 	for (auto &vertice : vertices) {
 		Vector2D v = vertice - point;
-		v.x = ((v.x) * cos_rad - (v.y) * sin_rad);
+		v.x = round((v.x) * cos_rad - (v.y) * sin_rad);
 		v.y = round((v.x) * sin_rad + (v.y) * cos_rad);
 		v + point;
 		vertice = v;
