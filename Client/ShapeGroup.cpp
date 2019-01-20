@@ -25,6 +25,7 @@ double ShapeGroup::Area() const {
 }
 
 void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
+	this->Drawable::setColor(couleur);
 	for (auto &shape : shapes) { shape->setColor(couleur); }
 }
 
@@ -44,7 +45,7 @@ string ShapeGroup::getName() const {
 	return string("shapegroup");
 }
 
-string  ShapeGroup::accept(Visitor * v) { return v->visit(shared_ptr<ShapeGroup>(this)); }
+string  ShapeGroup::accept(Visitor * v) { return v->visit(this); }
 
 void ShapeGroup::add(shared_ptr<Drawable> d) {
 	if (d->getGroup()) throw Erreur(-6, "Drawable already in a group !");

@@ -10,7 +10,7 @@ private:
 	/** @brief Ordre des maillons de la chaine. */
 	static NodeInterface* chain;
 	
-	/** @brief Tentative de chargement de l'expert. */
+	/** @brief Tentative des chargement de l'experts. */
 	static void _load(tinyxml2::XMLDocument& doc);
 
 public:
@@ -20,7 +20,7 @@ public:
 	/** @brief Chargement des formes d'un fichier. */
 	static void load(const string& name);
 
-
+	/** @brief lancement de l'interprétation par les experts. */
 	static void load(tinyxml2::XMLDocument* doc);
 	static vector<shared_ptr<Drawable>> loadShapeGroupFromXML(tinyxml2::XMLDocument& doc);
 };

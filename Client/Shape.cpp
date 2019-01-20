@@ -19,8 +19,6 @@ const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
 const double Shape::getRotationAngle() const { return rotationAngle; }
 
-void Shape::setColor(const shared_ptr<const Color>& c) { color = shared_ptr<const Color>(c); }
-
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
 void Shape::Translate(const Vector2D& V) {
@@ -64,7 +62,7 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 
 string Shape::getName() const {	return string("shape"); }
 
-string  Shape::accept(Visitor * v) { return v->visit(shared_ptr<Shape>(this)); }
+string  Shape::accept(Visitor * v) { return v->visit(this); }
 
 Shape Shape::operator+(const Vector2D & vecteur) {
 	vertices.emplace_back(vecteur.x, vecteur.y);

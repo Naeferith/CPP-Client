@@ -26,6 +26,8 @@ void Drawable::setGroup(ShapeGroup* grp) {
 	group = grp;
 }
 
+void Drawable::setColor(const shared_ptr<const Color>& c) { color = shared_ptr<const Color>(c); }
+
 const shared_ptr<const Color>& Drawable::getColor() const { return color; }
 
 const int Drawable::getId() const { return id; }

@@ -17,8 +17,13 @@ private:
 	string strColor(const shared_ptr<const Color>&) const;
 
 	/** @brief Retourne sous forme XML en ajoutant les paramètres. */
-	string  strXML(const shared_ptr<Shape> vs, const string& param) const;
+	string  strXML(const Shape* vs, const string& param) const;
 
+	/** @brief Facilite la création d'une balise XML. 
+		@param tagName le nom de la balise.
+		@param value la valeur à insérer entre la balise.
+		@return une string représentant la balise.
+	*/
 	template<class T>
 	static string makeMarkup(const string& tagName, T value) {
 		stringstream result;
@@ -29,13 +34,13 @@ private:
 public:
 
 	/** @brief Retourne une string qui représente une shape en XML. */
-	string visit(const shared_ptr<Shape> vs) const;
+	string visit(const Shape* vs) const;
 
-	string visit(const shared_ptr<Circle> vs) const;
+	string visit(const Circle* vs) const;
 
-	string visit(const shared_ptr<shape::Rectangle> vs) const;
+	string visit(const shape::Rectangle* vs) const;
 
-	string visit(const shared_ptr<ShapeGroup> vs) const;
+	string visit(const ShapeGroup* vs) const;
 
-	string visit(const shared_ptr<ShapeManager> vs) const;
+	string visit(const ShapeManager* vs) const;
 };
