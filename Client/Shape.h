@@ -15,6 +15,7 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
+	/** @brief Rotation de la forme. */
 	double rotationAngle = 0;
 
 public:
@@ -22,7 +23,7 @@ public:
 	Shape();
 
 	/** @brief Le constructeur par valeurs. */
-	Shape(const vector<Vector2D, allocator<Vector2D>>& sommets, const shared_ptr<const Color>& couleur);
+	Shape(const vector<Vector2D>& sommets, const shared_ptr<const Color>& couleur);
 
 	/** @brief Le constructeur par copie. */
 	Shape(const Shape& s);
@@ -38,6 +39,9 @@ public:
 
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
+
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const;
 
 	/** @brief Mutateur pour vertices. */
 	void setVertices(const vector<Vector2D>& sommets);
@@ -55,13 +59,12 @@ public:
 	virtual string getName() const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
-	virtual string* accept(Visitor* v);
+	virtual string  accept(Visitor* v);
 
 	/** @brief Surcharge de l'opérateur +. */
 	Shape operator+(const Vector2D& vecteur);
 
 	/** @brief Surcharge de l'opérateur --. 
-	
 		Enlève le dernier Vector2D ajouté.
 	*/
 	Shape operator--();

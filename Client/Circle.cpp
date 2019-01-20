@@ -13,6 +13,10 @@ Circle::Circle(const Circle& c) : Shape(c), radius(c.radius) {}
 Circle::~Circle() {
 }
 
+double Circle::Area() const {
+	return MY_PI * radius * radius;
+}
+
 const double Circle::getRadius() const { return radius; }
 
 void Circle::setRadius(const double i) { radius = i; }
@@ -24,7 +28,7 @@ void Circle::Scale(const Vector2D & point, const double ratio) {
 	radius *= ratio;
 }
 
-string * Circle::accept(Visitor * v) { return v->visit(this); }
+string  Circle::accept(Visitor * v) { return v->visit(shared_ptr<Circle>(this)); }
 
 Circle::operator string() const {
 	ostringstream oss;

@@ -39,11 +39,14 @@ namespace shape {
 		/** @see IhasPartialVertices.getCurrentVertices() */
 		vector<Vector2D> getCurrentVertices() const;
 
+		/** @brief Retourne l'aire du Drawable. **/
+		virtual double Area() const;
+
 		/**	@see Drawable.Scale() */
 		void Scale(const Vector2D& point, const double ratio);
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
-		string* accept(Visitor* v);
+		string  accept(Visitor* v);
 
 		/** @brief Retourne le nom de la classe. */
 		string getName() const;

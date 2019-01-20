@@ -38,7 +38,7 @@ public:
 	virtual ~Drawable();
 
 	/** @brief Accesseur sur color. */
-	const Color getColor() const;
+	const shared_ptr<const Color>& getColor() const;
 
 	/** @brief Accesseur de group. */
 	ShapeGroup* getGroup();
@@ -46,6 +46,7 @@ public:
 	/** @brief Accesseur sur l'id. */
 	const int getId() const;
 
+	/** @brief Mutateur sur l'id. */
 	void setId(const int Id);
 
 	/** @brief Muttateur sur color. */
@@ -54,11 +55,16 @@ public:
 	/** @brief Muttateur de group. */
 	void setGroup(ShapeGroup* grp);
 
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const = 0;
+
 	/**
 		@brief Applique une translation.
 		@param vecteur Le vecteur de translation.
 	*/
 	virtual void Translate(const Vector2D& vecteur) = 0;
+
+	//virtual shared_ptr<Drawable> Translate(const Vector2D& vector) const = 0; // TODO
 
 	/**
 		@brief Applique une mise à l'échelle.
@@ -77,7 +83,8 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const = 0;
 
-	virtual string* accept(Visitor* v) = 0;
+	/** @brief Pattern du visiteur. */
+	virtual string  accept(Visitor* v) = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */
 	virtual bool operator==(const Drawable& drawable) const;
@@ -86,7 +93,7 @@ public:
 	virtual const Drawable& operator=(const Drawable& drawable);
 
 	/** @brief Surcharge de l'opérateur String.*/
-	virtual operator string() const = 0;
+	virtual operator string() const;
 
 	/** @brief Surcharge de l'opérateur <<. */
 	friend ostream& operator<<(ostream& strm, const Drawable& v);

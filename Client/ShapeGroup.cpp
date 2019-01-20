@@ -9,9 +9,20 @@ ShapeGroup::ShapeGroup() : Drawable() {}
 ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
 	Drawable(c) {}
 
-ShapeGroup::~ShapeGroup() { for (auto &shape : shapes) shape->setGroup(NULL); }
+ShapeGroup::~ShapeGroup() {
+	for (auto &shape : shapes) {
+		shape->setGroup(NULL);
+		shape.reset();
+	}
+}
 
 const vector<shared_ptr<Drawable>>& ShapeGroup::getShapes() const { return shapes; }
+
+double ShapeGroup::Area() const {
+	double sum = 0;
+	for (auto &shape : shapes) sum += shape->Area();
+	return sum;
+}
 
 void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
@@ -33,45 +44,33 @@ string ShapeGroup::getName() const {
 	return string("shapegroup");
 }
 
-string * ShapeGroup::accept(Visitor * v) { return v->visit(this); }
+string  ShapeGroup::accept(Visitor * v) { return v->visit(shared_ptr<ShapeGroup>(this)); }
 
-ShapeGroup& ShapeGroup::operator+(shared_ptr<Drawable> d) {
-	//Regarde dans chaque ShapeGroupe crées, y compris donc celui-ci, si le Drawable
-	//Est déjà présent
+void ShapeGroup::add(shared_ptr<Drawable> d) {
 	if (d->getGroup()) throw Erreur(-6, "Drawable already in a group !");
-	
-	d->setGroup(this);
-	d->setColor(make_shared<const Color>(getColor()));
-	shapes.push_back(d);
 
-	return *this;
+	d->setGroup(this);
+	d->setColor(getColor());
+	DrawableGroup::add(d);
 }
 
-ShapeGroup& ShapeGroup::operator-(shared_ptr<Drawable> d) {
-	for (auto it = shapes.begin(); it != shapes.end(); it++) {
-		if (**it == *d) {
-			shapes.erase(it);
-			d->setGroup(NULL);
-			return *this;
-		}
-	}
-	return *this;
+void ShapeGroup::Delete(int i) {
+	shapes.at(i)->setGroup(NULL);
+	DrawableGroup::Delete(i);
+}
+
+void ShapeGroup::Delete(shared_ptr<Drawable> d) {
+	d->setGroup(NULL);
+	DrawableGroup::Delete(d);
 }
 
 bool ShapeGroup::operator==(const shared_ptr<Drawable> s) const {
 	if (getId() == s->getId()) return true;
-	
-	//On test si s est présent dans les shapes
-	for (auto &shape : getShapes()) { 
-		if (*shape == *s) return true;
-	}
-	return false;
+	return DrawableGroup::operator==(s);
 }
 
 ShapeGroup::operator string()const {
 	ostringstream oss;
-	oss << getName() << ": ";
-	for (auto &shape : shapes)
-		oss << *shape;
+	oss << Drawable::operator std::string() << DrawableGroup::operator std::string();
 	return oss.str();
 }

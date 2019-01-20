@@ -28,10 +28,13 @@ public:
 	Circle(const Circle& cercle);
 	
 	/** @brief Le destructeur. */
-	~Circle();
+	virtual ~Circle();
 
 	/** @brief Accesseur de radius. */
 	const double getRadius() const;
+
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const;
 
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
@@ -39,8 +42,10 @@ public:
 	/**	@see Drawable.Scale() */
 	void Scale(const Vector2D& point, const double ratio);
 
-	/** @brief Implémentation de la methode accept du DP Visitor. */
-	string* accept(Visitor* v);
+	/** @brief Implémentation de la methode accept du DP Visitor.
+		@param v la Classe Visitor à visiter.
+		@return la string obtenue par la visit de la classe. */
+	string  accept(Visitor* v);
 
 	/** @brief Mutateur de radius. */
 	void setRadius(const double rayon);

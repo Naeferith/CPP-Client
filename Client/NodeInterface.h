@@ -4,10 +4,20 @@
 
 using namespace tinyxml2;
 
+/** @brief Classe abstraite représentant un maillon
+
+	Tout maillon représentant un expert de chargement ou d'écriture
+	d'une forme dans un fichier devra hériter de cette classe.
+	
+*/
+
 class NodeInterface {
 private:
+	/** @brief Prochain maillon de la chaine. */
 	NodeInterface* next = nullptr;
+
 protected:
+	
 	Drawable* drawable  = nullptr;
 
 public:

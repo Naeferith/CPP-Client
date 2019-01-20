@@ -8,36 +8,17 @@
 
 string VisitorXML::strVector(const Vector2D& vs) const {
 	stringstream oss;
-	oss	<<
-		"<vertice>" <<
-			"<x>" <<
-				vs.x <<
-			"</x>" <<
-			"<y>" <<
-				vs.y <<
-			"</y>" <<
-		"</vertice>";
+	oss << makeMarkup("vertice", makeMarkup("x", vs.x) + makeMarkup("y", vs.y));
 	return oss.str();
 }
 
-string VisitorXML::strColor(const Color& col) const {
+string VisitorXML::strColor(const shared_ptr<const Color>& col) const {
 	stringstream oss;
-	oss <<
-		"<color>" <<
-			"<r>" <<
-				col.x <<
-			"</r>" <<
-			"<g>" <<
-				col.y <<
-			"</g>" <<
-			"<b>" <<
-				col.z <<
-			"</b>" <<
-		"</color>";
+	oss << makeMarkup("color", makeMarkup("r", col->x) + makeMarkup("g", col->y) + makeMarkup("b", col->z));
 	return oss.str();
 }
 
-string* VisitorXML::strXML(const Shape* vs, const string& param = "") const {
+string  VisitorXML::strXML(const shared_ptr<Shape> vs, const string& param = "") const {
 	stringstream result;
 	string name = vs->getName();
 
@@ -52,20 +33,14 @@ string* VisitorXML::strXML(const Shape* vs, const string& param = "") const {
 	result << 
 		"</vertices></" << name << ">";
 
-	return new string(result.str());
+	return string(result.str());
 }
 
-string VisitorXML::makeMarkup(const string& tagName, const double value) {
-	stringstream result;
-	result << "<" << tagName << ">" << value << "</" << tagName << ">";
-	return result.str();
-}
-
-string* VisitorXML::visit(const Shape * vs) const{
+string  VisitorXML::visit(const shared_ptr<Shape> vs) const{
 	return strXML(vs);
 }
 
-string* VisitorXML::visit(const Circle* vs) const {
+string  VisitorXML::visit(const shared_ptr<Circle> vs) const {
 	stringstream param;
 	//Un cercle possède un radius qui n'est pas un sommet. On l'ajoute donc en paramètre.
 	param << makeMarkup("radius", vs->getRadius());
@@ -73,34 +48,33 @@ string* VisitorXML::visit(const Circle* vs) const {
 	return strXML(vs, param.str());
 }
 
-string * VisitorXML::visit(const shape::Rectangle * vs) const {
-	Shape* rectangularShape = new Shape(vs->getCurrentVertices(), make_shared<const Color>(vs->getColor()));
+string  VisitorXML::visit(const shared_ptr<shape::Rectangle> vs) const {
+	shared_ptr<Shape> rectangularShape(new Shape(vs->getCurrentVertices(), shared_ptr<const Color>(vs->getColor())));
 	rectangularShape->setId(vs->getId());
 	return strXML(rectangularShape);
 }
 
-string * VisitorXML::visit(const ShapeGroup * vs) const
+string  VisitorXML::visit(const shared_ptr<ShapeGroup> vs) const
 {
 	stringstream oss;
-	string *str, name = vs->getName();
+	string str, name = vs->getName();
 	oss << "<" << name << ">";
 	for (auto &shape : vs->getShapes()) {
 		str = shape->accept(new VisitorXML);
-		oss << *str;
-		delete(str);
+		oss << str;
 	}
 	oss << "</" << name << ">";
-	return new string(oss.str());
+	return string(oss.str());
 }
 
-string * VisitorXML::visit(const ShapeManager * vs) const {
+string VisitorXML::visit(const shared_ptr<ShapeManager> vs) const {
 	stringstream XMLS;
 	string suffix;
 	vector<shared_ptr<Drawable>> m = vs->getShapes();
 	for (auto s : m) {
 		
 		suffix = (s == m.back()) ? "" : "\r\n";
-		XMLS << *s->accept(new VisitorXML) << suffix;
+		XMLS << s->accept(new VisitorXML) << suffix;
 	}
-	return new string(XMLS.str());
+	return string(XMLS.str());
 }

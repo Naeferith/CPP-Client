@@ -10,7 +10,7 @@ NodeInterface_ShapeGroup::~NodeInterface_ShapeGroup() {}
 
 void NodeInterface_ShapeGroup::executeRequest(XMLDocument& xml) {
 	shared_ptr<ShapeGroup> shapeGroup = make_shared<ShapeGroup>();
-	ShapeManager::getInstance()->operator+ (shapeGroup);
+	ShapeManager::getInstance()->add (shapeGroup);
 	auto shapes = ShapeManager::getInstance()->getShapes();
 	FileHandler::load(xml.FirstChild()->ToDocument());
 	//Shapes are loaded after the vector<Drawable*> located at (size-1)

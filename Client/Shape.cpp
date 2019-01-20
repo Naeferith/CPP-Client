@@ -3,15 +3,13 @@
 #include "SingletonWSA.h"
 #include <math.h>
 
-# define MY_PI 3.14159265358979323846 
-
 using namespace std;
 
 Shape::Shape() : Drawable() {
 	vertices = {};
 }
 
-Shape::Shape(const vector<Vector2D, allocator<Vector2D>>& v, const shared_ptr<const Color>& c) : Drawable(c), vertices(v) {}
+Shape::Shape(const vector<Vector2D>& v, const shared_ptr<const Color>& c) : Drawable(c), vertices(v) {}
 
 Shape::Shape(const Shape & s) : Drawable(s.color), vertices(s.vertices) {}
 
@@ -21,37 +19,52 @@ const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
 const double Shape::getRotationAngle() const { return rotationAngle; }
 
-void Shape::setColor(const shared_ptr<const Color>& c) { color = c; }
+void Shape::setColor(const shared_ptr<const Color>& c) { color = shared_ptr<const Color>(c); }
 
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
 void Shape::Translate(const Vector2D& V) {
-	for (auto &vertice : vertices) {
-		vertice.setX(round( vertice.x + V.x ));
-		vertice.setY(round( vertice.y + V.y ));
+	for (auto &vertice : vertices) vertice = vertice + V ;
+}
+
+double Shape::Area() const {
+	//L'air d'un point ou d'un segment est null
+	if (vertices.size() < 3) return 0;
+
+	double area = 0;
+	size_t size = vertices.size() - 1;
+	Vector2D a = vertices.at(0), b, c, ab, ac;
+
+	for (int k = 1; k < size; ++k) {
+		b = vertices.at(k);
+		c = vertices.at(k+1);
+		ab = b - a;
+		ac = c - a;
+		area += 0.5*Vector2D::Det(ab, ac);
 	}
+	return area;
 }
 
 void Shape::Scale(const Vector2D& point, const double ratio) {
-	for (auto &vertice : vertices) {
-		vertice.setX(round((vertice.x - point.x) * ratio) + point.x);
-		vertice.setY(round((vertice.y - point.y) * ratio) + point.y);
-	}
+	for (auto &vertice : vertices) 
+		vertice = (vertice - point) * ratio + point;
 }
 
 void Shape::Rotate(const Vector2D& point, const double rad) {
+	double cos_rad = cos(rad), sin_rad = sin(rad);
 	for (auto &vertice : vertices) {
-		double newX = round((vertice.x - point.x) * cos(rad) - (vertice.y - point.y) * sin(rad));
-		double newY = round((vertice.x - point.x) * sin(rad) + (vertice.y - point.y) * cos(rad));
-		vertice.setX(newX + point.x);
-		vertice.setY(newY + point.y);
+		Vector2D v = vertice - point;
+		v.x = ((v.x) * cos_rad - (v.y) * sin_rad);
+		v.y = round((v.x) * sin_rad + (v.y) * cos_rad);
+		v + point;
+		vertice = v;
 	}
 	rotationAngle = fmod(rotationAngle + rad, 2 * MY_PI);
 }
 
 string Shape::getName() const {	return string("shape"); }
 
-string* Shape::accept(Visitor * v) { return v->visit(this); }
+string  Shape::accept(Visitor * v) { return v->visit(shared_ptr<Shape>(this)); }
 
 Shape Shape::operator+(const Vector2D & vecteur) {
 	vertices.emplace_back(vecteur.x, vecteur.y);
@@ -65,7 +78,7 @@ Shape Shape::operator--() {
 
 Shape::operator string() const {
 	ostringstream oss;
-	oss << getName() << ": " << getColor() << " [>> ";
+	oss << Drawable::operator std::string() << " [>> ";
 	for (auto &vertice : getVertices()) oss << vertice << " ";
 	oss << "<<]";
 	return oss.str();

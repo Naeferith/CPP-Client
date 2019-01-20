@@ -26,7 +26,7 @@ void Drawable::setGroup(ShapeGroup* grp) {
 	group = grp;
 }
 
-const Color Drawable::getColor() const { return *color; }
+const shared_ptr<const Color>& Drawable::getColor() const { return color; }
 
 const int Drawable::getId() const { return id; }
 
@@ -42,7 +42,13 @@ const Drawable& Drawable::operator=(const Drawable &d)
 	return *this;
 }
 
+Drawable::operator string() const {
+	ostringstream oss;
+	oss << getName() << ": " << *getColor();
+	return oss.str();
+}
+
 ostream & operator<<(ostream& strm, const Drawable& v)
 {
-	return strm << "[" << (string)v << "]";
+	return strm << "[ " << (string)v << " ]";
 }

@@ -2,7 +2,7 @@
 
 #include <memory>
 #include <vector>
-#include "Drawable.h"
+#include "DrawableGroup.h"
 
 using namespace std;
 
@@ -11,11 +11,7 @@ using namespace std;
 
 	Un ShapeGroup est une collection de Drawable.
 */
-class ShapeGroup : public Drawable {
-private:
-	/** @brief La liste des formes. */
-	vector<shared_ptr<Drawable>> shapes;
-
+class ShapeGroup : public Drawable, public DrawableGroup {
 public:
 	/** @brief Le constructeur par défaut. */
 	ShapeGroup();
@@ -30,6 +26,18 @@ public:
 
 	/** @brief Accesseur por shapes. */
 	const vector<shared_ptr<Drawable>>& getShapes() const;
+
+	/** @brief Retourne l'aire du Drawable. **/
+	virtual double Area() const;
+
+	/** @brief Supprime l'élément i variant de 0 à size-1. */
+	virtual void Delete(int i);
+
+	/** @brief Supprime l'élément de shapes. */
+	virtual void Delete(shared_ptr<Drawable>);
+
+	/** @brief Ajout d'un Drawable. */
+	void add(shared_ptr<Drawable> drawable);
 
 	/**	@see Drawable.setColor() */
 	void setColor(const shared_ptr<const Color>& couleur);
@@ -46,13 +54,8 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 
-	string* accept(Visitor* v);
-
-	/** @brief Surcharge de l'opérateur +. */
-	ShapeGroup& operator+(shared_ptr<Drawable> drawable);
-
-	/** @brief Surcharge de l'opérateur -. */
-	ShapeGroup& operator-(shared_ptr<Drawable> drawable);
+	/** @brief Implémentation de la methode accept du DP Visitor. */
+	string  accept(Visitor* v);
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;
