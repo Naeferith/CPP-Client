@@ -13,7 +13,7 @@
 
 using namespace tinyxml2;
 
-string FileHandler::path = string("");
+string FileHandler::path = string();
 
 //Responsability chain
 NodeInterface* FileHandler::chain = 

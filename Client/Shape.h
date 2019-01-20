@@ -15,7 +15,8 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
-	double rotationAngle = 0;  // ????????????????
+	/** @brief Rotation de la forme. */
+	double rotationAngle = 0;
 
 public:
 	/** @brief Le constructeur par défaut. */
@@ -64,7 +65,6 @@ public:
 	Shape operator+(const Vector2D& vecteur);
 
 	/** @brief Surcharge de l'opérateur --. 
-	
 		Enlève le dernier Vector2D ajouté.
 	*/
 	Shape operator--();

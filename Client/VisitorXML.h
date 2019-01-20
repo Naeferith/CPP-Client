@@ -27,6 +27,8 @@ private:
 	}
 
 public:
+
+	/** @brief Retourne une string qui représente une shape en XML. */
 	string visit(const shared_ptr<Shape> vs) const;
 
 	string visit(const shared_ptr<Circle> vs) const;

@@ -46,6 +46,7 @@ public:
 	/** @brief Accesseur sur l'id. */
 	const int getId() const;
 
+	/** @brief Mutateur sur l'id. */
 	void setId(const int Id);
 
 	/** @brief Muttateur sur color. */
@@ -82,6 +83,7 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const = 0;
 
+	/** @brief Pattern du visiteur. */
 	virtual string  accept(Visitor* v) = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */

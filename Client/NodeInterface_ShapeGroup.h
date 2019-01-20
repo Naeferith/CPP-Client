@@ -2,6 +2,7 @@
 
 #include "NodeInterface.h"
 
+/** @brief L'expert de groupe de forme de la COR*/
 class NodeInterface_ShapeGroup : public NodeInterface {
 public:
 	NodeInterface_ShapeGroup(NodeInterface* ni);

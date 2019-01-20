@@ -54,7 +54,9 @@ public:
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
 
+	/** @brief Implémentation de la methode accept du DP Visitor. */
 	string  accept(Visitor* v);
+
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;
 

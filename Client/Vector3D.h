@@ -35,9 +35,6 @@ public:
 	/** @brief Surcharge de l'opérateur String. */
 	operator string() const;
 
-	/** @brief Surcharge de l'opérateur ==. */
-	bool operator==(const Vector3D& vecteur) const;
-
 	/** @brief Surcharge de l'opérateur =. */
 	const Vector3D operator=(const Vector3D& vecteur);
 };
