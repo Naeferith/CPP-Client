@@ -42,8 +42,8 @@ int main()
 	};
 	
 	shared_ptr<Shape> shape = make_shared<Shape>(sommets, color);
-	shared_ptr<Circle> circle = make_shared<Circle>(Vector2D(), 8, color);
-	shared_ptr<shape::Rectangle> rect = make_shared<shape::Rectangle>(Vector2D(100, 100), color2, 5, 8);
+	shared_ptr<Circle> circle = make_shared<Circle>(Vector2D(300,300), 5, color);
+	shared_ptr<shape::Rectangle> rect = make_shared<shape::Rectangle>(Vector2D(200, 200), color2, 20, 40);
 
 	shared_ptr<ShapeGroup> shpgrp = make_shared<ShapeGroup>(color),
 		shpgrp2(new ShapeGroup(color2));
@@ -59,26 +59,30 @@ int main()
 		cout << *circle << endl;
 		cout << *rect << endl;
 
-		shp->add(shape);
+		/*shp->add(shape);
 		shp->add(circle);
-		shp->add(rect);
-		cout << endl << endl << *shpgrp << endl;
+		shp->add(rect);*/
 
-		socket.Send(shp->accept(new VisitorXML));
+		shpgrp->add(shape);
+		shpgrp->add(circle);
+		shpgrp->add(rect);
 
+
+		
 		shpgrp2->add(shpgrp);
 		shpgrp->Delete(2);
 		shpgrp->Delete(1);
-		shpgrp->setColor(color);
 		shpgrp->add(rect);
-		cout << endl << endl << *shpgrp2 << endl << endl;
+		shpgrp->add(circle);
 
-		//cout << *shpgrp << endl;
-		
-		cout << shape->Area() << endl; //1440m²
-		cout << circle->Area() << endl;//201.06m²
-		cout << rect->Area() << endl;  //40m²
-		cout << shpgrp->Area() << endl;//1681,06m²
+		shpgrp2->Rotate(Vector2D(0, 0), 0.1);
+
+		/*socket.Send(shape->accept(new VisitorXML));
+		socket.Send(rect->accept(new VisitorXML));
+		socket.Send(circle->accept(new VisitorXML));*/
+
+		socket.Send(shpgrp2->accept(new VisitorXML));
+
 	}
 	catch (const Erreur& e) {
 		std::cout << "ERREUR : " << e.what() << endl;

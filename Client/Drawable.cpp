@@ -23,7 +23,6 @@ ShapeGroup* Drawable::getGroup() { return group; }
 void Drawable::setGroup(ShapeGroup* grp) { group = grp; }
 
 void Drawable::setColor(const shared_ptr<const Color>& c) {
-	if (group != NULL) throw Erreur(-9, "Cant change color of a Drawable already inside a Shape group.");
 	color = shared_ptr<const Color>(c); 
 }
 

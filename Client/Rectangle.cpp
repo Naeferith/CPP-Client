@@ -24,7 +24,7 @@ string Rectangle::getName() const { return "rectangle"; }
 
 vector<Vector2D> Rectangle::getCurrentVertices() const {
 	Vector2D topLeft = getTopLeft();
-	
+
 	vector<Vector2D> currentVertices = {
 		topLeft,
 		Vector2D(topLeft.x        , topLeft.y + height),
