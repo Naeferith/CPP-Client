@@ -62,12 +62,11 @@ int main()
 		cout << endl << endl << *shpgrp << endl;
 
 		shpgrp2->add(shpgrp);
+		shpgrp->Delete(2);
+		shpgrp->Delete(1);
 		shpgrp->setColor(color);
+		shpgrp->add(rect);
 		cout << endl << endl << *shpgrp2 << endl << endl;
-
-		cout << endl << endl << shpgrp2->accept(new VisitorXML) << endl << endl;
-
-		//cout << *shpgrp->accept(new VisitorXML) << endl;
 
 		//cout << *shpgrp << endl;
 		
