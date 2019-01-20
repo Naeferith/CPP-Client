@@ -22,7 +22,7 @@ public:
 	Circle();
 
 	/** @brief Le constructeur par valeurs. */
-	Circle(const Vector2D& centre, const double rayon, const shared_ptr<const Color>& couleur);
+	Circle(const Vector2D& center, const double radius, const shared_ptr<const Color>& c);
 	
 	/** @brief Le constructeur par référence. */
 	Circle(const Circle& cercle);
