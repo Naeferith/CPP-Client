@@ -15,6 +15,6 @@ class IhasPartialVertices {
 		/** @brief Le destructeur. */
 		virtual ~IhasPartialVertices() {}
 
-		/** @brief Récupére la totalité des sommets d'une forme IhasPartialVertices. */
+		/** @brief Récupère la totalité des sommets d'une forme IhasPartialVertices. */
 		virtual vector<Vector2D> getCurrentVertices() const = 0;
 };
