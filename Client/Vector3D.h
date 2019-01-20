@@ -3,14 +3,14 @@
 #include <iostream>
 #include "Vector2D.h"
 
-/**
-	@brief Représente un vecteur à 3 dimensions.
-	C'est une structure composés de 3 double .
-	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
-*/
-
 using namespace std;
 
+/**
+	@brief Représente un vecteur à 3 dimensions.
+
+	C'est une structure composés de 3 double.
+	Cette structure permet de stocker diverses information comme des coordonnées dans l'espace ou une couleur.
+*/
 struct Vector3D : public Vector2D {
 public:
 

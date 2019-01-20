@@ -6,9 +6,9 @@
 namespace shape {
 
 	/**
-		@brief Représente un Rectangle.
+		@brief ReprÃ©sente un Rectangle.
 
-		Un Rectangle est défini par son sommet superieur gauche, une longueur et une largeur. 
+		Un Rectangle est dÃ©fini par son sommet superieur gauche, une longueur et une largeur. 
 	*/
 	class Rectangle : public Shape, public IhasPartialVertices {
 	private:
@@ -18,7 +18,7 @@ namespace shape {
 		/** @brief La largeur. */
 		double height;
 	public:
-		/** @brief Le constructeur per défaut. */
+		/** @brief Le constructeur per dÃ©faut. */
 		Rectangle();
 
 		/** @brief Le constructeur par valeurs. */
@@ -45,22 +45,22 @@ namespace shape {
 		/**	@see Drawable.Scale() */
 		void Scale(const Vector2D& point, const double ratio);
 
-		/** @brief Implémentation de la methode accept du DP Visitor. */
+		/** @brief ImplÃ©mentation de la methode accept du DP Visitor. */
 		string  accept(Visitor* v);
 
 		/** @brief Retourne le nom de la classe. */
 		string getName() const;
 
-		/** @brief Surcharge de l'opérateur string. */
+		/** @brief Surcharge de l'opÃ©rateur string. */
 		operator string() const;
 
 		/** @brief Suppression du remplacement de tableau de sommets. */
 		void setVertices(const vector<Vector2D>& sommets) = delete;
 
-		/** @brief Suppression de l'opérateur +. */
+		/** @brief Suppression de l'opÃ©rateur +. */
 		Shape operator+(const Vector2D & vecteur) = delete;
 
-		/** @brief Suppression de l'opérateur --. */
+		/** @brief Suppression de l'opÃ©rateur --. */
 		Shape operator--() = delete;
 	};
 }

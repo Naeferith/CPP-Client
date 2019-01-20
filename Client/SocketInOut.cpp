@@ -36,7 +36,7 @@ void SocketInOut::InitSock() {
 }
 
 void SocketInOut::Close() {
-	//On coupe la connexion pour l'envoie et la réception.
+	//On coupe la connexion pour l'envoie et la rÃ©ception.
 	if (shutdown(sock, SD_SEND) == SOCKET_ERROR)
 		throw Erreur(WSAGetLastError(), "Failed to shut connection");
 
@@ -46,14 +46,14 @@ void SocketInOut::Close() {
 }
 
 void SocketInOut::InitSockIn() {
-	///Représentant local
+	///ReprÃ©sentant local
 	sockaddr.sin_family = address;
 
 	//Conversion de adr en wchar_t *
 	size_t outsize, size = strlen(addressIn) + 1;
 	wchar_t *wadr = new wchar_t[size];
 
-	//Convertit une séquence de caractères multicotets en caractères larges.
+	//Convertit une sÃ©quence de caractÃ©res multicotets en caractÃ©res larges.
 	if (mbstowcs_s(&outsize, wadr, size, addressIn, size - 1))
 		throw Erreur(WSAGetLastError(), "Failed convert characters.");
 
@@ -61,12 +61,12 @@ void SocketInOut::InitSockIn() {
 	if (InetPton(sockaddr.sin_family, wadr, &sockaddr.sin_addr.s_addr) != 1)
 		throw Erreur(WSAGetLastError(), "Failed convert IP to binary.");
 
-	//on free la mémoire
+	//on free la mÃ©moire
 	//delete[]wadr;
 
 	sockaddr.sin_port = htons(port);
 	// htons() assure que le port est bien inscrit dans le format du 
-	// réseau (little-endian ou big-endian)
+	// rÃ©seau (little-endian ou big-endian)
 }
 
 void SocketInOut::Send(const string& msg){

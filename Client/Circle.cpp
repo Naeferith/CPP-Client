@@ -3,8 +3,8 @@
 
 Circle::Circle() : Shape(), radius(0) { vertices.emplace_back(0, 0); }
 
-Circle::Circle(const Vector2D& v, const double r, const std::shared_ptr<const Color>& c) : Shape(), radius(r) {
-	vertices.push_back(v);
+Circle::Circle(const Vector2D& center, const double radius, const shared_ptr<const Color>& c) : Shape(), radius(radius) {
+	vertices.push_back(center);
 	color = c;
 }
 

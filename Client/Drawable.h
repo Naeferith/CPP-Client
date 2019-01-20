@@ -13,15 +13,17 @@ class Visitor;
 */
 class Drawable {
 private:
+	/** @brief Index incrémental de l'id des formes. */
 	static int indexId;
 
 	/** @brief Groupe auquel appartient le Drawable. */
-	ShapeGroup* group = NULL;
+	ShapeGroup* group = nullptr;
 
 protected:
 	/** @brief La couleur. */
 	shared_ptr<const Color> color;
 
+	/** @brief Identifiant de la forme. */
 	int id;
 
 public:

@@ -19,6 +19,4 @@
 #include "Erreur.h"
 
 
-# define MY_PI 3.14159265358979323846 
-
-// TODO: faites référence ici aux en-têtes supplémentaires nécessaires au programme
+# define MY_PI 3.14159265358979323846

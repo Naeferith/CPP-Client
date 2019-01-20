@@ -74,7 +74,7 @@ void FileHandler::load(const string & name) {
 	}
 }
 
-void FileHandler::load(XMLDocument* doc) {
+void FileHandler::load(tinyxml2::XMLDocument* doc) {
 	_load(*doc);
 }
 

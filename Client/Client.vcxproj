@@ -151,6 +151,7 @@
     <ClInclude Include="Circle.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Drawable.h" />
+    <ClInclude Include="DrawableGroup.h" />
     <ClInclude Include="Erreur.h" />
     <ClInclude Include="FileHandler.h" />
     <ClInclude Include="IhasPartialVertices.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="Client.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Drawable.cpp" />
+    <ClCompile Include="DrawableGroup.cpp" />
     <ClCompile Include="Erreur.cpp" />
     <ClCompile Include="FileHandler.cpp" />
     <ClCompile Include="NodeInterface.cpp" />

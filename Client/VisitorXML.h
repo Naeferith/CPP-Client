@@ -4,9 +4,9 @@
 #include "ShapeManager.h"
 
 /**
-	@brief Fonctionnalité du DP Visieur.
+	@brief FonctionnalitÃ© du DP Visieur.
 
-	Crée une string en XML décrivant un Shape.
+	CrÃ©e une string en XML dÃ©crivant un Shape.
 */
 class VisitorXML : public Visitor {
 private:
@@ -16,13 +16,13 @@ private:
 	/** @brief Retourne une Color au format XML. */
 	string strColor(const shared_ptr<const Color>&) const;
 
-	/** @brief Retourne sous forme XML en ajoutant les paramètres. */
+	/** @brief Retourne sous forme XML en ajoutant les paramÃ¨tres. */
 	string  strXML(const Shape* vs, const string& param) const;
 
-	/** @brief Facilite la création d'une balise XML. 
+	/** @brief Facilite la crÃ©ation d'une balise XML. 
 		@param tagName le nom de la balise.
-		@param value la valeur à insérer entre la balise.
-		@return une string représentant la balise.
+		@param value la valeur Ã  inserer entre la balise.
+		@return une string reprÃ©sentant la balise.
 	*/
 	template<class T>
 	static string makeMarkup(const string& tagName, T value) {
@@ -33,7 +33,7 @@ private:
 
 public:
 
-	/** @brief Retourne une string qui représente une shape en XML. */
+	/** @brief Retourne une string qui reprÃ©sente une shape en XML. */
 	string visit(const Shape* vs) const;
 
 	string visit(const Circle* vs) const;

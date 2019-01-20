@@ -13,7 +13,7 @@ class Visitor {
 protected:
 
 public:
-	/** @brief Retourne une string qui représente une shape en XML. */
+	/** @brief Retourne une string qui reprÃ©sente une shape en XML. */
 	virtual string visit(const Shape* vs) const = 0;
 
 	virtual string visit(const Circle* vs) const = 0;
