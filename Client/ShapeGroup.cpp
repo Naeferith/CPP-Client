@@ -25,6 +25,7 @@ double ShapeGroup::Area() const {
 }
 
 void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
+	this->Drawable::setColor(couleur);
 	for (auto &shape : shapes) { shape->setColor(couleur); }
 }
 

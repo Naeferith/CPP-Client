@@ -50,7 +50,7 @@ public:
 	void setId(const int Id);
 
 	/** @brief Muttateur sur color. */
-	virtual void setColor(const shared_ptr<const Color>& couleur) = 0;
+	virtual void setColor(const shared_ptr<const Color>& couleur);
 
 	/** @brief Muttateur de group. */
 	void setGroup(ShapeGroup* grp);

@@ -19,8 +19,6 @@ const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
 const double Shape::getRotationAngle() const { return rotationAngle; }
 
-void Shape::setColor(const shared_ptr<const Color>& c) { color = shared_ptr<const Color>(c); }
-
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
 void Shape::Translate(const Vector2D& V) {

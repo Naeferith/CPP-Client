@@ -44,7 +44,9 @@ int main()
 	shared_ptr<Shape> shape(new Shape(sommets2, color));
 	shared_ptr<Circle> circle(new Circle(Vector2D(), 8, color));
 	shared_ptr<shape::Rectangle> rect(new shape::Rectangle(Vector2D(100, 100), color2, 5, 8));
-	shared_ptr<ShapeGroup> shpgrp(new ShapeGroup(color));
+
+	shared_ptr<ShapeGroup> shpgrp(new ShapeGroup(color)),
+		shpgrp2(new ShapeGroup(color2));
 
 	try {
 		//SingletonWSA::getInstance();
@@ -53,15 +55,24 @@ int main()
 		cout << *shape << endl;
 		cout << *circle << endl;
 		cout << *rect << endl;
+
 		shpgrp->add(shape);
 		shpgrp->add(circle);
 		shpgrp->add(rect);
 
+		cout << endl << endl << *shpgrp << endl;
+
+		shpgrp2->add(shpgrp);
+
 		//cout << *shpgrp << endl << endl << endl;
 
-		shpgrp->Delete(shape);
+		//shpgrp->Delete(shape);
 
-		cout << endl << endl << *shpgrp << endl;
+		cout << endl << endl << *shpgrp2 << endl << endl;
+
+		shpgrp->setColor(color);
+
+		cout << endl << endl << *shpgrp2 << endl << endl;
 
 		//cout << *shpgrp->accept(new VisitorXML) << endl;
 

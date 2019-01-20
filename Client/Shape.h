@@ -37,9 +37,6 @@ public:
 	/** @brief Accesseur sur color. */
 	const double getRotationAngle() const;
 
-	/**	@see Drawable.setColor() */
-	void setColor(const shared_ptr<const Color>& couleur);
-
 	/** @brief Retourne l'aire du Drawable. **/
 	virtual double Area() const;
 
