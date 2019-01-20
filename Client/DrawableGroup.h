@@ -40,6 +40,6 @@ public:
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;
 
-	/** @brief Surcharge de l'opéteur string. */
+	/** @brief Surcharge de l'opérateur string. */
 	operator string() const;
 };
