@@ -19,6 +19,11 @@ private:
 	/** @brief Retourne sous forme XML en ajoutant les paramètres. */
 	string  strXML(const shared_ptr<Shape> vs, const string& param) const;
 
+	/** @brief Facilite la création d'une balise XML. 
+		@param tagName le nom de la balise.
+		@param value la valeur à insérer entre la balise.
+		@return une string représentant la balise.
+	*/
 	template<class T>
 	static string makeMarkup(const string& tagName, T value) {
 		stringstream result;
