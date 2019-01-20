@@ -47,7 +47,7 @@ public:
 	/** @brief Tentative de reconnaissance par le maillon du document XML. */
 	void interact(tinyxml2::XMLDocument& xml);
 
-	/** @brief Récupétion de la couleur du fichier XML. */
+	/** @brief Récupération de la couleur du fichier XML. */
 	shared_ptr<const Color> retrieveColor(tinyxml2::XMLDocument& doc);
 
 	/** @brief Récupération des vertices du fichier XML. */
