@@ -77,7 +77,10 @@ int main()
 
 		circle->setColor(color2);
 
-		2 * Vector2D();
+		cout << (Vector2D() *= 2) << endl;
+		cout << (Vector2D() + 2) << endl;
+		cout << (Vector2D() -= 2) << endl;
+		cout << (Vector2D() /= 2) << endl;
 
 		cout << *shpgrp2 << endl << endl;
 
