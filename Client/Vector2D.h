@@ -29,6 +29,9 @@ public:
 	/** @brief Surcharge de l'opérateur *. */
 	Vector2D operator*(const double a) const { return Vector2D(x * a, y * a);; }
 
+	/** @brief Surcharge de l'opérateur * inversé. */
+	friend Vector2D operator*(const double a, const Vector2D& v) { return v * a; }
+
 	/** @brief Surcharge de l'opérateur /. */
 	Vector2D operator/(const double den) const { return *this*(1 / den); }
 
@@ -39,5 +42,3 @@ public:
 	friend ostream& operator<<(std::ostream&, const Vector2D&);
 };
 
-/** @brief Surcharge de l'opérateur * inversé. */
-Vector2D operator*(const double a, const Vector2D& v) { return v*a; }

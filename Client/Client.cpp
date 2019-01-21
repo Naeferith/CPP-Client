@@ -49,10 +49,10 @@ int main()
 		shpgrp2(new ShapeGroup(color2));
 
 	try {
-		SingletonWSA::getInstance();
-		SocketInOut socket = SocketInOut();
+		//SingletonWSA::getInstance();
+		//SocketInOut socket = SocketInOut();
 
-		ShapeManager* shp = ShapeManager::getInstance();
+		//ShapeManager* shp = ShapeManager::getInstance();
 		
 
 		cout << *shape << endl;
@@ -75,13 +75,19 @@ int main()
 		shpgrp->add(rect);
 		shpgrp->add(circle);
 
-		shpgrp2->Rotate(Vector2D(0, 0), 0.1);
+		circle->setColor(color2);
+
+		2 * Vector2D();
+
+		cout << *shpgrp2 << endl << endl;
+
+		//shpgrp2->Rotate(Vector2D(0, 0), 0.1);
 
 		/*socket.Send(shape->accept(new VisitorXML));
 		socket.Send(rect->accept(new VisitorXML));
 		socket.Send(circle->accept(new VisitorXML));*/
 
-		socket.Send(shpgrp2->accept(new VisitorXML));
+		//socket.Send(shpgrp2->accept(new VisitorXML));
 
 	}
 	catch (const Erreur& e) {
