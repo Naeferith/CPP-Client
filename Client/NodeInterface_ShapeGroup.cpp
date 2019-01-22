@@ -15,7 +15,7 @@ void NodeInterface_ShapeGroup::executeRequest(XMLDocument& xml) {
 	FileHandler::load(xml.FirstChild()->ToDocument());
 	//Shapes are loaded after the vector<Drawable*> located at (size-1)
 	//Next shapes must be moved into the vector
-	for (int i = shapes.size(); i != ShapeManager::getInstance()->getShapes().size(); shapes.pop_back()) {
+	for (size_t i = shapes.size(); i != ShapeManager::getInstance()->getShapes().size(); shapes.pop_back()) {
 		((vector<shared_ptr<Drawable>>)shapeGroup->getShapes()).push_back(shapes.back());
 	}
 	shapeGroup->setColor(retrieveColor(xml));
