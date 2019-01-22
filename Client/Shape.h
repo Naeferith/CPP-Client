@@ -15,6 +15,9 @@ protected:
 	/** @brief La liste des sommets. */
 	vector<Vector2D> vertices;
 
+	/** @brief Rotation de la forme. */
+	double rotationAngle = 0;
+
 public:
 	/** @brief Le constructeur par défaut. */
 	Shape();
@@ -30,6 +33,9 @@ public:
 
 	/** @brief Accesseur pour vertices. */
 	const vector<Vector2D> getVertices() const;
+
+	/** @brief Accesseur sur color. */
+	const double getRotationAngle() const;
 
 	/** @brief Retourne l'aire du Drawable. **/
 	virtual double Area() const;

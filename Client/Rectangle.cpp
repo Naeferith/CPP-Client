@@ -54,17 +54,6 @@ void Rectangle::Scale(const Vector2D & point, const double ratio) {
 	height *= ratio;
 }
 
-void Rectangle::Rotate(const Vector2D& point, const double angle) {
-	double cos_rad = cos(angle), sin_rad = sin(angle);
-	for (auto &vertice : vertices) {
-		Vector2D v = vertice - point;
-		v.x = round((v.x) * cos_rad - (v.y) * sin_rad);
-		v.y = round((v.x) * sin_rad + (v.y) * cos_rad);
-		vertice = v + point;
-	}
-	rotationAngle = fmod(rotationAngle + angle, 2 * MY_PI);
-}
-
 string  Rectangle::accept(Visitor * v) { return v->visit(this); }
 
 Rectangle::operator string() const {

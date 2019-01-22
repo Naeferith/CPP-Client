@@ -15,6 +15,8 @@ Shape::~Shape() {}
 
 const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
+const double Shape::getRotationAngle() const { return rotationAngle; }
+
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
 void Shape::Translate(const Vector2D& V) {
@@ -52,6 +54,7 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 		v.y = round((v.x) * sin_rad + (v.y) * cos_rad);
 		vertice = v + point;
 	}
+	rotationAngle = fmod(rotationAngle + rad, 2 * MY_PI);
 }
 
 string Shape::getName() const {	return string("shape"); }

@@ -52,7 +52,7 @@ int main()
 		SingletonWSA::getInstance();
 		SocketInOut socket = SocketInOut();
 
-		//ShapeManager* shp = ShapeManager::getInstance();
+		ShapeManager* shp = ShapeManager::getInstance();
 		
 
 		cout << *shape << endl;
@@ -75,22 +75,13 @@ int main()
 		shpgrp->add(rect);
 		shpgrp->add(circle);
 
-		circle->setColor(color2);
+		shpgrp2->Rotate(Vector2D(0, 0), 0.1);
 
-		cout << (Vector2D() *= 2) << endl;
-		cout << (Vector2D() += 2) << endl;
-		cout << (Vector2D() -= 2) << endl;
-		cout << (Vector2D() /= 2) << endl;
-
-		cout << *shpgrp2 << endl << endl;
-
-		rect->Rotate(Vector2D(0, 0), 0.0);
-
-		//socket.Send(shape->accept(new VisitorXML));
+		/*socket.Send(shape->accept(new VisitorXML));
 		socket.Send(rect->accept(new VisitorXML));
-		//socket.Send(circle->accept(new VisitorXML));
+		socket.Send(circle->accept(new VisitorXML));*/
 
-		//socket.Send(shpgrp2->accept(new VisitorXML));
+		socket.Send(shpgrp2->accept(new VisitorXML));
 
 	}
 	catch (const Erreur& e) {
