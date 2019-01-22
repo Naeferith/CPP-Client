@@ -78,13 +78,15 @@ int main()
 		circle->setColor(color2);
 
 		cout << (Vector2D() *= 2) << endl;
-		cout << (Vector2D() + 2) << endl;
+		cout << (Vector2D() += 2) << endl;
 		cout << (Vector2D() -= 2) << endl;
 		cout << (Vector2D() /= 2) << endl;
 
 		cout << *shpgrp2 << endl << endl;
 
 		//shpgrp2->Rotate(Vector2D(0, 0), 0.1);
+
+		cout << rect->accept(new VisitorXML) << endl << endl;
 
 		/*socket.Send(shape->accept(new VisitorXML));
 		socket.Send(rect->accept(new VisitorXML));
