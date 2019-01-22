@@ -75,13 +75,15 @@ int main()
 		shpgrp->add(rect);
 		shpgrp->add(circle);
 
-		shpgrp2->Rotate(Vector2D(0, 0), 0.1);
+		rect->Rotate(Vector2D(0, 0), 0.0);
 
 		/*socket.Send(shape->accept(new VisitorXML));
 		socket.Send(rect->accept(new VisitorXML));
 		socket.Send(circle->accept(new VisitorXML));*/
 
-		socket.Send(shpgrp2->accept(new VisitorXML));
+		cout << rect->accept(new VisitorXML) << endl << endl;
+
+		socket.Send(rect->accept(new VisitorXML));
 
 	}
 	catch (const Erreur& e) {

@@ -38,6 +38,11 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 	return temp.getVertices();
 }
 
+void Rectangle::Rotate(const Vector2D& point, const double angle) {
+	Shape::Rotate(point, angle);
+	rotationAngle = fmod(rotationAngle + angle, 2 * MY_PI);
+}
+
 double Rectangle::Area() const {
 	Vector2D a = getTopLeft(),
 			b = Vector2D(a.x + width, a.y),

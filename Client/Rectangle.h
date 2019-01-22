@@ -17,6 +17,9 @@ namespace shape {
 
 		/** @brief La largeur. */
 		double height;
+
+		/** @brief Rotation de la forme. */
+		double rotationAngle = 0;
 	public:
 		/** @brief Le constructeur per défaut. */
 		Rectangle();
@@ -36,6 +39,9 @@ namespace shape {
 		/** @brief Accesseur sur le sommet superieur gauche. */
 		Vector2D getTopLeft() const;
 
+		/** @brief Accesseur sur color. */
+		const double getRotationAngle() const { return rotationAngle; }
+
 		/** @see IhasPartialVertices.getCurrentVertices() */
 		vector<Vector2D> getCurrentVertices() const;
 
@@ -44,6 +50,9 @@ namespace shape {
 
 		/**	@see Drawable.Scale() */
 		void Scale(const Vector2D& point, const double ratio);
+
+		/**	@see Drawable.Rotate() */
+		virtual void Rotate(const Vector2D& point, const double angle);
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
 		string  accept(Visitor* v);

@@ -32,10 +32,10 @@ public:
 	friend Vector2D operator+(const double a, const Vector2D& v) { return v + a; }
 
 	/** @brief Surcharge de l'opérateur -. */
-	virtual Vector2D operator-(const Vector2D& v) const { return Vector2D(v.x - x, v.y - y); }
+	virtual Vector2D operator-(const Vector2D& v) const { return Vector2D(x - v.x, y - v.y); }
 
 	/** @brief Surcharge de l'opérateur -. */
-	Vector2D operator-(const double a) { return Vector2D(x - a, y-a); }
+	Vector2D operator-(const double a) { return Vector2D(x - a, y - a); }
 
 	/** @brief Surcharge de l'opérateur - inversé. */
 	friend Vector2D operator-(const double a, const Vector2D v) { return v - a; }
