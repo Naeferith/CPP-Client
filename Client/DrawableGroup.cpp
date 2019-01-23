@@ -5,6 +5,16 @@ using namespace std;
 
 DrawableGroup::~DrawableGroup() { }
 
+DrawableGroup::DrawableGroup(const DrawableGroup& gp) {
+	shapes = gp.cpyShapes();
+}
+
+vector<shared_ptr<Drawable>> DrawableGroup::cpyShapes() const {
+	vector<shared_ptr<Drawable>> shp;
+	for (auto &shape : shapes) shp.push_back(shared_ptr<Drawable>(shape->Clone()));
+	return shp;
+}
+
 const vector<shared_ptr<Drawable>>& DrawableGroup::getShapes() const{ return shapes;}
 
 void DrawableGroup::Delete(int i) {

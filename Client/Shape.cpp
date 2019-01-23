@@ -17,8 +17,9 @@ const vector<Vector2D> Shape::getVertices() const { return vertices; }
 
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
-void Shape::Translate(const Vector2D& V) {
-	for (auto &vertice : vertices) vertice = vertice + V ;
+Shape& Shape::Translate(const Vector2D& V) {
+	for (auto &vertice : vertices) vertice += V ;
+	return *this;
 }
 
 double Shape::Area() const {
@@ -39,20 +40,22 @@ double Shape::Area() const {
 	return area;
 }
 
-void Shape::Scale(const Vector2D& point, const double ratio) {
+Shape& Shape::Scale(const Vector2D& point, const double ratio) {
 	for (auto &vertice : vertices) 
 		vertice = (vertice - point) * ratio + point;
+	return *this;
 }
 
-void Shape::Rotate(const Vector2D& point, const double rad) {
+Shape& Shape::Rotate(const Vector2D& point, const double rad) {
 	double cos_rad = cos(rad), sin_rad = sin(rad);
 	Vector2D v;
 	for (auto &vertice : vertices) {
-		vertice = vertice - point;
+		vertice -= point;
 		v.x = (vertice.x) * cos_rad - (vertice.y) * sin_rad;
 		v.y = (vertice.x) * sin_rad + (vertice.y) * cos_rad;
 		vertice = v + point;
 	}
+	return *this;
 }
 
 string Shape::getName() const {	return string("shape"); }

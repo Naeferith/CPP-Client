@@ -52,8 +52,14 @@ public:
 	/** @brief Surcharge de l'opérateur +=. */
 	Vector2D& operator+=(const double a) { return *this = *this + a; }
 
+	/** @brief Surcharge de l'opérateur +=. */
+	Vector2D& operator+=(const Vector2D& v) { return *this = *this + v; }
+
 	/** @brief Surcharge de l'opérateur -=. */
 	Vector2D& operator-=(const double a) { return *this = *this - a; }
+
+	/** @brief Surcharge de l'opérateur -=. */
+	Vector2D& operator-=(const Vector2D& v) { return *this = *this - v; }
 
 	/** @brief Surcharge de l'opérateur /=. */
 	Vector2D& operator/=(const double a) { return *this = *this / a; }

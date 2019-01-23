@@ -64,25 +64,42 @@ public:
 		@brief Applique une translation.
 		@param vecteur Le vecteur de translation.
 	*/
-	virtual void Translate(const Vector2D& vecteur) = 0;
+	virtual Drawable& Translate(const Vector2D& vecteur) = 0;
 
-	//virtual shared_ptr<Drawable> Translate(const Vector2D& vector) const = 0; // TODO
+	/** @brief Créer une copie de la forme Translate. */
+	virtual shared_ptr<Drawable> cpyTranslate(const Vector2D& vector) const {
+		shared_ptr<Drawable> shp = shared_ptr<Drawable>(Clone());
+		shp->Translate(vector);
+		return shp;
+	}
 
 	/**
 		@brief Applique une mise à l'échelle.
 		@param point Le point invariant.
 		@param ratio Le ratio d'échelle.
 	*/
-	virtual void Scale(const Vector2D& point, const double ratio) = 0;
+	virtual Drawable& Scale(const Vector2D& point, const double ratio) = 0;
 
-	virtual shared_ptr<Drawable> Scale(const Vector2D& point, const double ratio)const = 0;
+	/** @brief Créer une copie de la forme scale. */
+	virtual shared_ptr<Drawable> cpyScale(const Vector2D& point, const double ratio)const {
+		shared_ptr<Drawable> shp = shared_ptr<Drawable>(Clone());
+		shp->Scale(point, ratio);
+		return shp;
+	}
 
 	/**
 		@brief Applique une rotation.
 		@param point Le point invariant.
 		@param angle L'angle de rotation en radians.
 	*/
-	virtual void Rotate(const Vector2D& point, const double angle) = 0;
+	virtual Drawable& Rotate(const Vector2D& point, const double angle) = 0;
+
+	/** @brief Créer une copie de la forme rotate. */
+	virtual shared_ptr<Drawable> cpyRotate(const Vector2D& point, const double angle) const {
+		shared_ptr<Drawable> shp = shared_ptr<Drawable>(Clone());
+		shp->Rotate(point, angle);
+		return shp;
+	}
 
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const = 0;
@@ -91,7 +108,7 @@ public:
 	virtual string  accept(Visitor* v) = 0;
 
 	/** @brief Retourne une copie. */
-	virtual shared_ptr<Drawable> Clone() const = 0;
+	virtual Drawable* Clone() const = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */
 	virtual bool operator==(const Drawable& drawable) const;

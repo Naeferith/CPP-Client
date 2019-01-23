@@ -24,9 +24,10 @@ void Circle::setRadius(const double i) { if (radius < 0) throw Erreur(-11, "Radi
 
 string Circle::getName() const { return string("circle"); }
 
-void Circle::Scale(const Vector2D & point, const double ratio) {
+Circle& Circle::Scale(const Vector2D & point, const double ratio) {
 	Shape::Scale(point, ratio);
 	radius *= ratio;
+	return *this;
 }
 
 string  Circle::accept(Visitor * v) { return v->visit(this); }

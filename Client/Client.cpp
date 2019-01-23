@@ -23,13 +23,13 @@ int main()
 
 	/************************Rectangle****************************/
 	shared_ptr<const Color> blue = make_shared<const Color>(Color::retrieveDefaultColor(0,0,1));
-	shared_ptr<shape::Rectangle> R1 = make_shared<shape::Rectangle>(Vector2D(1, -1), blue, 4, 2);
+	shared_ptr<shape::Rectangle> R1 = make_shared<shape::Rectangle>(Vector2D(10, 10), blue, 4, 2);
 
 
 	/************************Triangle*****************************/
 	shared_ptr<const Color> green = make_shared<const Color>(Color::retrieveDefaultColor(0, 1, 0));
 
-	vector<Vector2D> vertices = { Vector2D(6, -1),
+	vector<Vector2D> vertices = { Vector2D(6, 5),
 								 Vector2D(8, 0),
 								 Vector2D(6, 1) };
 
@@ -47,7 +47,7 @@ int main()
 	G1->add(C1);
 
 	/*************************Translation G1**********************/
-	G1->Translate(Vector2D(-1, 0));
+	G1->Translate(Vector2D(1, 0));
 	G1->Rotate(Vector2D(0, 0), MY_PI/4);
 
 	/*************************Aire du groupe**********************/
@@ -57,22 +57,20 @@ int main()
 	SingletonWSA::getInstance();
 	SocketInOut socket = SocketInOut();
 
-	G1->Scale(Vector2D(0, 0), 30); //AGRANDIRE
+	G1->Scale(Vector2D(0, 0), 10); //AGRANDIRE
 
 	socket.Send(G1->accept(new VisitorXML));
 
 	ShapeManager* file = ShapeManager::getInstance();
 	file->add(G1);
 	FileHandler::save("mabellefigure1");
-	G1.reset();
+	//G1.reset();
 	/*FileHandler::load("mabellefigure1");
 
 	shared_ptr<ShapeGroup> G2;
 	G2 = file->getShapes().back();
 
 	socket.Send(G2->accept(new VisitorXML));*/
-
-	
 
 //system("pause");
 	return 0;

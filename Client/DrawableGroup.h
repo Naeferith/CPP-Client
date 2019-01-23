@@ -16,8 +16,14 @@ protected:
 	vector<shared_ptr<Drawable>> shapes;
 
 public:
+	/** @brief Constructeur par défaut. */
+	DrawableGroup() {}
+
 	/** @brief Destructeur de DrawableGroup. */
 	virtual ~DrawableGroup();
+
+	/**@ brief Constructeur par copie. */
+	DrawableGroup(const DrawableGroup&);
 
 	/** @brief Accesseur pour shapes. */
 	const vector<shared_ptr<Drawable>>& getShapes() const;
@@ -31,6 +37,8 @@ public:
 		@param d Le pionteur sur l'élément à supprimer.
 	*/
 	virtual void Delete(shared_ptr<Drawable> d);
+
+	vector<shared_ptr<Drawable>> cpyShapes() const;
 
 	/** @brief Ajout d'un Drawable. 
 		@param drawable Le Drawable é ajouter.

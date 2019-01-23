@@ -19,6 +19,9 @@ public:
 	/** @brief Le constructeur par valeurs. */
 	ShapeGroup(shared_ptr<const Color>& couleur);
 
+	/** @brief le constructeur par copie. */
+	ShapeGroup(const ShapeGroup& sg) : Drawable(sg), DrawableGroup(sg) {}
+
 	/** @brief Le destructeur. On copie simplement les pointeurs,
 	On ne doit donc pas libérer chaque Drawable* ici, mais dans la zone
 	de Création. */
@@ -43,13 +46,13 @@ public:
 	void setColor(const shared_ptr<const Color>& couleur);
 
 	/**	@see Drawable.Translate() */
-	void Translate(const Vector2D& vecteur);
+	ShapeGroup& Translate(const Vector2D& vecteur);
 
 	/**	@see Drawable.Scale() */
-	void Scale(const Vector2D& point, const double ratio);
+	ShapeGroup& Scale(const Vector2D& point, const double ratio);
 
 	/**	@see Drawable.Rotate() */
-	void Rotate(const Vector2D& point, const double angle);
+	ShapeGroup& Rotate(const Vector2D& point, const double angle);
 
 	/** @brief Retourne le nom de la classe. */
 	string getName() const;
@@ -58,7 +61,7 @@ public:
 	string  accept(Visitor* v);
 
 	/** @see Drawable.Clone(). */
-	virtual shared_ptr<Drawable> Clone() const { return make_shared<ShapeGroup>(*this); }
+	virtual ShapeGroup* Clone() const { return new ShapeGroup(*this); }
 
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;

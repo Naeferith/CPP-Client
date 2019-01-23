@@ -29,16 +29,19 @@ void ShapeGroup::setColor(const shared_ptr<const Color>& couleur) {
 	for (auto &shape : shapes) { shape->setColor(couleur); }
 }
 
-void ShapeGroup::Translate(const Vector2D& vecteur) {
+ShapeGroup& ShapeGroup::Translate(const Vector2D& vecteur) {
 	for (auto &shape : shapes) { shape->Translate(vecteur); }
+	return *this;
 }
 
-void ShapeGroup::Scale(const Vector2D & point, const double ratio) {
+ShapeGroup& ShapeGroup::Scale(const Vector2D & point, const double ratio) {
 	for (auto &shape : shapes) { shape->Scale(point, ratio); }
+	return *this;
 }
 
-void ShapeGroup::Rotate(const Vector2D & point, const double angle) {
+ShapeGroup& ShapeGroup::Rotate(const Vector2D & point, const double angle) {
 	for (auto &shape : shapes) { shape->Rotate(point, angle); }
+	return *this;
 }
 
 string ShapeGroup::getName() const {
