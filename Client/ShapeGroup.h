@@ -57,6 +57,9 @@ public:
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	string  accept(Visitor* v);
 
+	/** @see Drawable.Clone(). */
+	virtual shared_ptr<Drawable> Clone() const { return make_shared<ShapeGroup>(*this); }
+
 	/** @brief Surcharge de l'opérateur ==. */
 	bool operator==(const shared_ptr<Drawable> shapeGroup) const;
 

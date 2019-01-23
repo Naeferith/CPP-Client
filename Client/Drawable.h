@@ -75,6 +75,8 @@ public:
 	*/
 	virtual void Scale(const Vector2D& point, const double ratio) = 0;
 
+	virtual shared_ptr<Drawable> Scale(const Vector2D& point, const double ratio)const = 0;
+
 	/**
 		@brief Applique une rotation.
 		@param point Le point invariant.
@@ -87,6 +89,9 @@ public:
 
 	/** @brief Pattern du visiteur. */
 	virtual string  accept(Visitor* v) = 0;
+
+	/** @brief Retourne une copie. */
+	virtual shared_ptr<Drawable> Clone() const = 0;
 
 	/** @brief Surcharge de l'opérateur ==. */
 	virtual bool operator==(const Drawable& drawable) const;

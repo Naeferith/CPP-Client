@@ -48,19 +48,29 @@ int main()
 
 	/*************************Translation G1**********************/
 	G1->Translate(Vector2D(-1, 0));
-	G1->Rotate(Vector2D(0, 0), 1);
+	G1->Rotate(Vector2D(0, 0), MY_PI/4);
 
 	/*************************Aire du groupe**********************/
-	cout << G1->Area();
+	cout << "Aire :" <<G1->Area()<<endl;
 
 	/**************************Envoie de G1 **********************/
 	SingletonWSA::getInstance();
 	SocketInOut socket = SocketInOut();
 
-	G1->Scale(Vector2D(0, 0), 80); //AGRANDIRE
+	G1->Scale(Vector2D(0, 0), 30); //AGRANDIRE
 
 	socket.Send(G1->accept(new VisitorXML));
 
+	ShapeManager* file = ShapeManager::getInstance();
+	file->add(G1);
+	FileHandler::save("mabellefigure1");
+	G1.reset();
+	/*FileHandler::load("mabellefigure1");
+
+	shared_ptr<ShapeGroup> G2;
+	G2 = file->getShapes().back();
+
+	socket.Send(G2->accept(new VisitorXML));*/
 
 	
 

@@ -66,6 +66,9 @@ namespace shape {
 		/** @brief Suppression du remplacement de tableau de sommets. */
 		void setVertices(const vector<Vector2D>& sommets) = delete;
 
+		/** @see Drawable.Clone(). */
+		virtual shared_ptr<Drawable> Clone() const { return make_shared<shape::Rectangle>(*this); }
+
 		/** @brief Suppression de l'opérateur +. */
 		Shape operator+(const Vector2D & vecteur) = delete;
 

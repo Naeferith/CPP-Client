@@ -52,6 +52,9 @@ public:
 	/** @brief Implémentation de la methode accept du DP Visitor. */
 	virtual string  accept(Visitor* v);
 
+	/** @see Drawable.Clone(). */
+	virtual shared_ptr<Drawable> Clone() const { return make_shared<Shape>(*this); }
+
 	/** @brief Surcharge de l'opérateur +. */
 	Shape operator+(const Vector2D& vecteur);
 

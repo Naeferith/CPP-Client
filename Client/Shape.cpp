@@ -46,10 +46,11 @@ void Shape::Scale(const Vector2D& point, const double ratio) {
 
 void Shape::Rotate(const Vector2D& point, const double rad) {
 	double cos_rad = cos(rad), sin_rad = sin(rad);
+	Vector2D v;
 	for (auto &vertice : vertices) {
-		Vector2D v = vertice - point;
-		v.x = round((v.x) * cos_rad - (v.y) * sin_rad);
-		v.y = round((v.x) * sin_rad + (v.y) * cos_rad);
+		vertice = vertice - point;
+		v.x = (vertice.x) * cos_rad - (vertice.y) * sin_rad;
+		v.y = (vertice.x) * sin_rad + (vertice.y) * cos_rad;
 		vertice = v + point;
 	}
 }

@@ -1,9 +1,10 @@
 #include "stdafx.h"
 #include "Circle.h"
 
-Circle::Circle() : Shape(), radius(0) { vertices.emplace_back(0, 0); }
+Circle::Circle() : Shape(), radius(1) { vertices.emplace_back(0, 0); }
 
-Circle::Circle(const Vector2D& center, const double radius, const shared_ptr<const Color>& c) : Shape(), radius(radius) {
+Circle::Circle(const Vector2D& center, const double radius, const shared_ptr<const Color>& c) : Shape() {
+	setRadius(radius);
 	vertices.push_back(center);
 	color = c;
 }
@@ -19,7 +20,7 @@ double Circle::Area() const {
 
 const double Circle::getRadius() const { return radius; }
 
-void Circle::setRadius(const double i) { radius = i; }
+void Circle::setRadius(const double i) { if (radius < 0) throw Erreur(-11, "Radian negatif"); radius = i; }
 
 string Circle::getName() const { return string("circle"); }
 

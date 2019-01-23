@@ -56,6 +56,9 @@ public:
 	/** @brief Suppression du remplacement de tableau de sommets. */
 	void setVertices(const vector<Vector2D>& sommets) = delete;
 
+	/** @see Drawable.Clone(). */
+	virtual shared_ptr<Drawable> Clone() const { return make_shared<Circle>(*this); }
+
 	/** @brief Suppression de l'opérateur +. */
 	Shape operator+(const Vector2D & vecteur) = delete;
 
