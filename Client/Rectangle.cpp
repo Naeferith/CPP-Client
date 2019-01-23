@@ -24,7 +24,7 @@ string Rectangle::getName() const { return "rectangle"; }
 
 vector<Vector2D> Rectangle::getCurrentVertices() const {
 	Vector2D topLeft = getTopLeft();
-	
+
 	vector<Vector2D> currentVertices = {
 		topLeft,
 		Vector2D(topLeft.x        , topLeft.y + height),
@@ -36,6 +36,11 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 	temp.Rotate(topLeft, rotationAngle);
 
 	return temp.getVertices();
+}
+
+void Rectangle::Rotate(const Vector2D& point, const double angle) {
+	Shape::Rotate(point, angle);
+	rotationAngle = fmod(rotationAngle + angle, 2 * MY_PI);
 }
 
 double Rectangle::Area() const {

@@ -22,7 +22,12 @@ ShapeGroup* Drawable::getGroup() { return group; }
 
 void Drawable::setGroup(ShapeGroup* grp) { group = grp; }
 
-void Drawable::setColor(const shared_ptr<const Color>& c) { color = shared_ptr<const Color>(c); }
+void Drawable::setColor(const shared_ptr<const Color>& c) {
+	if (getColor() != c) {
+		color = shared_ptr<const Color>(c);
+		if (group != nullptr)  group->setColor(c);
+	}
+}
 
 const shared_ptr<const Color>& Drawable::getColor() const { return color; }
 

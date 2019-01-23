@@ -5,9 +5,7 @@
 
 using namespace std;
 
-Shape::Shape() : Drawable() {
-	vertices = {};
-}
+Shape::Shape() : Drawable() {}
 
 Shape::Shape(const vector<Vector2D>& v, const shared_ptr<const Color>& c) : Drawable(c), vertices(v) {}
 
@@ -16,8 +14,6 @@ Shape::Shape(const Shape & s) : Drawable(s.color), vertices(s.vertices) {}
 Shape::~Shape() {}
 
 const vector<Vector2D> Shape::getVertices() const { return vertices; }
-
-const double Shape::getRotationAngle() const { return rotationAngle; }
 
 void Shape::setVertices(const vector<Vector2D>& v) { vertices = v; }
 
@@ -54,10 +50,8 @@ void Shape::Rotate(const Vector2D& point, const double rad) {
 		Vector2D v = vertice - point;
 		v.x = round((v.x) * cos_rad - (v.y) * sin_rad);
 		v.y = round((v.x) * sin_rad + (v.y) * cos_rad);
-		v + point;
-		vertice = v;
+		vertice = v + point;
 	}
-	rotationAngle = fmod(rotationAngle + rad, 2 * MY_PI);
 }
 
 string Shape::getName() const {	return string("shape"); }

@@ -49,7 +49,9 @@ string  VisitorXML::visit(const Circle* vs) const {
 string  VisitorXML::visit(const shape::Rectangle* vs) const {
 	Shape* rectangularShape(new Shape(vs->getCurrentVertices(), shared_ptr<const Color>(vs->getColor())));
 	rectangularShape->setId(vs->getId());
-	return strXML(rectangularShape);
+	string str = strXML(rectangularShape);
+	delete rectangularShape;
+	return str;
 }
 
 string  VisitorXML::visit(const ShapeGroup* vs) const {

@@ -11,7 +11,7 @@ ShapeGroup::ShapeGroup(shared_ptr<const Color>& c) :
 
 ShapeGroup::~ShapeGroup() {
 	for (auto &shape : shapes) {
-		shape->setGroup(NULL);
+		shape->setGroup(nullptr);
 		shape.reset();
 	}
 }
@@ -56,12 +56,12 @@ void ShapeGroup::add(shared_ptr<Drawable> d) {
 }
 
 void ShapeGroup::Delete(int i) {
-	shapes.at(i)->setGroup(NULL);
+	shapes.at(i)->setGroup(nullptr);
 	DrawableGroup::Delete(i);
 }
 
 void ShapeGroup::Delete(shared_ptr<Drawable> d) {
-	d->setGroup(NULL);
+	d->setGroup(nullptr);
 	DrawableGroup::Delete(d);
 }
 
