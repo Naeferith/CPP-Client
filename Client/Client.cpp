@@ -19,80 +19,50 @@ using namespace std;
 
 int main()
 {
-	FileHandler::load("import");
-	ShapeManager* shapes = ShapeManager::getInstance();
-
-	shared_ptr<const Color> color = make_shared<const Color>(Color::retrieveDefaultColor(1,0,0));
-	shared_ptr<const Color> color2 = make_shared<const Color>(Color::retrieveDefaultColor(0,1,0));
 	
-	shared_ptr<Circle> cercle = make_shared<Circle>(Vector2D(400,100), 20, color);
 
-	vector<Vector2D> sommets = {
-		Vector2D(50, 50),
-		Vector2D(100, 50),
-		Vector2D(100, 100),
-		Vector2D(50, 100),
-	};
+	/************************Rectangle****************************/
+	shared_ptr<const Color> blue = make_shared<const Color>(Color::retrieveDefaultColor(0,0,1));
+	shared_ptr<shape::Rectangle> R1 = make_shared<shape::Rectangle>(Vector2D(1, -1), blue, 4, 2);
 
-	vector<Vector2D> sommets2 = {
-		Vector2D(0, 30),
-		Vector2D(10, 0),
-		Vector2D(34, 0),
-		Vector2D(55, 45),
-	};
+
+	/************************Triangle*****************************/
+	shared_ptr<const Color> green = make_shared<const Color>(Color::retrieveDefaultColor(0, 1, 0));
+
+	vector<Vector2D> vertices = { Vector2D(6, -1),
+								 Vector2D(8, 0),
+								 Vector2D(6, 1) };
+
+	shared_ptr<Shape> T1 = make_shared<Shape>(vertices, green);
+
+	/************************Cercle*******************************/
+	shared_ptr < const Color> yellow = make_shared < const Color>(Color::retrieveDefaultColor(1, 1, 0));
+	shared_ptr<Circle> C1 = make_shared<Circle>(Vector2D(11, 0), 2, yellow);
+
+	/************************Groupe*******************************/
+	shared_ptr < const Color> red = make_shared < const Color>(Color::retrieveDefaultColor(1, 0, 0));
+	shared_ptr<ShapeGroup> G1 = make_shared<ShapeGroup>(red);
+	G1->add(R1);
+	G1->add(T1);
+	G1->add(C1);
+
+	/*************************Translation G1**********************/
+	G1->Translate(Vector2D(-1, 0));
+	G1->Rotate(Vector2D(0, 0), 1);
+
+	/*************************Aire du groupe**********************/
+	cout << G1->Area();
+
+	/**************************Envoie de G1 **********************/
+	SingletonWSA::getInstance();
+	SocketInOut socket = SocketInOut();
+
+	G1->Scale(Vector2D(0, 0), 80); //AGRANDIRE
+
+	socket.Send(G1->accept(new VisitorXML));
+
+
 	
-	shared_ptr<Shape> shape = make_shared<Shape>(sommets, color);
-	shared_ptr<Circle> circle = make_shared<Circle>(Vector2D(300,300), 5, color);
-	shared_ptr<shape::Rectangle> rect = make_shared<shape::Rectangle>(Vector2D(200, 200), color2, 20, 40);
-
-	shared_ptr<ShapeGroup> shpgrp = make_shared<ShapeGroup>(color),
-		shpgrp2(new ShapeGroup(color2));
-
-	try {
-		SingletonWSA::getInstance();
-		SocketInOut socket = SocketInOut();
-
-		ShapeManager* shp = ShapeManager::getInstance();
-		
-
-		cout << *shape << endl;
-		cout << *circle << endl;
-		cout << *rect << endl;
-
-		/*shp->add(shape);
-		shp->add(circle);
-		shp->add(rect);*/
-
-		shpgrp->add(shape);
-		shpgrp->add(circle);
-		shpgrp->add(rect);
-
-
-		
-		shpgrp2->add(shpgrp);
-		shpgrp->Delete(2);
-		shpgrp->Delete(1);
-		shpgrp->add(rect);
-		shpgrp->add(circle);
-
-		shpgrp2->Translate(Vector2D(200, 0));
-
-		/*socket.Send(shape->accept(new VisitorXML));
-		socket.Send(rect->accept(new VisitorXML));
-		socket.Send(circle->accept(new VisitorXML));*/
-
-		socket.Send(shpgrp2->accept(new VisitorXML));
-
-	}
-	catch (const Erreur& e) {
-		std::cout << "ERREUR : " << e.what() << endl;
-	}
-
-	shape.reset();
-	circle.reset();
-	rect.reset();
-
-	shpgrp.reset();
 
 //system("pause");
 	return 0;
