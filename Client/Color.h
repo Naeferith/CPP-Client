@@ -30,6 +30,8 @@ public:
 	*/
 	static const Color retrieveDefaultColor(const double r, const double g, const double b);
 
+	static const Color retrieveDefaultColor(const string& name);
+
 	/** @brief Surcharge de l'opérateur String. */
 	virtual operator string() const;
 };

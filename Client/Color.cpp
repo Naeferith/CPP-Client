@@ -17,6 +17,11 @@ const Color Color::retrieveDefaultColor(const double r, const double g, const do
 	return colors.at("BLACK");
 }
 
+const Color Color::retrieveDefaultColor(const string& name) {
+	auto it = colors.find(name);
+	return (it != colors.end()) ? colors.find(name)->second : colors.at("BLACK");
+}
+
 Color::operator string() const {
 	ostringstream oss;
 	oss << "R:" << x << ", G:" << y << ", B:" << z;
