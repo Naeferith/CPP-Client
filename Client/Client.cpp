@@ -61,18 +61,20 @@ int main()
 
 	G1->Translate(Vector2D(70, 0));
 
-	socket.Send(G1->accept(new VisitorXML));
+	//socket.Send(G1->accept(new VisitorXML));
 
 	ShapeManager* file = ShapeManager::getInstance();
 	file->add(G1);
 	FileHandler::save("mabellefigure1");
 	//G1.reset();
-	/*FileHandler::load("mabellefigure1");
+	FileHandler::load("mabellefigure1");
+
+	socket.Send(file->accept(new VisitorXML));
 
 	shared_ptr<ShapeGroup> G2;
-	G2 = file->getShapes().back();
+	//G2 = file->getShapes().back();
 
-	socket.Send(G2->accept(new VisitorXML));*/
+	//socket.Send(G2->accept(new VisitorXML));
 
 //system("pause");
 	return 0;

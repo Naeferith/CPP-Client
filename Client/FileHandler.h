@@ -44,5 +44,5 @@ public:
 		@brief Chargement individuellement les formes contenues dans u ShapeGroup.
 		@param doc Le tinyxml2::XMLDocument source.
 	*/
-	static vector<shared_ptr<Drawable>> loadShapeGroupFromXML(tinyxml2::XMLDocument& doc);
+	static void loadShapeGroupFromXML(tinyxml2::XMLDocument& doc);
 };

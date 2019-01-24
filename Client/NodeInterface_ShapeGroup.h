@@ -13,6 +13,4 @@ public:
 
 	/** @see NodeInterface.executeRequest(tinyxml2::XMLDocument& xml) */
 	void executeRequest(XMLDocument& xml) override;
-
-	const vector<Vector2D> retrieveVertices(XMLDocument& doc);
 };

@@ -59,8 +59,6 @@ void FileHandler::load(const string & name) {
 		XMLDocument XMLShape;
 		XMLError e;
 
-		
-
 		while (getline(myfile, line)) {
 			//Each line should be an XML Drawable
 			//Thus, interpret each line as an XMLDocument
@@ -78,12 +76,20 @@ void FileHandler::load(tinyxml2::XMLDocument* doc) {
 	_load(*doc);
 }
 
-vector<shared_ptr<Drawable>> FileHandler::loadShapeGroupFromXML(XMLDocument& doc) {
-	vector<shared_ptr<Drawable>> shapes = vector<shared_ptr<Drawable>>();
+void FileHandler::loadShapeGroupFromXML(XMLDocument& doc) {
+	XMLPrinter printer;
+	XMLDocument temp;
 	XMLElement* shapegroupNode = doc.FirstChildElement();
+
 	for (XMLElement* shape = shapegroupNode->FirstChildElement(); shape != nullptr; shape = shape->NextSiblingElement()) {
+		shape->Accept(&printer);		
+		temp.Parse(printer.CStr());
+		printer.ClearBuffer();
 
+		temp.Accept(&printer);
+		cout << printer.CStr() << endl;
+		printer.ClearBuffer();
+
+		load(&temp);
 	}
-
-	return shapes;
 }
