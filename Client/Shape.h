@@ -38,19 +38,22 @@ public:
 	void setVertices(const vector<Vector2D>& sommets);
 
 	/**	@see Drawable.Translate() */
-	virtual void Translate(const Vector2D& vecteur);
+	virtual Shape& Translate(const Vector2D& vecteur);
 
 	/**	@see Drawable.Scale() */
-	virtual void Scale(const Vector2D& point, const double ratio);
+	virtual Shape& Scale(const Vector2D& point, const double ratio);
 
 	/**	@see Drawable.Rotate() */
-	virtual void Rotate(const Vector2D& point, const double angle);
+	virtual Shape& Rotate(const Vector2D& point, const double angle);
 
 	/** @brief Retourne le nom de la classe. */
 	virtual string getName() const;
 
 	/** @brief Implémentation de la methode accept du DP Visitor. */
-	virtual string  accept(Visitor* v);
+	virtual string accept(Visitor* v);
+
+	/** @see Drawable.Clone(). */
+	virtual Shape* Clone() const { return new Shape(*this); }
 
 	/** @brief Surcharge de l'opérateur +. */
 	Shape operator+(const Vector2D& vecteur);

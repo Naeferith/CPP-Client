@@ -40,7 +40,7 @@ public:
 	string getName() const;
 
 	/**	@see Drawable.Scale() */
-	void Scale(const Vector2D& point, const double ratio);
+	Circle& Scale(const Vector2D& point, const double ratio);
 
 	/** @brief Implémentation de la methode accept du DP Visitor.
 		@param v la Classe Visitor à visiter.
@@ -55,6 +55,9 @@ public:
 
 	/** @brief Suppression du remplacement de tableau de sommets. */
 	void setVertices(const vector<Vector2D>& sommets) = delete;
+
+	/** @see Drawable.Clone(). */
+	virtual Circle* Clone() const { return new Circle(*this); }
 
 	/** @brief Suppression de l'opérateur +. */
 	Shape operator+(const Vector2D & vecteur) = delete;

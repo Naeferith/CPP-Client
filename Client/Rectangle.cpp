@@ -38,9 +38,10 @@ vector<Vector2D> Rectangle::getCurrentVertices() const {
 	return temp.getVertices();
 }
 
-void Rectangle::Rotate(const Vector2D& point, const double angle) {
+Rectangle& Rectangle::Rotate(const Vector2D& point, const double angle) {
 	Shape::Rotate(point, angle);
 	rotationAngle = fmod(rotationAngle + angle, 2 * MY_PI);
+	return *this;
 }
 
 double Rectangle::Area() const {
@@ -53,10 +54,11 @@ double Rectangle::Area() const {
 	return Vector2D::Det(ab, ac);
 }
 
-void Rectangle::Scale(const Vector2D & point, const double ratio) {
+Rectangle& Rectangle::Scale(const Vector2D & point, const double ratio) {
 	Shape::Scale(point, ratio);
 	width  *= ratio;
 	height *= ratio;
+	return *this;
 }
 
 string  Rectangle::accept(Visitor * v) { return v->visit(this); }

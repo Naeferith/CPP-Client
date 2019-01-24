@@ -49,10 +49,10 @@ namespace shape {
 		virtual double Area() const;
 
 		/**	@see Drawable.Scale() */
-		void Scale(const Vector2D& point, const double ratio);
+		virtual shape::Rectangle& Scale(const Vector2D& point, const double ratio);
 
 		/**	@see Drawable.Rotate() */
-		virtual void Rotate(const Vector2D& point, const double angle);
+		virtual shape::Rectangle& Rotate(const Vector2D& point, const double angle);
 
 		/** @brief Implémentation de la methode accept du DP Visitor. */
 		string  accept(Visitor* v);
@@ -65,6 +65,9 @@ namespace shape {
 
 		/** @brief Suppression du remplacement de tableau de sommets. */
 		void setVertices(const vector<Vector2D>& sommets) = delete;
+
+		/** @see Drawable.Clone(). */
+		virtual Rectangle* Clone() const { return new Rectangle(*this); }
 
 		/** @brief Suppression de l'opérateur +. */
 		Shape operator+(const Vector2D & vecteur) = delete;

@@ -12,9 +12,13 @@ Drawable::Drawable() : id(++Drawable::indexId) {
 	color = make_shared<const Color>(Color::retrieveDefaultColor(0,0,0));
 }
 
-Drawable::Drawable(const shared_ptr<const Color>& c) : color(c), id(++Drawable::indexId) {}
+Drawable::Drawable(const shared_ptr<const Color>& c) : id(++Drawable::indexId) {
+	color = shared_ptr<const Color>(c);
+}
 
-Drawable::Drawable(const Drawable& d) : color(d.color), id(d.id) {}
+Drawable::Drawable(const Drawable& d) : color(d.color), id(d.id) {
+	color = shared_ptr<const Color>(d.color);
+}
 
 Drawable::~Drawable() {}
 
