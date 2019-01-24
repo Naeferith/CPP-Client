@@ -21,7 +21,7 @@ double Circle::Area() const {
 const double Circle::getRadius() const { return radius; }
 
 void Circle::setRadius(const double i) { 
-	if (i < 0) throw Erreur(-11, "Radian negatif");
+	if (i < 0) throw Erreur( GEOMETRIC_ERROR, "Radian negatif");
 	radius = i; 
 }
 

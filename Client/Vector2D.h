@@ -50,7 +50,7 @@ public:
 	friend Vector2D operator*(const double a, const Vector2D& v) { return v * a; }
 
 	/** @brief Surcharge de l'opérateur /. */
-	Vector2D operator/(const double den) const { if (!den) throw Erreur(-10, "Divise by 0."); return *this*(1 / den); }
+	Vector2D operator/(const double den) const;
 
 	/** @brief Surcharge de l'opérateur +=. */
 	Vector2D& operator+=(const double a) { return *this = *this + a; }

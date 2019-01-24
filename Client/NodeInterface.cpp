@@ -28,7 +28,8 @@ void NodeInterface::interact(XMLDocument& xml) {
 
 shared_ptr<const Color> NodeInterface::retrieveColor(XMLDocument & doc) {
 	XMLElement* colorNode = doc.FirstChild()->FirstChildElement("color");
-	if (colorNode == nullptr) throw Erreur(-1, "XML Error : color node absent");
+	if (colorNode == nullptr) 
+		Erreur(_XML_ERROR, "XML Error : color node absent");
 	double R = ::atof(colorNode->FirstChildElement("r")->GetText());
 	double G = ::atof(colorNode->FirstChildElement("g")->GetText());
 	double B = ::atof(colorNode->FirstChildElement("b")->GetText());
@@ -39,7 +40,7 @@ const vector<Vector2D> NodeInterface::retrieveVertices(XMLDocument &doc) {
 	vector<Vector2D> vertices = vector<Vector2D>();
 	double x, y;
 	XMLElement* verticesNode = doc.FirstChild()->FirstChildElement("vertices");
-	if (verticesNode == nullptr) throw Erreur(-1, "XML Error : vertices node absent");
+	if (verticesNode == nullptr) throw Erreur(_XML_ERROR, "XML Error : vertices node absent");
 	for (XMLElement* e = verticesNode->FirstChildElement("vertice"); e != nullptr; e = e->NextSiblingElement("vertice")) {
 		x = ::atof(e->FirstChildElement("x")->GetText());
 		y = ::atof(e->FirstChildElement("y")->GetText());
@@ -50,6 +51,6 @@ const vector<Vector2D> NodeInterface::retrieveVertices(XMLDocument &doc) {
 
 const double NodeInterface::retrieveDoubleProperty(XMLDocument& doc, const string& prop) {
 	XMLElement* radiusNode = doc.FirstChild()->FirstChildElement(prop.c_str());
-	if (radiusNode == nullptr) throw Erreur(-1, "XML Error : radius node absent");
+	if (radiusNode == nullptr) throw Erreur(_XML_ERROR, "XML Error : radius node absent");
 	return ::atof(radiusNode->GetText());
 }

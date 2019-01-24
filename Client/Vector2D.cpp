@@ -20,6 +20,11 @@ Vector2D::operator string() const {
 	return oss.str();
 }
 
+Vector2D Vector2D::operator/(const double den) const {
+	if (!den) throw Erreur(MAT_ERROR, "Divise by 0.");
+	return *this*(1 / den); 
+}
+
 ostream & operator<<(ostream& strm, const Vector2D& v)
 {
 	return strm << "[" << (string)v << "]";

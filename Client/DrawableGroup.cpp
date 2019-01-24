@@ -18,7 +18,7 @@ vector<shared_ptr<Drawable>> DrawableGroup::cpyShapes() const {
 const vector<shared_ptr<Drawable>>& DrawableGroup::getShapes() const{ return shapes;}
 
 void DrawableGroup::Delete(int i) {
-	if (shapes.size() <= i) throw Erreur(-8, "Size too small.");
+	if (shapes.size() <= i) throw Erreur(GEOMETRIC_ERROR, "Size too small.");
 	shapes.erase(shapes.begin()+i);
 }
 
