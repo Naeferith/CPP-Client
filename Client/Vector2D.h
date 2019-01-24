@@ -22,6 +22,9 @@ public:
 	/** @brief Retourne le determinant. */
 	static double Det(const Vector2D& ab, const Vector2D& ac) { return (ab.x * ac.y) - (ab.y * ac.x); }
 
+	/** @brief rotatio d'un vecteur. */
+	static Vector2D Rotate(const Vector2D& point, const Vector2D& vertice, const double rad);
+	
 	/** @brief Surcharge de l'opérateur +. */
 	virtual Vector2D operator+(const Vector2D& v) const { return Vector2D(v.x + x , v.y + y); }
 

@@ -20,7 +20,10 @@ double Circle::Area() const {
 
 const double Circle::getRadius() const { return radius; }
 
-void Circle::setRadius(const double i) { if (radius < 0) throw Erreur(-11, "Radian negatif"); radius = i; }
+void Circle::setRadius(const double i) { 
+	if (i < 0) throw Erreur(-11, "Radian negatif");
+	radius = i; 
+}
 
 string Circle::getName() const { return string("circle"); }
 
