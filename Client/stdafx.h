@@ -20,3 +20,8 @@
 
 
 # define MY_PI 3.14159265358979323846
+
+# define NETWORK_ERROR		-1
+# define GEOMETRIC_ERROR	-2 
+# define MAT_ERROR			-3
+# define _XML_ERROR			-4

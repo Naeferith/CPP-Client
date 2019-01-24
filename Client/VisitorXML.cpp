@@ -55,15 +55,11 @@ string  VisitorXML::visit(const shape::Rectangle* vs) const {
 }
 
 string  VisitorXML::visit(const ShapeGroup* vs) const {
-	stringstream oss;
-	string str, name = vs->getName();
-	oss << "<" << name << ">";
-	for (auto &shape : vs->getShapes()) {
-		str = shape->accept(new VisitorXML);
-		oss << str;
-	}
-	oss << "</" << name << ">";
-	return string(oss.str());
+	string str;
+	for (auto &shape : vs->getShapes())
+		str += shape->accept(new VisitorXML);
+	str=makeMarkup(vs->getName(), str);
+	return str;
 }
 
 string VisitorXML::visit(const ShapeManager* vs) const {

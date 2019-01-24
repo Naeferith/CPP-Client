@@ -59,6 +59,8 @@ int main()
 
 	G1->Scale(Vector2D(0, 0), 10); //AGRANDIRE
 
+	G1->Translate(Vector2D(70, 0));
+
 	socket.Send(G1->accept(new VisitorXML));
 
 	ShapeManager* file = ShapeManager::getInstance();

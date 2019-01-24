@@ -51,7 +51,7 @@ string ShapeGroup::getName() const {
 string  ShapeGroup::accept(Visitor * v) { return v->visit(this); }
 
 void ShapeGroup::add(shared_ptr<Drawable> d) {
-	if (d->getGroup()) throw Erreur(-6, "Drawable already in a group !");
+	if (d->getGroup()) throw Erreur(GEOMETRIC_ERROR, "Drawable already in a group !");
 
 	d->setGroup(this);
 	d->setColor(getColor());
